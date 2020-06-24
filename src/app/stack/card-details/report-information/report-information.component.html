@@ -1,7 +1,34 @@
 <div class="analytics-report-information">
+
+    <div class="snyk-box" *ngIf="report?.tabType == 'private' && !this.transitive">
+        <span class="col-sm-1">
+            <img src="/assets/icon/snyk-avatar.png" alt="snyk-avatar" class="avatar" />
+        </span>
+        <span class="col-sm-9">
+            Information about vulnerabilities in dependencies is only available after registration for a <b>free</b>
+            Snyk account.
+            <br>
+            Sign up to keep getting these insights and find out more about security risks in your dependencies.
+        </span>
+        <span class="col-sm-2">
+            <a [href]="this.generateUrl.regitrationURL"
+                target="_blank" title="command/ctrl + click"><button class="ripple">Sign up for a free Snyk account</button></a>
+        </span>
+    </div>
+
+
+
     <div *ngIf="report?.componentDetails && report?.componentDetails.length > 0" class="component-detail-headers">
         <div [class]="header.className" *ngFor="let header of report?.headers" [innerText]="header.text"></div>
     </div>
-    <component-details [genericInformation]="genericInformation" (click)="handleAccordion($event, cdetail)" [serial]="i" [type]="report?.type" [positions]="report?.headers" [compDetails]="cdetail" [repoInfo]="repoInfo" *ngFor="let cdetail of report?.componentDetails; let i = index;"></component-details>
-    <no-data *ngIf="!report?.componentDetails || report?.componentDetails.length === 0" [identifier]="report?.identifier"></no-data>
+
+    <component-details [genericInformation]="genericInformation" (click)="handleAccordion($event, cdetail)"
+        (click)="handleTransitive($event, cdetail)" [serial]="i" [type]="report?.type" [positions]="report?.headers"
+        [compDetails]="cdetail" [repoInfo]="repoInfo" [tabType]="report?.tabType || tabType"
+        *ngFor="let cdetail of report?.componentDetails; let i = index;">
+    </component-details>
+
+    <no-data *ngIf="!report?.componentDetails || report?.componentDetails.length === 0"
+        [identifier]="report?.identifier"></no-data>
+
 </div>

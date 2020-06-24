@@ -14,6 +14,8 @@ import {
     MGenericStackInformation
 } from '../../models/ui.model';
 
+import { GenerateUrl } from '../../utils/url-generator';
+
 @Component({
     selector: 'report-information',
     styleUrls: ['./report-information.component.less'],
@@ -23,6 +25,10 @@ export class ReportInformationComponent implements OnInit, OnChanges {
     @Input() report: MReportInformation;
     @Input() genericInformation: MGenericStackInformation;
     @Input() repoInfo: any;
+    @Input() tabType: string;
+    @Input() transitive: boolean;
+
+    public generateUrl = new GenerateUrl();
 
     public componentDetails: Array<MComponentDetails> = null;
 
@@ -30,35 +36,99 @@ export class ReportInformationComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
+
         let summary: any = changes['report'];
         if (summary) {
-            this.report = <MReportInformation> summary.currentValue;
+            this.report = <MReportInformation>summary.currentValue;
             this.paint();
         }
     }
 
     public handleAccordion(event: MouseEvent, componentDetail: MComponentDetails): void {
+
+        event.stopPropagation()
+
+        let element = componentDetail.componentInformation;
+
+
         let elem: HTMLElement = (<HTMLElement>event.target);
         if (this.checkIfClickable(elem)) {
-            this.closeAllButThis(componentDetail);
-            if (
-                (componentDetail.componentInformation && !componentDetail.componentInformation.needsExpansion) ||
-                (componentDetail.recommendationInformation && componentDetail.recommendationInformation.componentInformation &&
-                !componentDetail.recommendationInformation.componentInformation.needsExpansion)
-            ) {
-                return;
-            }
 
-            if (componentDetail.componentInformation) {
-                componentDetail.componentInformation.isOpen = !componentDetail.componentInformation.isOpen;
-            }
-            if (componentDetail.recommendationInformation) {
-                if (componentDetail.recommendationInformation.componentInformation) {
-                    componentDetail.recommendationInformation.componentInformation.isOpen = !componentDetail.recommendationInformation.componentInformation.isOpen;
+            if (componentDetail.componentInformation && componentDetail.componentInformation.allTransitiveDependencies && componentDetail.componentInformation.allTransitiveDependencies.length > 0) {
+                this.closeAllButThis(componentDetail);
+
+                if (
+                    (componentDetail.componentInformation && !componentDetail.componentInformation.needsExpansion) ||
+                    (componentDetail.recommendationInformation && componentDetail.recommendationInformation.componentInformation &&
+                        !componentDetail.recommendationInformation.componentInformation.needsExpansion)
+                ) {
+                    return;
+                }
+                if (componentDetail.componentInformation) {
+                    componentDetail.componentInformation.isOpen = !componentDetail.componentInformation.isOpen;
+                }
+                if (componentDetail.recommendationInformation) {
+                    if (componentDetail.recommendationInformation.componentInformation) {
+                        componentDetail.recommendationInformation.componentInformation.isOpen = !componentDetail.recommendationInformation.componentInformation.isOpen;
+                    }
+                }
+
+            } else if (componentDetail.componentInformation && componentDetail.componentInformation.allTransitiveDependencies === undefined || null) {
+                this.closeAllButThis(componentDetail);
+
+                if (
+                    (componentDetail.componentInformation && !componentDetail.componentInformation.needsExpansion) ||
+                    (componentDetail.recommendationInformation && componentDetail.recommendationInformation.componentInformation &&
+                        !componentDetail.recommendationInformation.componentInformation.needsExpansion)
+                ) {
+                    return;
+                }
+                if (componentDetail.componentInformation) {
+                    componentDetail.componentInformation.isOpen = !componentDetail.componentInformation.isOpen;
+                }
+                if (componentDetail.recommendationInformation) {
+                    if (componentDetail.recommendationInformation.componentInformation) {
+                        componentDetail.recommendationInformation.componentInformation.isOpen = !componentDetail.recommendationInformation.componentInformation.isOpen;
+                    }
+                }
+
+            } else {
+                this.closeAllButThis(componentDetail);
+
+                if (
+                    (componentDetail.componentInformation && !componentDetail.componentInformation.needsExpansion) ||
+                    (componentDetail.recommendationInformation && componentDetail.recommendationInformation.componentInformation &&
+                        !componentDetail.recommendationInformation.componentInformation.needsExpansion)
+                ) {
+                    return;
+                }
+                if (componentDetail.componentInformation) {
+                    componentDetail.componentInformation.isOpen = !componentDetail.componentInformation.isOpen;
+                }
+                if (componentDetail.recommendationInformation) {
+                    if (componentDetail.recommendationInformation.componentInformation) {
+                        componentDetail.recommendationInformation.componentInformation.isOpen = !componentDetail.recommendationInformation.componentInformation.isOpen;
+                    }
                 }
             }
         }
     }
+
+
+    public handleTransitive(event: MouseEvent, componentDetail: MComponentDetails): void {
+
+        event.stopPropagation()
+
+        let elem: HTMLElement = (<HTMLElement>event.target);
+        if (this.checkIfTransitiveToggler(elem)) {
+
+            if (componentDetail.componentInformation) {
+                componentDetail.componentInformation.showTransitive = !componentDetail.componentInformation.showTransitive;
+            }
+
+        }
+    }
+
 
     private checkIfClickable(elem: HTMLElement): boolean {
         if (elem && elem.classList && elem.classList.contains('toggler')) {
@@ -67,6 +137,14 @@ export class ReportInformationComponent implements OnInit, OnChanges {
         elem = <HTMLElement>elem.parentNode;
         return (elem && elem.classList && elem.classList.contains('toggler'));
     }
+    private checkIfTransitiveToggler(elem: HTMLElement): boolean {
+        if (elem && elem.classList && elem.classList.contains('trans-dropdown')) {
+            return true;
+        }
+        elem = <HTMLElement>elem.parentNode;
+        return (elem && elem.classList && elem.classList.contains('trans-dropdown'));
+    }
+
 
     private paint(): void {
         if (this.report) {
@@ -77,11 +155,13 @@ export class ReportInformationComponent implements OnInit, OnChanges {
     }
 
     private closeAllButThis(componentDetail: MComponentDetails): void {
+        event.preventDefault();
         if (this.componentDetails) {
             this.componentDetails.forEach((cdetail: MComponentDetails) => {
                 if (cdetail !== componentDetail) {
                     if (cdetail.componentInformation) {
-                        cdetail.componentInformation.isOpen = false;
+                        cdetail.componentInformation.isOpen = false;  // changed
+                        event.preventDefault();
                     }
                     if (cdetail.recommendationInformation) {
                         if (cdetail.recommendationInformation.componentInformation) {

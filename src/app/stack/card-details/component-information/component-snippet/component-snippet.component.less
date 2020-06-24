@@ -16,11 +16,12 @@
     .component-version {
         background: @greyBg;
         width: 60%;
-        text-align: center;
+        text-align: left;
         min-height: 110px;
         max-height: 180px;
         overflow-y: auto;
         padding: 15px;
+        margin-bottom: .8em;
 
         &:after {
             .pseudo-clear;
@@ -32,12 +33,13 @@
     .small-version-box {
         float: left;
         margin-right: 15px;
-        width: 35%;
+        width: 25%;
     }
     .common-table {
         display: table;
         width: 100%;
         min-height: 30px;
+        margin-top: .5em;
     }
     .component-licenses, .component-tags {
         padding-top: 10px;
@@ -50,9 +52,32 @@
         margin-left: 10px;
         font-size: 13px;
     }
+    .wrapper {
+        display: -webkit-inline-box;
+        line-height: 2.75em;
+        vertical-align: inherit;
+    }
     .info-head {
         font-weight: bold;
         margin-bottom: 10px;
+    }
+    .transitive-head {
+        font-weight: bold;
+        margin-bottom: 10px;
+        overflow: hidden;
+        position: relative;
+        &:after {
+            content:'';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: inline-block;
+            width: 100%;
+            margin-left: 280px;
+            margin-bottom: .8em;
+            border-top: 1px solid #9c9c9c;
+        }
     }
     .license-container {
         span {
@@ -76,17 +101,117 @@
         }
         margin-bottom: 10px;
     }
+    .float-l {
+        float: left;
+    }
+    .severity {
+        padding: 5px 5px 5px 3px;
+        width: 150px;
+        height: 2px;
+        border-radius: 25px;
+        margin-right: 2px;
+        font-size: 13px;
+        text-transform: capitalize;
+            &.critical {
+                border: 2px solid #800101;
+                color: #800101;
+            }
+            &.high {
+                border: 2px solid #fb3333;
+                color: #fb3333;
+            }
+            &.medium {
+                border: 2px solid #ffa500;
+                color: #ffa500;
+            }
+            &.low {
+                border: 2px solid #ffd900;
+                color: #ffd900;
+            }
+    }
+    .circle {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        padding: 5px 9px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+        text-transform: capitalize;
+        &.critical {
+            background-color: #800101;
+        }
+        &.high {
+            background-color: #fb3333;
+        }
+        &.medium {
+            background-color: #ffa500;
+        }
+        &.low {
+            background-color: #ffd900;
+        }
+    }
+    .box {
+        margin-left: 2em;
+        margin-top: -.3em;
+        background-color: #eff2f5;
+        padding: .5em 1em;
+    }
+    .branding {
+        font-size: 13px;
+        color: @steelBlue;
+        text-decoration: underline;
+    }
+    .avatar {
+        margin-top: -.2em;
+        margin-left: -.5em;
+        width: 3.5em;
+        height: 2.5em;
+    }
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .name {
+        color: @steelBlue;
+        margin-left: .2em;
+        margin-right: .6em;
+        font-size: 13px;
+    }
+    .trans-dropdown {
+        cursor: pointer;
+        font-size: 18px;
+        text-align: center;
+        padding-right: 10px;
+        padding-top: 4px;
+    }
+    .transitive-details {
+        float: left;
+        width: 60%;
+        text-align: left;
+        min-height: 110px;
+        max-height: 180px;
+        overflow-y: auto;
+        margin-top: -1em;
+    }
     .github-osio-box {
         background: @greyBg;
-        padding: 10px;
         float: left;
+        width: 40%;
+        text-align: left;
         min-height: 110px;
+        max-height: 180px;
+        overflow-y: auto;
+        padding: 15px;
+        margin-bottom: .8em;
         .date-class {
             color: @pf-black-500;
         }
         .box-header {
             float: left;
-            margin-right: 20px;
+            margin-left: 1.5em;
             font-size: 13px;
         }
         .left {
@@ -95,7 +220,7 @@
         .github {
             .side {
                 float: left;
-                margin-right: 10px;
+                margin-left: 2em;
             }
             &:after {
                 .pseudo-clear;

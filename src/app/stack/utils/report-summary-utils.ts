@@ -83,80 +83,107 @@ export class ReportSummaryUtils {
 
             let securityIssues: number = 0;
             let dependenciesEffected: number = 0;
-            let maxIssue: SecurityInformationModel = null,
-                temp: SecurityInformationModel = null;
 
             let analyzedDependencies: Array<ComponentInformationModel>;
+            let highCvss: boolean = false;
+            let hasVulnerabilities: boolean = false;
 
-            // filter-out transitives which is also listed as direct
+
+            // filter-out transitives which is also listed as direct commented
             const uniqueDependencies: Set<string> = new Set<string>();
             analyzedDependencies = userStackInfo.analyzed_dependencies.filter(info => {
-                const key:string = `${info.name}+${info.version}`;
+                const key: string = `${info.name}+${info.version}`;
                 if (uniqueDependencies.has(key)) {
                     return false;
                 }
                 uniqueDependencies.add(key);
                 return true;
             });
-            analyzedDependencies.forEach((analyzed) => {
-                if (analyzed.security && analyzed.security.length > 0) {
-                    let currSecurity: Array<SecurityInformationModel> = analyzed.security;
-                    temp = currSecurity.reduce((a, b) => {
-                        return parseFloat(a.CVSS) < parseFloat(b.CVSS) ? b : a;
+
+            let publicVulnerabilitiesSet = new Set();
+            let privateVulnerabilitiesSet = new Set();
+
+            analyzedDependencies.forEach(element => {
+
+                if (element.public_vulnerabilities && element.public_vulnerabilities.length > 0) {
+                    element.public_vulnerabilities.forEach(pubDep => {
+                        publicVulnerabilitiesSet.add(pubDep)
                     });
-                    if (temp) {
-                        if (maxIssue === null || maxIssue.CVSS < temp.CVSS) {
-                            maxIssue = temp;
+                }
+                if (element.private_vulnerabilities && element.private_vulnerabilities.length > 0) {
+                    element.private_vulnerabilities.forEach(priDep => {
+                        privateVulnerabilitiesSet.add(priDep)
+                    });
+                }
+
+                if (element.vulnerable_dependencies && element.vulnerable_dependencies.length > 0) {
+
+                    element.vulnerable_dependencies.forEach(tdep => {
+                        if (tdep.public_vulnerabilities && tdep.public_vulnerabilities.length > 0) {
+                            tdep.public_vulnerabilities.forEach(transPubDep => {
+                                publicVulnerabilitiesSet.add(transPubDep)
+                            });
+                        }
+                        if (tdep.private_vulnerabilities && tdep.private_vulnerabilities.length > 0) {
+                            tdep.private_vulnerabilities.forEach(transPriDep => {
+                                privateVulnerabilitiesSet.add(transPriDep)
+                            });
+                        }
+                    });
+
+                }
+
+            });
+            let publicVulnerabilitiesCount: number = 0;
+            let privateVulnerabilitiesCount: number = 0;
+
+            publicVulnerabilitiesCount = publicVulnerabilitiesSet.size;
+            privateVulnerabilitiesCount = privateVulnerabilitiesSet.size;
+
+            for (const dep of analyzedDependencies) {
+                let allVulnerabilities = dep.public_vulnerabilities.concat(dep.private_vulnerabilities);
+                if (allVulnerabilities.length > 0) {
+                    hasVulnerabilities = true;
+                    for (const element of allVulnerabilities) {
+                        if (element.cvss >= 7) {
+                            highCvss = true;
+                            break;
                         }
                     }
-                    securityIssues += currSecurity.length;
-                    dependenciesEffected ++;
                 }
-            });
-            let totalComponentsWithMaxScore: number = 0;
-            analyzedDependencies.forEach((analyzed) => {
-                if (analyzed.security && analyzed.security.length > 0) {
-                    let currSecurity: Array<SecurityInformationModel> = analyzed.security;
-                    let filters: Array<SecurityInformationModel>;
-                    filters = currSecurity.filter((security) => {
-                        return security.CVSS === maxIssue.CVSS;
-                    });
-                    totalComponentsWithMaxScore += filters ? filters.length : 0;
+                if (highCvss) {
+                    break;
                 }
-            });
+            }
 
-            let totalIssuesEntry: MReportSummaryInfoEntry = new MReportSummaryInfoEntry();
-            totalIssuesEntry.infoText = 'Total CVEs found';
-            totalIssuesEntry.infoValue = securityIssues;
-            securityCard.reportSummaryContent.infoEntries.push(totalIssuesEntry);
+            let totalVulnerabilities: MReportSummaryInfoEntry = new MReportSummaryInfoEntry();
+            totalVulnerabilities.infoText = "Total Vulnerabilities";
+            totalVulnerabilities.infoValue = publicVulnerabilitiesCount + privateVulnerabilitiesCount;
+            securityCard.reportSummaryContent.infoEntries.push(
+                totalVulnerabilities
+            );
 
-            let totaldependenciesEffectedEntry: MReportSummaryInfoEntry = new MReportSummaryInfoEntry();
-            totaldependenciesEffectedEntry.infoText = 'Dependencies Effected';
-            totaldependenciesEffectedEntry.infoValue = dependenciesEffected;
-            securityCard.reportSummaryContent.infoEntries.push(totaldependenciesEffectedEntry);
+            let vulnerableDependenciesCount = 0;
+            let vulnerableDependencies: MReportSummaryInfoEntry = new MReportSummaryInfoEntry();
+            vulnerableDependencies.infoText = "Vulnerable Dependencies";
 
-            if (maxIssue) {
-                let securityColor: string = Number(maxIssue.CVSS) >= 7 ? this.colors.security.warning : this.colors.security.moderate;
+            vulnerableDependenciesCount = analyzedDependencies.filter((element) => element.public_vulnerabilities.length > 0 || element.private_vulnerabilities.length > 0 || element.vulnerable_dependencies.length > 0)
+                .reduce((count) => count + 1,0)
 
-                let maxIssueEntry: MReportSummaryInfoEntry = new MReportSummaryInfoEntry();
-                maxIssueEntry.infoText = 'Highest CVSS Score';
-                maxIssueEntry.infoValue = maxIssue.CVSS;
-                maxIssueEntry.infoType = 'progress';
-                maxIssueEntry.config = {
-                    headerText: maxIssue.CVSS + ' / ' + 10,
-                    value: Number(maxIssue.CVSS),
-                    bgColor: securityColor,
-                    footerText: 'No. of dependencies with this CVSS Score: ' + totalComponentsWithMaxScore,
-                    width: Number(maxIssue.CVSS) * 10
-                };
-                securityCard.reportSummaryContent.infoEntries.push(maxIssueEntry);
+            vulnerableDependencies.infoValue = vulnerableDependenciesCount;
+            securityCard.reportSummaryContent.infoEntries.push(
+                vulnerableDependencies
+            );
+
+            if (hasVulnerabilities) {
+                let securityColor: string = highCvss ? this.colors.security.warning : this.colors.security.moderate;
                 securityCard.reportSummaryTitle.notificationIcon = this.notification.warning.icon;
                 securityCard.reportSummaryTitle.notificationIconBgColor = securityColor;
                 securityCard.hasWarning = true;
-                securityCard.severity = Number(maxIssue.CVSS) >= 7 ? 1 : 2;
+                securityCard.severity = highCvss ? 1 : 2;
+
+
             } else {
-                // securityCard.reportSummaryTitle.notificationIcon = this.notification.good.icon;
-                // securityCard.reportSummaryTitle.notificationIconBgColor = this.notification.good.bg;
                 securityCard.hasWarning = false;
             }
 
@@ -241,7 +268,7 @@ export class ReportSummaryUtils {
 
             let stackLicense: MReportSummaryInfoEntry = new MReportSummaryInfoEntry();
             stackLicense.infoText = 'Suggested License';
-            let stackLicenses = licenseAnalysis.f8a_stack_licenses;
+            let stackLicenses = licenseAnalysis.recommended_licenses;
             if (stackLicenses) {
                 if (stackLicenses.length > 0) {
                     stackLicense.infoValue = stackLicenses[0];
@@ -253,6 +280,10 @@ export class ReportSummaryUtils {
                 }
             } else {
                 // Null
+                stackLicense.infoValue = 'None';
+                if (licenseAnalysis.status && licenseAnalysis.status.toLowerCase() === 'failure') {
+                    stackLicense.infoValue = 'Unknown';
+                }
             }
             licensesCard.reportSummaryContent.infoEntries.push(stackLicense);
 
@@ -267,14 +298,14 @@ export class ReportSummaryUtils {
 
             let unknownLicense: MReportSummaryInfoEntry = new MReportSummaryInfoEntry();
             unknownLicense.infoText = 'Unknown Licenses';
-            let unknownLicenses = licenseAnalysis.unknown_licenses.really_unknown;
+            let unknownLicenses = licenseAnalysis.unknown_licenses.unknown;
             unknownLicense.infoValue = unknownLicenses ? unknownLicenses.length : 0;
             if (stackLicense.infoValue === 'Unknown') {
                 unknownLicense.infoValue = 'NA';
             }
             licensesCard.reportSummaryContent.infoEntries.push(unknownLicense);
 
-            if (stackLicense.infoValue !== 'NONE' && stackLicense.infoValue !== 'Unknown') {
+            if (stackLicense.infoValue !== 'None' && stackLicense.infoValue !== 'Unknown') {
                 let restrictiveLicenses: MReportSummaryInfoEntry = new MReportSummaryInfoEntry();
                 restrictiveLicenses.infoText = 'Restrictive Licenses';
                 let restrictive = licenseAnalysis.outlier_packages;

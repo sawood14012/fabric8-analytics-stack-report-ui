@@ -10,6 +10,11 @@ export class StackReportModel {
 export class ResultInformationModel {
     manifest_name: string;
     manifest_file_path: string;
+    version: string;
+    started_at: string;
+    ended_at: string;
+    external_request_id: string;
+    registration_link: string;
     recommendation: RecommendationsModel;
     user_stack_info: UserStackInfoModel;
 }
@@ -29,7 +34,7 @@ export class RecommendationsModel {
 }
 
 export class ComponentInformationModel {
-    code_metrics: any; // Ignored from strict typing as this is of least importance
+    dependencies: Array<any>;
     ecosystem: string;
     github: GithubModel;
     latest_version: string;
@@ -39,11 +44,46 @@ export class ComponentInformationModel {
     osio_user_count: number;
     replaces: any;
     reason: string;
-    confidence_reason?: number;
+    cooccurrence_probability?: number;
     security: Array<SecurityInformationModel>;
     sentiment: SentimentModel;
     version: string;
     topic_list: Array<string>;
+    private_vulnerabilities: Array<VulnerabilitiesModel>;
+    private_vulnerabilities_count: number;
+    public_vulnerabilities: Array<VulnerabilitiesModel>;
+    public_vulnerabilities_count: number;
+    recommended_version: string;
+    url: string;
+    vulnerable_dependencies: Array<any>; // commented
+    allTransitiveDependencies?: Array<any>;
+    publicTransitiveDependencies?:Array<any>;
+    privateTransitiveDependencies?:Array<any>;
+
+}
+
+
+export class VulnerabilitiesModel {
+    cve_ids: Array<string>;
+    cvss: number;
+    cvss_v3: string;
+    cwes: Array<string>;
+    description: string;
+    exploit: string;
+    fixable: boolean;
+    fixed_in: Array<string>;
+    id: string;
+    malicious: boolean;
+    patch_exists: boolean;
+    references: Array<ReferencesModel>;
+    severity: string;
+    title: string;
+    url: string;
+}
+
+export class ReferencesModel {
+    title: string;
+    url: string
 }
 
 export class SecurityInformationModel {
@@ -127,12 +167,12 @@ export class ComponentConflictUnknownModel {
 }
 
 export class UnknownLicensesModel {
-    really_unknown: Array<ReallyUnknownLicenseModel> = [];
+    unknown: Array<ReallyUnknownLicenseModel> = [];
     component_conflict: Array<ComponentConflictUnknownModel> = [];
 }
 
 export class StackLicenseAnalysisModel {
-    f8a_stack_licenses: Array<string> = [];
+    recommended_licenses: Array<string> = [];
     status: string;
     conflict_packages: Array<ConflictPackageModel> = [];
     unknown_licenses: UnknownLicensesModel;
@@ -144,17 +184,10 @@ export class StackLicenseAnalysisModel {
     unknown_dependencies_count: number;
 }
 export class UserStackInfoModel {
-    dependencies: Array<any>;
-    analyzed_dependencies_count: number;
     analyzed_dependencies: Array<ComponentInformationModel>;
-    distinct_licenses: Array<string>;
     ecosystem: string;
     license_analysis: StackLicenseAnalysisModel;
     recommendation_ready: boolean;
-    recommended_stack_licenses: Array<string>;
-    stack_license_conflict: boolean;
-    total_licenses: number;
+    registration_status: string;
     unknown_dependencies: Array<any>;
-    unknown_dependencies_count: number;
-    transitive_count?: number;
 }

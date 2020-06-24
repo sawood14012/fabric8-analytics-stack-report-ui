@@ -1,7 +1,9 @@
 <div class="analytics-snippet-information">
     <h4>Details of the dependency: <span class="component-name" [innerText]="component?.name"></span></h4>
-    <div *ngIf="component?.transitive;else component_version">
-        <div [ngClass]="{'component-version left': true, 'normal-version-box': view === 'split', 'small-version-box': view === 'normal'}">
+    <div
+        *ngIf="component?.transitive !== null && (tabType == 'private' || tabType =='public' || tabType =='compDetails');else component_version">
+        <div
+            [ngClass]="{'component-version left': true, 'normal-version-box': view === 'split', 'small-version-box': view === 'normal'}">
             <div class="col-xs-6">
                 <p class="info-head">Affected Direct Dependency</p>
                 <div *ngFor="let affectedDep of component.transitive.affected_direct_deps" class="side">
@@ -16,98 +18,40 @@
             </div>
         </div>
     </div>
+
     <ng-template #component_version>
-        <div *ngIf="!component.action;else companion_component">
-                <div [ngClass]="{'component-version left': true, 'normal-version-box': view === 'split', 'small-version-box': view === 'normal'}">
-                    <div class="col-xs-6">
-                        <p class="info-head">Current Version</p>
-                        <p [innerText]="component?.currentVersion"></p>
-                    </div>
-                    <div class="col-xs-6">
-                        <p class="info-head">Latest Version</p>
-                        <p [innerText]="component?.latestVersion"></p>
-                    </div>
+        <div
+            *ngIf="!component.action || component.isTransitive && (tabType == 'private' || tabType =='public' || tabType =='compDetails') ;else companion_component">
+            <div
+                [ngClass]="{'component-version left': true, 'normal-version-box': view === 'split', 'small-version-box': view === 'normal'}">
+                <div class="col-xs-6">
+                    <p>Current Version</p>
+                    <p class="info-head" [innerText]="component?.currentVersion"></p>
+                </div>
+                <div class="col-xs-6">
+                    <p>Latest Version</p>
+                    <p class="info-head" [innerText]="component?.latestVersion"></p>
                 </div>
             </div>
-            <ng-template #companion_component>
-                <div [ngClass]="{'component-version left': true, 'normal-version-box': view === 'split', 'small-version-box': view === 'normal'}">
-                    <div [ngClass]="{'col-xs-6': component?.currentVersion !== '-----'}" *ngIf="component?.currentVersion !== '-----'">
-                        <p class="info-head">Current Version</p>
-                        <p [innerText]="component?.currentVersion"></p>
-                    </div>
-                    <div [ngClass]="{'col-xs-12': component?.currentVersion === '-----'}">
-                        <p class="info-head">Recommended Version</p>
-                        <p [innerText]="component?.latestVersion"></p>
-                    </div>
+        </div>
+        <ng-template #companion_component>
+            <div
+                [ngClass]="{'component-version left': true, 'normal-version-box': view === 'split', 'small-version-box': view === 'normal'}">
+                <div [ngClass]="{'col-xs-6': component?.currentVersion !== '-----'}"
+                    *ngIf="component?.currentVersion !== '-----'">
+                    <p>Current Version</p>
+                    <p class="info-head" [innerText]="component?.currentVersion"></p>
                 </div>
-            </ng-template>
+                <div [ngClass]="{'col-xs-12': component?.currentVersion === '-----'}">
+                    <p>Recommended Version</p>
+                    <p class="info-head" [innerText]="component?.latestVersion"></p>
+                </div>
+            </div>
+        </ng-template>
     </ng-template>
-    
-    <div *ngIf="view === 'normal'" class="github-osio-box">
-        <div class="github left">
-            <div class="box-header">
-                GitHub Statistics:
-            </div>
-            <div class="info-container left">
-                <div *ngFor="let github of githubEntries" class="side">
-                    <p class="info-head" [innerText]="github.key"></p>
-                    <p [innerText]="github.value || '-----'"></p>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="lastUpdatedGH.lastUpdated !== 'N/A'" class= "date-class">
-            <div class="box-header">
-                Last Updated:
-            </div>
-            <div class="info-container left">
-                <div class="side">
-                    <p [innerText]="lastUpdatedGH?.lastUpdated || '-----'"></p>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="showOSIOUsage" class="osio put-bar left">
-            <div class="box-header">
-                OSIO Statistics:
-            </div>
-            <div class="info-container left">
-                <div class="side">
-                    <p class="info-head" [innerText]="'OSIO Usage'"></p>
-                    <p [innerText]="component?.osio?.usage || '-----'"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="common-table component-tags">
-        <div class="common-wrapper" *ngIf="component?.securityDetails?.cveList && component?.securityDetails?.cveList?.length > 0">
-            <span class="info-head">CVE ID(s):</span> 
-            <span class="common-container tags-container">
-                <span [innerText]="cve" *ngFor="let cve of component?.securityDetails?.cveList"></span>
-            </span>
-        </div>
-    </div>
-    <div class="common-table component-licenses">
-        <div class="common-wrapper">
-            <span class="info-head">License(s) used: </span>
-            <span *ngIf="component?.licenses?.length > 0" class="common-container license-container">
-                <span [innerText]="license" *ngFor="let license of component?.licenses"></span>
-            </span>
-            <span *ngIf="component?.licenses?.length === 0" class="common-container license-container">
-                -----
-            </span>
-        </div>
-    </div>
-    <div class="common-table component-tags">
-        <div class="common-wrapper">
-            <span class="info-head">Tags:</span> 
-            <span *ngIf="component?.crowdSourcing?.tags && component?.crowdSourcing?.tags?.length > 0" class="common-container tags-container">
-                <span [innerText]="tag" *ngFor="let tag of component?.crowdSourcing?.tags"></span>
-            </span>
-            <span *ngIf="!component?.crowdSourcing?.tags || component?.crowdSourcing?.tags?.length === 0" class="common-container tags-container">
-                -----
-            </span>
-        </div>
-    </div>
-    <div *ngIf="view === 'split'" class="github-osio-box">
+
+    <div *ngIf="view === 'normal'  && !(tabType == 'private' || tabType =='public' || tabType =='compDetails') "
+        class="github-osio-box">
         <div class="github left">
             <div class="box-header">
                 GitHub Statistics:
@@ -129,6 +73,185 @@
                     <p [innerText]="component?.osio?.usage || '-----'"></p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div *ngIf="view === 'normal' && !component.isTransitive && (tabType == 'private' || tabType =='public' || tabType =='compDetails')"
+        class="github-osio-box">
+        <div class="github left">
+            <div class="box-header">
+                GitHub Statistics:
+            </div>
+            <div class="info-container left">
+                <div *ngFor="let github of githubEntries" class="side">
+                    <p [innerText]="github.key"></p>
+                    <p class="info-head" [innerText]="github.value || '-----'"></p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="lastUpdatedGH.lastUpdated !== 'N/A'" class="date-class">
+            <div class="box-header">
+                Last Updated:
+            </div>
+            <div class="info-container left">
+                <div class="side">
+                    <p [innerText]="lastUpdatedGH?.lastUpdated || '-----'"></p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showOSIOUsage" class="osio put-bar left">
+            <div class="box-header">
+                OSIO Statistics:
+            </div>
+            <div class="info-container left">
+                <div class="side">
+                    <p class="info-head" [innerText]="'OSIO Usage'"></p>
+                    <p [innerText]="component?.osio?.usage || '-----'"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div [ngClass]="component.isTransitive?'transitive-details' : null">
+        <div class="common-table component-tags">
+            <div class="common-wrapper"
+                *ngIf="component?.registrationStatus == 'freetier' && (component?.public_vulnerabilities?.length > 0) && tabType=='public'">
+                <span class="info-head">Vulnerabilities:</span>
+                <span class="common-container">
+                    <span *ngFor="let cve of component?.public_vulnerabilities" class="wrapper">
+                        <!-- <span class="severity"
+                            [ngClass]="{'critical':cve.severity == 'critical', 'high':cve.severity == 'high','medium':cve.severity == 'medium','low':cve.severity == 'low'}"> -->
+                        <span *ngIf="cve.severity == 'critical'" class="circle critical" [innerText]="'C'" title="Critical"></span>
+                        <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'" title="High"></span>
+                        <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'" title="Medium"></span>
+                        <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'" title="Low"></span>
+                        <!-- <span [innerText]="cve.severity"></span> -->
+                        <!-- </span> -->
+                        <a [href]="getUrl(cve.url, tabType)" target="_blank">
+                            <span class="name" [innerText]="cve.title" [tooltip]="cve.id" title="command/ctrl + click"></span>
+                        </a>
+                    </span>
+                    <br>
+                    <span class="common-container box">
+                        <a [href]="this.generateUrl.regitrationURL"
+                            target="_blank" title="command/ctrl + click">
+                            <span>
+                                <img src="/assets/icon/snyk-avatar.png" alt="snyk-avatar" class="avatar" />
+                            </span>
+                            <span class="branding">Sign in to view exploits</span>
+                        </a>
+                    </span>
+                </span>
+            </div>
+            <div class="common-wrapper"
+                *ngIf="component?.registrationStatus == 'registered' && (component?.private_vulnerabilities?.length > 0) && tabType=='private'">
+                <span class="info-head">Vulnerabilities:</span>
+                <span class="common-container">
+                    <span *ngFor="let cve of component?.private_vulnerabilities" class="wrapper">
+                        <span class="severity"
+                            [ngClass]="{'high':cve.severity == 'high','medium':cve.severity == 'medium','low':cve.severity == 'low'}">
+                            <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'"></span>
+                            <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'"></span>
+                            <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'"></span>
+                            <span [innerText]="cve.severity"></span>
+                        </span>
+                        <span class="name" [innerText]="cve.title"></span>
+                    </span>
+                </span>
+            </div>
+            <div class="common-wrapper"
+                *ngIf="component?.registrationStatus == 'freetier' && (component?.public_vulnerabilities?.length > 0 || component?.private_vulnerabilities?.length > 0) && tabType=='compDetails'">
+                <span class="info-head">Vulnerabilities:</span>
+                <span class="common-container">
+                    <span *ngFor="let cve of component?.public_vulnerabilities" class="wrapper">
+                        <!-- <span class="severity"
+                            [ngClass]="{'critical':cve.severity == 'critical', 'high':cve.severity == 'high','medium':cve.severity == 'medium','low':cve.severity == 'low'}"> -->
+                        <span *ngIf="cve.severity == 'critical'" class="circle critical" [innerText]="'C'"></span>
+                        <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'"></span>
+                        <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'"></span>
+                        <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'"></span>
+                        <!-- <span [innerText]="cve.severity"></span> -->
+                        <!-- </span> -->
+                        <a [href]="getUrl(cve.url, 'public')" target="_blank">
+                            <span class="name" [innerText]="cve.title" [tooltip]="cve.id" title="command/ctrl + click"></span>
+                        </a>
+                    </span>
+                    <a class="name" *ngIf="component?.private_vulnerabilities?.length>0" [href]="getUrl(component.url, tabType, component?.registrationStatus)"
+                        target="_blank" title="command/ctrl + click">
+                        Sign up with Snyk
+                    </a>
+                </span>
+            </div>
+            <div class="common-wrapper"
+                *ngIf="component?.registrationStatus == 'freetier' && (component?.private_vulnerabilities?.length > 0) && tabType=='private'">
+                <span class="info-head">Vulnerabilities:</span>
+                <span class="common-container">
+                    <a class="name" [href]="getUrl(component.url, tabType, component?.registrationStatus)" target="_blank" title="command/ctrl + click">
+                        Sign up with Snyk</a>
+                </span>
+            </div>
+        </div>
+        <div class="common-table component-licenses">
+            <div class="common-wrapper">
+                <span class="info-head">License(s) used: </span>
+                <span *ngIf="component?.licenses?.length > 0" class="common-container license-container">
+                    <span [innerText]="license" *ngFor="let license of component?.licenses"></span>
+                </span>
+                <span *ngIf="component?.licenses?.length === 0" class="common-container license-container">
+                    -----
+                </span>
+            </div>
+        </div>
+        <div class="common-table component-tags"
+            *ngIf="component?.crowdSourcing?.tags && component?.crowdSourcing?.tags?.length > 0">
+            <div class=" common-wrapper">
+                <span class="info-head">Tags:</span>
+                <span *ngIf="component?.crowdSourcing?.tags && component?.crowdSourcing?.tags?.length > 0"
+                    class="common-container tags-container">
+                    <span [innerText]="tag" *ngFor="let tag of component?.crowdSourcing?.tags"></span>
+                </span>
+                <span *ngIf="!component?.crowdSourcing?.tags || component?.crowdSourcing?.tags?.length === 0"
+                    class="common-container tags-container">
+                    -----
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="common-table component-tags"
+        *ngIf="component?.allTransitiveDependencies && component?.allTransitiveDependencies.length>0 && tabType==='public'">
+        <div class="common-wrapper">
+            <div class="transitive-head">
+                <span class="trans-dropdown">
+                    <i [ngClass]="{'fa': true, 'fa-angle-right': !component?.showTransitive, 'fa-angle-down': component?.showTransitive}"
+                        aria-hidden="true"></i>
+                </span>
+                <span
+                    [innerText]='component?.showTransitive ? "Hide Transitives with Vulnerabilities":"Show Transitives with Vulnerabilities"'>
+                </span>
+                <span [innerHtml]="component?.allTransitiveDependencies.length" class="badge"></span>
+            </div>
+
+            <report-information *ngIf="component.showTransitive" [report]="component.transitiveInfo"
+                [tabType]="'public'">
+            </report-information>
+        </div>
+    </div>
+    <div class="common-table component-tags"
+        *ngIf="component?.allTransitiveDependencies && component?.allTransitiveDependencies.length>0 && tabType==='private'">
+        <div class="common-wrapper">
+            <div class="transitive-head">
+                <span class="trans-dropdown">
+                    <i [ngClass]="{'fa': true, 'fa-angle-right': !component?.showTransitive, 'fa-angle-down': component?.showTransitive}"
+                        aria-hidden="true"></i>
+                </span>
+                <span
+                    [innerText]='component?.showTransitive ? "Hide Transitives with Vulnerabilities":"Show Transitives with Vulnerabilities"'>
+                </span>
+                <span [innerHtml]="component?.allTransitiveDependencies.length" class="badge"></span>
+            </div>
+
+            <report-information *ngIf="component.showTransitive" [report]="component.transitiveInfo"
+                [tabType]="'private'" [transitive]="true">
+            </report-information>
         </div>
     </div>
 </div>

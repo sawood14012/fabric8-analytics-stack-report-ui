@@ -15,6 +15,7 @@ import {
     MGenericStackInformation
 } from '../../models/ui.model';
 
+import { GenerateUrl } from '../../utils/url-generator';
 
 @Component({
     selector: 'component-information',
@@ -28,10 +29,14 @@ export class ComponentInformationComponent implements OnInit, OnChanges {
     @Input() serial: number;
     @Input() type: string;
     @Input() repoInfo: any;
+    @Input() tabType: string;
     public comp: MComponentInformation;
+    publicTransvulnerabilities: number;
+
+    public generateUrl = new GenerateUrl();
 
     constructor(
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.paint();
@@ -40,12 +45,17 @@ export class ComponentInformationComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         let summary: any = changes['component'];
         if (summary) {
-            this.component = <MComponentInformation | MRecommendationInformation> summary.currentValue;
+            this.component = <MComponentInformation | MRecommendationInformation>summary.currentValue;
         }
         if (changes['positions']) {
             this.positions = changes['positions']['currentValue'];
         }
+
         this.paint();
+    }
+
+    public getInformationUrl(url: string): string {
+            return this.generateUrl.publicUrl(url);
     }
 
     public paint(): void {
