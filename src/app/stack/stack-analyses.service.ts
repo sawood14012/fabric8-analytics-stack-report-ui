@@ -3,10 +3,11 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 import { WIT_API_URL } from 'ngx-fabric8-wit';
 
-import { StackReportModel } from './models/stack-report.model';
+import { StackReportModel, TokenDetailModel } from './models/stack-report.model';
 
 @Injectable()
 export class StackAnalysesService {
@@ -39,12 +40,15 @@ export class StackAnalysesService {
     private http: Http
   ) { }
 
-  getStackAnalyses(url: string, params?: any): Observable<any> {
+  getStackAnalyses(url: string, uuid: string, params?: any) {
     let stackReport: StackReportModel = null;
     if (params) {
       if (params['access_token']) {
         let headers: Headers = new Headers();
         headers.append('Authorization', 'Bearer ' + params['access_token']);
+        if (uuid !== null) {
+          headers.append('UUID', uuid);
+        }
         if (params['devcluster']) {
           headers.append('x-3scale-account-secret', 'not-set');
         }
@@ -52,12 +56,59 @@ export class StackAnalysesService {
           headers: headers
         })
           .map(this.extractData)
-          .map((data) => {
-            console.log("response data >>", data);
-            stackReport = data;
-            return stackReport;
+          .toPromise()
+      }
+    }
+    return null;
+  }
+
+  getTokenStatus(url: string, uuid: string, params?: any) {
+    let getURL = url.concat('user/', uuid);
+    if (params) {
+      if (params['access_token']) {
+        let headers: Headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + params['access_token']);
+        if (params['devcluster']) {
+          headers.append('x-3scale-account-secret', 'not-set');
+        }
+        return this.http.get(getURL, {
+          headers: headers,
+          params: {
+            'user_key': params['user_key']
+          }
+        })
+          .map(res => {
+            let body = res.json() || {};
+            body['statusCode'] = res.status;
+            body['statusText'] = res.statusText;
+            return body as TokenDetailModel;
           })
-          .catch(this.handleError);
+          .toPromise()
+      }
+    }
+    return null;
+  }
+
+  linkSynkTokenWithUserID(url: string, uuid: string, token: string, params?: any) {
+    let getURL = url.concat('user');
+    let body = {
+      'user_id': uuid,
+      'snyk_api_token': token
+    }
+    if (params) {
+      if (params['access_token']) {
+        let headers: Headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + params['access_token']);
+        if (params['devcluster']) {
+          headers.append('x-3scale-account-secret', 'not-set');
+        }
+        return this.http.put(getURL, body, {
+          headers: headers,
+          params: {
+            'user_key': params['user_key']
+          }
+        })
+          .toPromise()
       }
     }
     return null;

@@ -3,7 +3,9 @@ import {
     Input,
     OnChanges,
     ViewChild,
-    ViewEncapsulation
+    ViewEncapsulation,
+    TemplateRef,
+    Output
 } from '@angular/core';
 import {
     Observable
@@ -24,8 +26,11 @@ import {
     UserStackInfoModel,
     ComponentInformationModel,
     RecommendationsModel,
-    TokenDetailModel
+    TokenErrorModel,
+    TokenDetailModel,
 } from '../models/stack-report.model';
+
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 /**
  * New Stack Report Revamp - Begin
@@ -58,6 +63,7 @@ export class StackDetailsComponent implements OnChanges {
     @Input() buildNumber;
     @Input() appName;
     @Input() stackResponse;
+    @Input() uuid;
 
     @ViewChild('crowdModule') modalCrowdModule: any;
 
@@ -103,12 +109,6 @@ export class StackDetailsComponent implements OnChanges {
     private alive = true;
 
     private reportSummaryUtils = new ReportSummaryUtils();
-
-    public tokenDetail: TokenDetailModel = {
-        id: '',
-        status: 'freetier'
-    }
-
 
     /**
      * New Stack Report Revamp - Begin
@@ -234,7 +234,121 @@ export class StackDetailsComponent implements OnChanges {
         this.componentFilterBy = filterBy.filterBy;
     }
 
-    constructor(private stackAnalysisService: StackAnalysesService) { }
+    modalRef: BsModalRef;
+    token: string;
+    tokenerror: TokenErrorModel = {
+        status: false,
+        type: '',
+        length: 0
+    };
+    tokenErrorStatus: boolean = true;
+    tokenDetail: TokenDetailModel = {
+        id: '',
+        status: 'freetier'
+    }
+    tokenAlertsMessage: string;
+
+
+    observableToken: Observable<any>;
+
+    constructor(private stackAnalysisService: StackAnalysesService, private modalService: BsModalService) { }
+
+    async submitToken() {
+        if (!this.tokenErrorStatus) {
+            await this.stackAnalysisService.linkSynkTokenWithUserID(this.getBaseUrl(this.stack), this.uuid, this.token, this.gatewayConfig)
+                .then(res => {
+                    console.log(res.status);
+                    console.log('refresh in 5 sec');
+                    setTimeout(() => {
+                        this.init()
+                    }, 5000);
+                })
+                .catch(error => {
+                    let title: string = '';
+                    if (error.status >= 500) {
+                        title = 'Something unexpected happened';
+                    } else if (error.status === 400) {
+                        title = 'Bad Request';
+                    } else if (error.status === 401) {
+                        title =
+                            'You don\'t seem to have sufficient privileges to access this - Request unauthorized';
+                    } else {
+                        title = 'Error in Submit token request';
+                    }
+                    console.log(title);
+                });
+        }
+
+    }
+
+    async setTokenStatus() {
+
+        if (this.uuid !== null) {
+
+            await this.stackAnalysisService.getTokenStatus(this.getBaseUrl(this.stack), this.uuid, this.gatewayConfig)
+                .then(res => {
+                    this.tokenDetail.id = res.id;
+                    this.tokenDetail.status = res.status.toLowerCase();
+                })
+                .catch(error => {
+                    let title: string = '';
+                    if (error.status >= 500) {
+                        title = 'Something unexpected happened';
+                    } else if (error.status === 404) {
+                        title = 'User Not Found';
+                    } else if (error.status === 401) {
+                        title =
+                            'You don\'t seem to have sufficient privileges to access this';
+                    } else {
+                        title = 'Error in Get Token Status request';
+                    }
+                    console.log(title);
+                });
+
+            let resultDetails = this.tokenDetail.status;
+
+            switch (resultDetails.toLowerCase()) {
+                case 'freetier':
+                    this.tokenAlertsMessage = 'Unregistered'
+                    break;
+                case 'registered':
+                    this.tokenAlertsMessage = 'Registered'
+                    break;
+                case 'expired':
+                    this.tokenAlertsMessage = 'Token Expired'
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            return;
+        }
+    }
+
+    openModal(template: TemplateRef<any>) {
+        this.modalRef = this.modalService.show(template);
+    }
+
+    checkToken() {
+        this.tokenerror = {
+            status: false,
+            type: '',
+            length: 0
+        };
+        this.tokenerror.length = this.token.length;
+        if (this.token.length === 0 || this.token == undefined) {
+            this.tokenerror.status = true;
+            this.tokenerror.type = '';
+        } else if (this.token.length !== 36) {
+            this.tokenerror.status = true;
+            this.tokenerror.type = "Token length should be of 36 character";
+        } else if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(this.token)) {
+            this.tokenerror.status = true;
+            this.tokenerror.type = "Token can only have [a-zA-Z0-9-]";
+        }
+
+        this.tokenErrorStatus = this.tokenerror.status === true;
+    }
 
     /**
      * New Revamp - Begin
@@ -313,7 +427,7 @@ export class StackDetailsComponent implements OnChanges {
                     analyzed_dependencies: element.analyzed_dependencies,
                     ecosystem: element.ecosystem,
                     license_analysis: element.license_analysis,
-                    registration_status: element.registration_status,
+                    registration_status: element.registration_status.toLowerCase(),
                     unknown_dependencies: element.unknown_dependencies
                 }
             })
@@ -380,7 +494,6 @@ export class StackDetailsComponent implements OnChanges {
     }
 
     private init(): void {
-        let counter = 2;
         if (this.gatewayConfig["modal"]) {
             this.showCrowdModal();
         }
@@ -392,42 +505,30 @@ export class StackDetailsComponent implements OnChanges {
             }, 1000);
         } else {
             if (this.stack && this.stack !== '') {
-                let analysis: Observable<any> = this.stackAnalysisService
-                    .getStackAnalyses(this.stack, this.gatewayConfig);
-
-                if (analysis) {
-                    TimerObservable.create(0, 1000)
-                        .takeWhile(() => this.alive)
-                        .subscribe(() => {
-
-                            if (counter-- === 0) {
-                                this.alive = false;
-                                this.subPolling.unsubscribe();
-                            }
-
-                            this.subPolling = analysis.subscribe((data) => {
-                                this.subPolling.unsubscribe();
-                                this.handleResponse(data);
-                            },
-                                error => {
-                                    let title: string = '';
-                                    if (error.status >= 500) {
-                                        title = 'Something unexpected happened';
-                                    } else if (error.status === 404) {
-                                        title = 'You are looking for something which isn\'t there';
-                                    } else if (error.status === 401) {
-                                        title =
-                                            'You don\'t seem to have sufficient privileges to access this';
-                                    }
-                                    title = 'Report failed'; // Check if just this message is enough.
-                                    this.handleError({
-                                        message: error.statusText,
-                                        status: error.status,
-                                        title: title
-                                    });
-                                });
+                this.setTokenStatus()
+                this.stackAnalysisService
+                    .getStackAnalyses(this.stack, this.uuid, this.gatewayConfig)
+                    .then(data => {
+                        this.handleResponse(data);
+                    })
+                    .catch(error => {
+                        let title: string = '';
+                        if (error.status >= 500) {
+                            title = 'Something unexpected happened';
+                        } else if (error.status === 404) {
+                            title = 'You are looking for something which isn\'t there';
+                        } else if (error.status === 401) {
+                            title =
+                                'You don\'t seem to have sufficient privileges to access this';
+                        } else {
+                            title = 'Report failed';
+                        }
+                        this.handleError({
+                            message: error.statusText,
+                            status: error.status,
+                            title: title
                         });
-                }
+                    });
             }
         }
     }
