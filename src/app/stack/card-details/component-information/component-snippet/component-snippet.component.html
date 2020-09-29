@@ -78,8 +78,7 @@
         </div>
     </div>
 
-    <div *ngIf="view === 'normal' && !component.isTransitive && (tabType == 'private' || tabType =='public' || tabType =='compDetails')"
-        class="github-osio-box">
+    <div *ngIf="view === 'normal' && tabType =='compDetails'" class="github-osio-box">
         <div class="github left">
             <div class="box-header">
                 GitHub Statistics:
@@ -114,7 +113,111 @@
         </div>
     </div>
     <div [ngClass]="component.isTransitive?'transitive-details' : null">
-        <div class="common-table component-tags">
+        <div *ngIf="tabType == 'compDetails' && (component?.public_vulnerabilities?.length > 0 || component?.private_vulnerabilities?.length > 0)"
+            class="common-table component-tags">
+
+            <div class="common-wrapper"
+                *ngIf="component?.registrationStatus !== 'registered' && (component?.public_vulnerabilities?.length > 0 || component?.private_vulnerabilities?.length > 0) && tabType=='compDetails'">
+                <span class="info-head">Vulnerabilities:</span>
+                <span class="common-container">
+                    <span *ngFor="let cve of component?.public_vulnerabilities" class="wrapper">
+                       
+                        <span *ngIf="cve.severity == 'critical'" class="circle critical" [innerText]="'C'"></span>
+                        <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'"></span>
+                        <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'"></span>
+                        <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'"></span>
+                        <span class="custom-tooltip name"><a [href]="getUrl(cve.url, tabType)"
+                                target="_blank">{{cve.title}}</a>
+                            <div class="custom-tooltip-wrapper">
+                                <div class="custom-tooltip-text no-wrap">
+                                    <span class="head">CVSS Score:</span>
+                                    <span class="score">{{cve.cvss}}</span>
+                                </div>
+                                <div class="custom-tooltip-text no-wrap">
+                                    <span class="head">Snyk ID:</span>
+                                    <span class="url"><a [href]="getUrl(cve.url, tabType)" target="_blank"
+                                            [innerText]="cve.id"></a></span>
+                                </div>
+                                <div class="footer no-wrap">
+                                    <span class="click">(cmd/ctrl + click)</span>
+                                </div>
+                            </div>
+                        </span>
+                    </span>
+                    <a class="name" *ngIf="component?.private_vulnerabilities?.length > 0"
+                        [href]="getUrl(component.url, tabType, component?.registrationStatus)" target="_blank"
+                        title="command/ctrl + click">
+                        Sign up with Snyk
+                    </a>
+                </span>
+            </div>
+
+            <div class="common-wrapper"
+                *ngIf="component?.registrationStatus == 'registered' && (component?.public_vulnerabilities?.length > 0 || component?.private_vulnerabilities?.length > 0) && tabType=='compDetails'">
+                <span class="info-head">Vulnerabilities:</span>
+                <span class="common-container">
+                    <span *ngFor="let cve of component?.public_vulnerabilities" class="wrapper">
+                        <span class="severity"
+                            [ngClass]="{'critical':cve.severity == 'critical', 'high':cve.severity == 'high','medium':cve.severity == 'medium','low':cve.severity == 'low'}">
+                            <span *ngIf="cve.severity == 'critical'" class="circle critical" [innerText]="'C'"></span>
+                            <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'"></span>
+                            <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'"></span>
+                            <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'"></span>
+                            <span [innerText]="cve.exploit"></span>
+                        </span>
+                        <span class="custom-tooltip name"><a [href]="getUrl(cve.url, tabType)"
+                                target="_blank">{{cve.title}}</a>
+                            <div class="custom-tooltip-wrapper">
+                                <div class="custom-tooltip-text no-wrap">
+                                    <span class="head">CVSS Score:</span>
+                                    <span class="score">{{cve.cvss}}</span>
+                                </div>
+                                <div class="custom-tooltip-text no-wrap">
+                                    <span class="head">Snyk ID:</span>
+                                    <span class="url"><a [href]="getUrl(cve.url, tabType)" target="_blank"
+                                            [innerText]="cve.id"></a></span>
+                                </div>
+                                <div class="footer no-wrap">
+                                    <span class="click">(cmd/ctrl + click)</span>
+                                </div>
+                            </div>
+                        </span>
+                    </span>
+
+                    <span *ngFor="let cve of component?.private_vulnerabilities" class="wrapper">
+                        <span class="severity"
+                            [ngClass]="{'critical':cve.severity == 'critical', 'high':cve.severity == 'high','medium':cve.severity == 'medium','low':cve.severity == 'low'}">
+                            <span *ngIf="cve.severity == 'critical'" class="circle critical" [innerText]="'C'"></span>
+                            <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'"></span>
+                            <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'"></span>
+                            <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'"></span>
+                            <span [innerText]="cve.exploit"></span>
+                        </span>
+                        <span class="custom-tooltip name"><a [href]="getUrl(cve.url, tabType)"
+                                target="_blank">{{cve.title}}</a>
+                            <div class="custom-tooltip-wrapper">
+                                <div class="custom-tooltip-text no-wrap">
+                                    <span class="head">CVSS Score:</span>
+                                    <span class="score">{{cve.cvss}}</span>
+                                </div>
+                                <div class="custom-tooltip-text no-wrap">
+                                    <span class="head">Snyk ID:</span>
+                                    <span class="url"><a [href]="getUrl(cve.url, tabType)" target="_blank"
+                                            [innerText]="cve.id"></a></span>
+                                </div>
+                                <div class="footer no-wrap">
+                                    <span class="click">(cmd/ctrl + click)</span>
+                                </div>
+                            </div>
+                        </span>
+                    </span>
+                </span>
+            </div>
+
+
+        </div>
+
+        <div class="github left">
             <div class="common-wrapper"
                 *ngIf="component?.registrationStatus !== 'registered' &&(component?.public_vulnerabilities?.length > 0) && tabType == 'public'">
                 <span class="info-head">Vulnerabilities:</span>
@@ -151,7 +254,8 @@
                         <span>
                             <img src="/assets/icon/snyk-avatar.png" alt="snyk-avatar" class="avatar" />
                         </span>
-                        <a [href]="this.generateUrl.registrationURL" target="_blank" title="command/ctrl + click" class="branding-url">
+                        <a [href]="this.generateUrl.registrationURL" target="_blank" title="command/ctrl + click"
+                            class="branding-url">
                             Sign up for a free Snyk account
                         </a>
                         to find out which vulnerabilities have a publicly known exploits
@@ -166,10 +270,12 @@
                     <span>
                         <img src="/assets/icon/snyk-avatar.png" alt="snyk-avatar" class="avatar" />
                     </span>
-                    <a [href]="this.generateUrl.registrationURL" target="_blank" title="command/ctrl + click" class="branding-url">
+                    <a [href]="this.generateUrl.registrationURL" target="_blank" title="command/ctrl + click"
+                        class="branding-url">
                         Sign up for a free Snyk account
                     </a>
-                    to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit
+                    to find out about the vulnerabilities that have been found, and whether any have a publicly known
+                    exploit
                 </span>
             </div>
 
@@ -240,111 +346,10 @@
                 </span>
             </div>
 
-
-            <div class="common-wrapper"
-                *ngIf="component?.registrationStatus !== 'registered' && (component?.public_vulnerabilities?.length > 0 || component?.private_vulnerabilities?.length > 0) && tabType=='compDetails'">
-                <span class="info-head">Vulnerabilities:</span>
-                <span class="common-container">
-                    <span *ngFor="let cve of component?.public_vulnerabilities" class="wrapper">
-                        <!-- <span class="severity"
-                            [ngClass]="{'critical':cve.severity == 'critical', 'high':cve.severity == 'high','medium':cve.severity == 'medium','low':cve.severity == 'low'}"> -->
-                        <span *ngIf="cve.severity == 'critical'" class="circle critical" [innerText]="'C'"></span>
-                        <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'"></span>
-                        <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'"></span>
-                        <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'"></span>
-                        <!-- <span [innerText]="cve.severity"></span> -->
-                        <!-- </span> -->
-                        <span class="custom-tooltip name"><a [href]="getUrl(cve.url, tabType)"
-                                target="_blank">{{cve.title}}</a>
-                            <div class="custom-tooltip-wrapper">
-                                <div class="custom-tooltip-text no-wrap">
-                                    <span class="head">CVSS Score:</span>
-                                    <span class="score">{{cve.cvss}}</span>
-                                </div>
-                                <div class="custom-tooltip-text no-wrap">
-                                    <span class="head">Snyk ID:</span>
-                                    <span class="url"><a [href]="getUrl(cve.url, tabType)" target="_blank"
-                                            [innerText]="cve.id"></a></span>
-                                </div>
-                                <div class="footer no-wrap">
-                                    <span class="click">(cmd/ctrl + click)</span>
-                                </div>
-                            </div>
-                        </span>
-                    </span>
-                    <a class="name" *ngIf="component?.private_vulnerabilities?.length>0"
-                        [href]="getUrl(component.url, tabType, component?.registrationStatus)" target="_blank"
-                        title="command/ctrl + click">
-                        Sign up with Snyk
-                    </a>
-                </span>
-            </div>
-
-            <div class="common-wrapper"
-                *ngIf="component?.registrationStatus == 'registered' && (component?.public_vulnerabilities?.length > 0 || component?.private_vulnerabilities?.length > 0) && tabType=='compDetails'">
-                <span class="info-head">Vulnerabilities:</span>
-                <span class="common-container">
-                    <span *ngFor="let cve of component?.public_vulnerabilities" class="wrapper">
-                        <span class="severity"
-                            [ngClass]="{'critical':cve.severity == 'critical', 'high':cve.severity == 'high','medium':cve.severity == 'medium','low':cve.severity == 'low'}">
-                            <span *ngIf="cve.severity == 'critical'" class="circle critical" [innerText]="'C'"></span>
-                            <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'"></span>
-                            <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'"></span>
-                            <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'"></span>
-                            <span [innerText]="cve.exploit"></span>
-                        </span>
-                        <span class="custom-tooltip name"><a [href]="getUrl(cve.url, tabType)"
-                                target="_blank">{{cve.title}}</a>
-                            <div class="custom-tooltip-wrapper">
-                                <div class="custom-tooltip-text no-wrap">
-                                    <span class="head">CVSS Score:</span>
-                                    <span class="score">{{cve.cvss}}</span>
-                                </div>
-                                <div class="custom-tooltip-text no-wrap">
-                                    <span class="head">Snyk ID:</span>
-                                    <span class="url"><a [href]="getUrl(cve.url, tabType)" target="_blank"
-                                            [innerText]="cve.id"></a></span>
-                                </div>
-                                <div class="footer no-wrap">
-                                    <span class="click">(cmd/ctrl + click)</span>
-                                </div>
-                            </div>
-                        </span>
-                    </span>
-
-                    <span *ngFor="let cve of component?.private_vulnerabilities" class="wrapper">
-                        <span class="severity"
-                            [ngClass]="{'critical':cve.severity == 'critical', 'high':cve.severity == 'high','medium':cve.severity == 'medium','low':cve.severity == 'low'}">
-                            <span *ngIf="cve.severity == 'critical'" class="circle critical" [innerText]="'C'"></span>
-                            <span *ngIf="cve.severity == 'high'" class="circle high" [innerText]="'H'"></span>
-                            <span *ngIf="cve.severity == 'medium'" class="circle medium" [innerText]="'M'"></span>
-                            <span *ngIf="cve.severity == 'low'" class="circle low" [innerText]="'L'"></span>
-                            <span [innerText]="cve.exploit"></span>
-                        </span>
-                        <span class="custom-tooltip name"><a [href]="getUrl(cve.url, tabType)"
-                                target="_blank">{{cve.title}}</a>
-                            <div class="custom-tooltip-wrapper">
-                                <div class="custom-tooltip-text no-wrap">
-                                    <span class="head">CVSS Score:</span>
-                                    <span class="score">{{cve.cvss}}</span>
-                                </div>
-                                <div class="custom-tooltip-text no-wrap">
-                                    <span class="head">Snyk ID:</span>
-                                    <span class="url"><a [href]="getUrl(cve.url, tabType)" target="_blank"
-                                            [innerText]="cve.id"></a></span>
-                                </div>
-                                <div class="footer no-wrap">
-                                    <span class="click">(cmd/ctrl + click)</span>
-                                </div>
-                            </div>
-                        </span>
-                    </span>
-                </span>
-            </div>
-
         </div>
 
-        <div class="common-table component-licenses">
+        <div *ngIf="view === 'normal' && tabType =='compDetails'|| !(tabType == 'private' || tabType =='public' || tabType =='compDetails')"
+            class="common-table component-licenses">
             <div class="common-wrapper">
                 <span class="info-head">License(s) used: </span>
                 <span *ngIf="component?.licenses?.length > 0" class="common-container license-container">
