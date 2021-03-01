@@ -19,12 +19,14 @@ ENV PATH="./node_modules/.bin:$PATH"
 
 COPY . ./
 RUN npm run build
-RUN ls
 
 FROM registry.access.redhat.com/ubi8/nginx-118
 
-COPY --from=builder /opt/web/build /usr/share/nginx/html
-# Copy the default nginx.conf provided by tiangolo/node-frontend
-COPY  ./nginx.config /etc/nginx/conf.d/default.conf
+ADD nginx/nginx.conf "${NGINX_CONF_PATH}"
+ADD nginx/default.conf "${NGINX_CONFIGURATION_PATH}"
+ADD nginx/alias.conf "${NGINX_DEFAULT_CONF_PATH}"
+
+COPY --from=builder /opt/web/build ./
+RUN ls
 
 CMD nginx -g "daemon off;"
