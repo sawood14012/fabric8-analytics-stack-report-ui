@@ -47,8 +47,8 @@ const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
     <Page header={Header}>
       <PageSection>
         <Grid hasGutter>
-          <GridItem span={6}>{Summary}</GridItem>
-          <GridItem span={6}>{Overview}</GridItem>
+          <GridItem span={5}>{Summary}</GridItem>
+          <GridItem span={7}>{Overview}</GridItem>
           <GridItem span={12}>{Table}</GridItem>
         </Grid>
       </PageSection>
