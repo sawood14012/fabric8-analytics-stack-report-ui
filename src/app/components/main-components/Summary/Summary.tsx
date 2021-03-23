@@ -23,7 +23,7 @@ import {
   DownloadIcon,
   ExclamationCircleIcon,
 } from '@patternfly/react-icons';
-import style from './Summary.scss';
+import './Summary.scss';
 import SignUp from '../../shared-components/synk-signup/synk-signup';
 import PoweredBySynk from '../../shared-components/powerd-by/powerd-by';
 import BTSynktoken from '../../shared-components/synk-token-button/synk-token-button';
@@ -41,7 +41,6 @@ class SummaryCard extends React.Component {
   }
 
   render() {
-    console.log(style.iconColor);
     return (
       <Card className="--pf-c-card--BoxShadow summary-of-the-stack">
         <CardTitle className="">
