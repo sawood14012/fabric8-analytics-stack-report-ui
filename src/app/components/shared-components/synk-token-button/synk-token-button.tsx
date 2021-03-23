@@ -52,7 +52,10 @@ const ModalComponent = ({ isModalOpen, handleToggle }: Modalprops) => {
           isRequired
           fieldId="Synk token form group"
           helperText={
-            <FormHelperText icon={<ExclamationCircleIcon />} isHidden={false}>
+            <FormHelperText
+              icon={<ExclamationCircleIcon color="blue" />}
+              isHidden={false}
+            >
               If a keyboard shortcut for Paste is not available, try using Edit
               &gt; Paste
             </FormHelperText>
