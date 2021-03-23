@@ -130,6 +130,7 @@ class BTSynktoken extends React.Component<Signprop, State> {
           className="mybutton"
           isSmall
           variant="secondary"
+          onClick={this.handleModalToggle}
         >
           Snyk Token
         </Button>

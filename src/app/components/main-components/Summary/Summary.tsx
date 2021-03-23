@@ -14,7 +14,6 @@ import {
   GridItem,
   Title,
 } from '@patternfly/react-core';
-import './Summary.scss';
 import {
   CubeIcon,
   SecurityIcon,
@@ -24,12 +23,13 @@ import {
   DownloadIcon,
   ExclamationCircleIcon,
 } from '@patternfly/react-icons';
+import style from './Summary.scss';
 import SignUp from '../../shared-components/synk-signup/synk-signup';
 import PoweredBySynk from '../../shared-components/powerd-by/powerd-by';
 import BTSynktoken from '../../shared-components/synk-token-button/synk-token-button';
 
 class SummaryCard extends React.Component {
-  showsignup = false;
+  showsignup = true;
 
   signUpText =
     'Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit';
@@ -41,6 +41,7 @@ class SummaryCard extends React.Component {
   }
 
   render() {
+    console.log(style.iconColor);
     return (
       <Card className="--pf-c-card--BoxShadow summary-of-the-stack">
         <CardTitle className="">
@@ -70,7 +71,7 @@ class SummaryCard extends React.Component {
             <GridItem span={6}>
               <Flex>
                 <FlexItem>
-                  <CubeIcon color="#6A6E73" />
+                  <CubeIcon className="icon-class" />
                 </FlexItem>
                 <FlexItem>
                   <Title headingLevel="h6" size="md">
@@ -114,7 +115,7 @@ class SummaryCard extends React.Component {
             <GridItem span={6}>
               <Flex>
                 <FlexItem>
-                  <SecurityIcon color="#6A6E73" />
+                  <SecurityIcon className="icon-class" />
                 </FlexItem>
                 <FlexItem>
                   <Title headingLevel="h6" size="md">
@@ -152,7 +153,7 @@ class SummaryCard extends React.Component {
             <GridItem span={6}>
               <Flex>
                 <FlexItem>
-                  <FileAltIcon color="#6A6E73" />
+                  <FileAltIcon className="icon-class" />
                 </FlexItem>
                 <FlexItem>
                   <Title headingLevel="h6" size="md">
@@ -189,7 +190,7 @@ class SummaryCard extends React.Component {
             <GridItem span={6}>
               <Flex>
                 <FlexItem>
-                  <ZoneIcon color="#6A6E73" />
+                  <ZoneIcon className="icon-class" />
                 </FlexItem>
                 <FlexItem>
                   <Title headingLevel="h6" size="md">
@@ -216,5 +217,9 @@ class SummaryCard extends React.Component {
     );
   }
 }
+
+/* const Dependency = () =>{
+
+} */
 
 export default SummaryCard;
