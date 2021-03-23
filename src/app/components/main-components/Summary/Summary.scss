@@ -1,0 +1,47 @@
+.heading {
+  color: #151515;
+  font-family: RedHatText;
+  font-size: 21px;
+  line-height: 27px;
+  text-align: left;
+  }
+
+.title {
+    margin-top: 5px;
+    color: #151515;
+    font-family: RedHatText;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: justify; /* For Edge */
+    text-align-last: center;
+  }
+
+  .bitmap {
+    width: 49px;
+    height: 24px;
+  }
+
+  .pf-c-button.mybutton {
+      --pf-c-button--m-secondary--BackgroundColor: #3E8635;
+      --pf-c-button--m-small--FontSize: 0.7rem;
+      --pf-c-button--FontWeight: 900;
+      --pf-c-button--m-secondary--Color:#fff;
+      --pf-c-button--m-secondary--hover--BackgroundColor:#1E4F18;
+      --pf-c-button--m-secondary--hover--Color:#fff;
+      --pf-c-button--m-secondary--focus--BackgroundColor:#1E4F18;
+      --pf-c-button--m-secondary--focus--Color:#fff;
+      --pf-c-button--m-secondary--after--BorderColor:#1E4F18;
+      --pf-c-button--m-secondary--hover--after--BorderColor:#1E4F18;
+      --pf-c-button--m-secondary--focus--after--BorderColor:#1E4F18;
+      --pf-c-button--m-secondary--active--after--BorderColor:#1E4F18;
+
+      
+  }
+
+  .sign-up-text {
+    color: #151515;
+    font-family: RedHatText;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: left;
+  }
