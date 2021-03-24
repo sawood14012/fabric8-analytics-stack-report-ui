@@ -8,14 +8,17 @@ import {
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon, FileAltIcon } from '@patternfly/react-icons';
 
-class Licenses extends React.Component {
+type LicensesProps = Record<string, number>;
+
+class Licenses extends React.Component<LicensesProps> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: any) {
+  constructor(props: LicensesProps) {
     super(props);
     this.state = {};
   }
 
   render() {
+    const { conflicts, unknown } = this.props;
     return [
       <Flex>
         <FlexItem>
@@ -36,7 +39,7 @@ class Licenses extends React.Component {
             <SplitItem>License conflicts:</SplitItem>
             <SplitItem>
               <Title headingLevel="h6" size="md">
-                2
+                {conflicts}
               </Title>
             </SplitItem>
           </Split>
@@ -46,7 +49,7 @@ class Licenses extends React.Component {
             <SplitItem>Unknown licenses:</SplitItem>
             <SplitItem>
               <Title headingLevel="h6" size="md">
-                1
+                {unknown}
               </Title>
             </SplitItem>
           </Split>

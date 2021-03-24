@@ -21,7 +21,17 @@ import Security from '../../shared-components/security-detail/security-detail';
 import Licenses from '../../shared-components/licenses-detail/licenses-detail';
 import Addons from '../../shared-components/addons-detail/addons-detail';
 
-class SummaryCard extends React.Component {
+type SummaryState = {
+  dependency: Record<string, number>;
+  addons: Record<string, number>;
+  licenses: Record<string, number>;
+  security: Record<string, number>;
+};
+
+// eslint-disable-next-line
+type SummaryProps = Record<any, any>;
+
+class SummaryCard extends React.Component<SummaryProps, SummaryState> {
   showsignup = true;
 
   signUpText =
@@ -30,10 +40,28 @@ class SummaryCard extends React.Component {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
     super(props);
-    this.state = {};
+    this.state = {
+      dependency: {
+        analyzed: 17,
+        transitive: 112,
+        unknown: 10,
+      },
+      addons: {
+        companion: 3,
+      },
+      licenses: {
+        conflicts: 2,
+        unknown: 1,
+      },
+      security: {
+        vlunerablities: 87,
+        vulnerable: 18,
+      },
+    };
   }
 
   render() {
+    const { dependency, addons, licenses, security } = this.state;
     return (
       <Card className="--pf-c-card--BoxShadow summary-of-the-stack">
         <CardTitle className="">
@@ -47,10 +75,10 @@ class SummaryCard extends React.Component {
               <BTSynktoken isUUID={this.showsignup} />
             </FlexItem>
             <FlexItem align={{ default: 'alignRight' }}>
-              <ShareSquareIcon color="#6A6E73" />
+              <ShareSquareIcon className="icon-class" />
             </FlexItem>
             <FlexItem>
-              <DownloadIcon color="#6A6E73" />
+              <DownloadIcon className="icon-class" />
             </FlexItem>
           </Flex>
         </CardTitle>
@@ -61,17 +89,27 @@ class SummaryCard extends React.Component {
           <br />
           <Grid hasGutter>
             <GridItem span={6}>
-              <Dependency />
+              <Dependency
+                analyzed={dependency.analyzed}
+                transitive={dependency.transitive}
+                unknown={dependency.unknown}
+              />
             </GridItem>
             <GridItem span={6}>
-              <Security />
+              <Security
+                vlunerablities={security.vlunerablities}
+                vulnerable={security.vulnerable}
+              />
             </GridItem>
             <Divider component="div" />
             <GridItem span={6}>
-              <Licenses />
+              <Licenses
+                conflicts={licenses.conflicts}
+                unknown={licenses.unknown}
+              />
             </GridItem>
             <GridItem span={6}>
-              <Addons />
+              <Addons companion={addons.companion} />
             </GridItem>
           </Grid>
         </CardBody>
@@ -79,9 +117,5 @@ class SummaryCard extends React.Component {
     );
   }
 }
-
-/* const Dependency = () =>{
-
-} */
 
 export default SummaryCard;

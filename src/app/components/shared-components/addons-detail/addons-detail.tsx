@@ -8,14 +8,17 @@ import {
 } from '@patternfly/react-core';
 import { ZoneIcon } from '@patternfly/react-icons';
 
-class Addons extends React.Component {
+type AddonsProps = Record<string, number>;
+
+class Addons extends React.Component<AddonsProps> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: any) {
+  constructor(props: AddonsProps) {
     super(props);
     this.state = {};
   }
 
   render() {
+    const { companion } = this.props;
     return [
       <Flex>
         <FlexItem>
@@ -33,7 +36,7 @@ class Addons extends React.Component {
             <SplitItem>Companion Dependencies:</SplitItem>
             <SplitItem>
               <Title headingLevel="h6" size="md">
-                3
+                {companion}
               </Title>
             </SplitItem>
           </Split>
