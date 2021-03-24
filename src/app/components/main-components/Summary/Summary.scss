@@ -22,25 +22,43 @@
     height: 24px;
   }
 
-  .pf-c-button.mybutton {
-      --pf-c-button--m-secondary--BackgroundColor: #3E8635;
-      --pf-c-button--m-small--FontSize: 0.7rem;
-      --pf-c-button--FontWeight: 900;
-      --pf-c-button--m-secondary--Color:#fff;
-      --pf-c-button--m-secondary--hover--BackgroundColor:#1E4F18;
-      --pf-c-button--m-secondary--hover--Color:#fff;
-      --pf-c-button--m-secondary--focus--BackgroundColor:#1E4F18;
-      --pf-c-button--m-secondary--focus--Color:#fff;
-      --pf-c-button--m-secondary--after--BorderColor:#1E4F18;
-      --pf-c-button--m-secondary--hover--after--BorderColor:#1E4F18;
-      --pf-c-button--m-secondary--focus--after--BorderColor:#1E4F18;
-      --pf-c-button--m-secondary--active--after--BorderColor:#1E4F18;
 
+  .pf-c-button.mybutton {
+      
+    --pf-c-button--m-small--FontSize: 0.7rem;
+    --pf-c-button--FontWeight: 900;
+    --pf-c-button--m-warning--Color:#fff;
+    --pf-c-button--m-warning--BackgroundColor: #6CA100;
+    --pf-c-button--m-warning--hover--BackgroundColor:#486B00;
+    --pf-c-button--m-warning--hover--after--BorderColor:#253600;
+    --pf-c-button--m-warning--focus--BackgroundColor:#486B00;
+    --pf-c-button--m-warning--hover--Color: #fff;
+    --pf-c-button--m-warning--focus--Color: #fff;
+    --pf-c-button--m-warning--active--Color:#fff;
+    --pf-c-button--m-warning--focus--after--BorderColor:#486B00;
+    --pf-c-button--m-warning--after--BorderColor:#486B00;
+    --pf-c-button--m-warning--active--BackgroundColor:#486B00;
       
   }
-.icon-class {
-  color: #6A6E73;
-}
+
+  .pf-c-button.warningbtn {
+    --pf-c-button--m-small--FontSize: 0.7rem;
+    --pf-c-button--FontWeight: 900;
+    --pf-c-button--m-warning--Color:#fff;
+    --pf-c-button--m-warning--BackgroundColor: #EC7A08;
+    --pf-c-button--m-warning--hover--BackgroundColor:#C46100;
+    --pf-c-button--m-warning--focus--BackgroundColor:#C46100;
+    --pf-c-button--m-warning--hover--Color: #fff;
+    --pf-c-button--m-warning--focus--Color: #fff;
+    --pf-c-button--m-warning--active--Color:#fff;
+    --pf-c-button--m-warning--active--BackgroundColor:#C46100;
+
+    
+  }
+
+  .icon-class {
+   color: #6A6E73;
+ }
 
 .icon-class-exclamation {
   color:#C9190B;

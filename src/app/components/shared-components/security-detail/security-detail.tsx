@@ -19,6 +19,7 @@ class Security extends React.Component<SecurityProps> {
 
   render() {
     const { vlunerablities, vulnerable } = this.props;
+    const condition = vlunerablities > 0 || vulnerable > 0;
     return [
       <Flex>
         <FlexItem>
@@ -29,33 +30,37 @@ class Security extends React.Component<SecurityProps> {
             Security Issues
           </Title>
         </FlexItem>
-        {vlunerablities > 0 && vulnerable > 0 && (
+        {condition && (
           <FlexItem>
             <ExclamationCircleIcon className="icon-class-exclamation" />
           </FlexItem>
         )}
       </Flex>,
-      <Flex>
-        <FlexItem>
-          <Split hasGutter>
-            <SplitItem>Total vulnerabilities:</SplitItem>
-            <SplitItem>
-              <Title headingLevel="h6" size="md">
-                {vlunerablities}
-              </Title>
-            </SplitItem>
-          </Split>
-        </FlexItem>
-        <FlexItem>
-          <Split hasGutter>
-            <SplitItem>Vulnerable dependencies:</SplitItem>
-            <SplitItem>
-              <Title headingLevel="h6" size="md">
-                {vulnerable}
-              </Title>
-            </SplitItem>
-          </Split>
-        </FlexItem>
+      <Flex direction={{ default: 'column' }}>
+        {vlunerablities >= 0 && (
+          <FlexItem spacer={{ default: 'spacerNone' }}>
+            <Split hasGutter>
+              <SplitItem>Total vulnerabilities:</SplitItem>
+              <SplitItem>
+                <Title headingLevel="h6" size="md">
+                  {vlunerablities}
+                </Title>
+              </SplitItem>
+            </Split>
+          </FlexItem>
+        )}
+        {vulnerable >= 0 && (
+          <FlexItem spacer={{ default: 'spacerNone' }}>
+            <Split hasGutter>
+              <SplitItem>Vulnerable dependencies:</SplitItem>
+              <SplitItem>
+                <Title headingLevel="h6" size="md">
+                  {vulnerable}
+                </Title>
+              </SplitItem>
+            </Split>
+          </FlexItem>
+        )}
       </Flex>,
     ];
   }

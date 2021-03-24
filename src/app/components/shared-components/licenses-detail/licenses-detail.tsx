@@ -19,6 +19,7 @@ class Licenses extends React.Component<LicensesProps> {
 
   render() {
     const { conflicts, unknown } = this.props;
+    const condition = conflicts > 0 || unknown > 0;
     return [
       <Flex>
         <FlexItem>
@@ -29,33 +30,37 @@ class Licenses extends React.Component<LicensesProps> {
             Licences
           </Title>
         </FlexItem>
-        {conflicts > 0 && (
+        {condition && (
           <FlexItem>
             <ExclamationCircleIcon className="icon-class-exclamation" />
           </FlexItem>
         )}
       </Flex>,
-      <Flex>
-        <FlexItem>
-          <Split hasGutter>
-            <SplitItem>License conflicts:</SplitItem>
-            <SplitItem>
-              <Title headingLevel="h6" size="md">
-                {conflicts}
-              </Title>
-            </SplitItem>
-          </Split>
-        </FlexItem>
-        <FlexItem>
-          <Split hasGutter>
-            <SplitItem>Unknown licenses:</SplitItem>
-            <SplitItem>
-              <Title headingLevel="h6" size="md">
-                {unknown}
-              </Title>
-            </SplitItem>
-          </Split>
-        </FlexItem>
+      <Flex direction={{ default: 'column' }}>
+        {conflicts >= 0 && (
+          <FlexItem spacer={{ default: 'spacerNone' }}>
+            <Split hasGutter>
+              <SplitItem>License conflicts:</SplitItem>
+              <SplitItem>
+                <Title headingLevel="h6" size="md">
+                  {conflicts}
+                </Title>
+              </SplitItem>
+            </Split>
+          </FlexItem>
+        )}
+        {unknown > 0 && (
+          <FlexItem spacer={{ default: 'spacerNone' }}>
+            <Split hasGutter>
+              <SplitItem>Unknown licenses:</SplitItem>
+              <SplitItem>
+                <Title headingLevel="h6" size="md">
+                  {unknown}
+                </Title>
+              </SplitItem>
+            </Split>
+          </FlexItem>
+        )}
       </Flex>,
     ];
   }

@@ -35,8 +35,8 @@ class Dependency extends React.Component<DependencyProps> {
           </FlexItem>
         )}
       </Flex>,
-      <Flex>
-        <FlexItem>
+      <Flex direction={{ default: 'column' }}>
+        <FlexItem spacer={{ default: 'spacerNone' }}>
           <Split hasGutter>
             <SplitItem>Analysed dependencies:</SplitItem>
             <SplitItem>
@@ -46,7 +46,7 @@ class Dependency extends React.Component<DependencyProps> {
             </SplitItem>
           </Split>
         </FlexItem>
-        <FlexItem>
+        <FlexItem spacer={{ default: 'spacerNone' }}>
           <Split hasGutter>
             <SplitItem>Transitive dependencies:</SplitItem>
             <SplitItem>
@@ -56,16 +56,18 @@ class Dependency extends React.Component<DependencyProps> {
             </SplitItem>
           </Split>
         </FlexItem>
-        <FlexItem>
-          <Split hasGutter>
-            <SplitItem>Unknown dependencies:</SplitItem>
-            <SplitItem>
-              <Title headingLevel="h6" size="md">
-                {unknown}
-              </Title>
-            </SplitItem>
-          </Split>
-        </FlexItem>
+        {unknown > 0 && (
+          <FlexItem spacer={{ default: 'spacerNone' }}>
+            <Split hasGutter>
+              <SplitItem>Unknown dependencies:</SplitItem>
+              <SplitItem>
+                <Title headingLevel="h6" size="md">
+                  {unknown}
+                </Title>
+              </SplitItem>
+            </Split>
+          </FlexItem>
+        )}
       </Flex>,
     ];
   }

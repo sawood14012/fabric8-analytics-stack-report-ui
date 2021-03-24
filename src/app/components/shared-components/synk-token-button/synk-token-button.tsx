@@ -108,7 +108,7 @@ class BTSynktoken extends React.Component<Signprop, State> {
           <Button
             icon={<ExclamationTriangleIcon />}
             iconPosition="right"
-            className="mybutton"
+            className="warningbtn"
             isSmall
             variant="warning"
             onClick={this.handleModalToggle}
@@ -129,12 +129,11 @@ class BTSynktoken extends React.Component<Signprop, State> {
           iconPosition="right"
           className="mybutton"
           isSmall
-          variant="secondary"
+          variant="warning"
           onClick={this.handleModalToggle}
         >
           Snyk Token
         </Button>
-
         <ModalComponent
           isModalOpen={isModalOpen}
           handleToggle={this.handleModalToggle}

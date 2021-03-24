@@ -30,17 +30,19 @@ class Addons extends React.Component<AddonsProps> {
           </Title>
         </FlexItem>
       </Flex>,
-      <Flex>
-        <FlexItem>
-          <Split hasGutter>
-            <SplitItem>Companion Dependencies:</SplitItem>
-            <SplitItem>
-              <Title headingLevel="h6" size="md">
-                {companion}
-              </Title>
-            </SplitItem>
-          </Split>
-        </FlexItem>
+      <Flex direction={{ default: 'column' }}>
+        {companion > 0 && (
+          <FlexItem spacer={{ default: 'spacerNone' }}>
+            <Split hasGutter>
+              <SplitItem>Companion Dependencies:</SplitItem>
+              <SplitItem>
+                <Title headingLevel="h6" size="md">
+                  {companion}
+                </Title>
+              </SplitItem>
+            </Split>
+          </FlexItem>
+        )}
       </Flex>,
     ];
   }

@@ -32,7 +32,7 @@ type SummaryState = {
 type SummaryProps = Record<any, any>;
 
 class SummaryCard extends React.Component<SummaryProps, SummaryState> {
-  showsignup = true;
+  showsignup = false;
 
   signUpText =
     'Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit';
