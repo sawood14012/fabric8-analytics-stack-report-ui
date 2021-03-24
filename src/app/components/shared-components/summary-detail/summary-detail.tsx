@@ -29,9 +29,11 @@ class Dependency extends React.Component<DependencyProps> {
             Dependency Details
           </Title>
         </FlexItem>
-        <FlexItem>
-          <ExclamationCircleIcon className="icon-class-exclamation" />
-        </FlexItem>
+        {unknown > 0 && (
+          <FlexItem>
+            <ExclamationCircleIcon className="icon-class-exclamation" />
+          </FlexItem>
+        )}
       </Flex>,
       <Flex>
         <FlexItem>

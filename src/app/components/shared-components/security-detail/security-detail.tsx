@@ -29,9 +29,11 @@ class Security extends React.Component<SecurityProps> {
             Security Issues
           </Title>
         </FlexItem>
-        <FlexItem>
-          <ExclamationCircleIcon className="icon-class-exclamation" />
-        </FlexItem>
+        {vlunerablities > 0 && vulnerable > 0 && (
+          <FlexItem>
+            <ExclamationCircleIcon className="icon-class-exclamation" />
+          </FlexItem>
+        )}
       </Flex>,
       <Flex>
         <FlexItem>

@@ -29,9 +29,11 @@ class Licenses extends React.Component<LicensesProps> {
             Licences
           </Title>
         </FlexItem>
-        <FlexItem>
-          <ExclamationCircleIcon className="icon-class-exclamation" />
-        </FlexItem>
+        {conflicts > 0 && (
+          <FlexItem>
+            <ExclamationCircleIcon className="icon-class-exclamation" />
+          </FlexItem>
+        )}
       </Flex>,
       <Flex>
         <FlexItem>
