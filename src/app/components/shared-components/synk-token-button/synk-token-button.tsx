@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Modal,
@@ -30,6 +30,7 @@ type Modalprops = {
 const ModalComponent = ({ isModalOpen, handleToggle }: Modalprops) => {
   const text =
     ' to get your free Snyk token and get access to all premium fields.';
+  const [tokenValue, setTokenValue] = useState('');
 
   return (
     <Modal
@@ -66,7 +67,9 @@ const ModalComponent = ({ isModalOpen, handleToggle }: Modalprops) => {
             placeholder="Enter your Snyk token"
             id="Snyk-token-text"
             name="snyk-token-text"
-            value=""
+            type="text"
+            onChange={setTokenValue}
+            value={tokenValue}
           />
         </FormGroup>
       </Form>
