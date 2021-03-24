@@ -106,7 +106,7 @@ class BTSynktoken extends React.Component<Signprop, State> {
     const { isUUID } = this.props;
     const { isModalOpen } = this.state;
     if (isUUID === false) {
-      return [
+      return (
         <div>
           <Button
             icon={<ExclamationTriangleIcon />}
@@ -122,10 +122,10 @@ class BTSynktoken extends React.Component<Signprop, State> {
             isModalOpen={isModalOpen}
             handleToggle={this.handleModalToggle}
           />
-        </div>,
-      ];
+        </div>
+      );
     }
-    return [
+    return (
       <div>
         <Button
           icon={<CheckSquareIcon />}
@@ -141,8 +141,8 @@ class BTSynktoken extends React.Component<Signprop, State> {
           isModalOpen={isModalOpen}
           handleToggle={this.handleModalToggle}
         />
-      </div>,
-    ];
+      </div>
+    );
   }
 }
 

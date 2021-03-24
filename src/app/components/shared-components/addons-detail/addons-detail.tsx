@@ -20,7 +20,7 @@ class Addons extends React.Component<AddonsProps> {
   render() {
     const { companion } = this.props;
     return [
-      <Flex>
+      <Flex key="1">
         <FlexItem>
           <ZoneIcon className="icon-class" />
         </FlexItem>
@@ -30,7 +30,7 @@ class Addons extends React.Component<AddonsProps> {
           </Title>
         </FlexItem>
       </Flex>,
-      <Flex direction={{ default: 'column' }}>
+      <Flex key="2" direction={{ default: 'column' }}>
         {companion > 0 && (
           <FlexItem spacer={{ default: 'spacerNone' }}>
             <Split hasGutter>

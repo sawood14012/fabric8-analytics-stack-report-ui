@@ -21,7 +21,7 @@ class Licenses extends React.Component<LicensesProps> {
     const { conflicts, unknown } = this.props;
     const condition = conflicts > 0 || unknown > 0;
     return [
-      <Flex>
+      <Flex key="1">
         <FlexItem>
           <FileAltIcon className="icon-class" />
         </FlexItem>
@@ -36,7 +36,7 @@ class Licenses extends React.Component<LicensesProps> {
           </FlexItem>
         )}
       </Flex>,
-      <Flex direction={{ default: 'column' }}>
+      <Flex key="2" direction={{ default: 'column' }}>
         {conflicts >= 0 && (
           <FlexItem spacer={{ default: 'spacerNone' }}>
             <Split hasGutter>

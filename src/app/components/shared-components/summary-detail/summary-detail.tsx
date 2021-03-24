@@ -20,7 +20,7 @@ class Dependency extends React.Component<DependencyProps> {
   render() {
     const { analyzed, transitive, unknown } = this.props;
     return [
-      <Flex>
+      <Flex key="1">
         <FlexItem>
           <CubeIcon className="icon-class" />
         </FlexItem>
@@ -35,7 +35,7 @@ class Dependency extends React.Component<DependencyProps> {
           </FlexItem>
         )}
       </Flex>,
-      <Flex direction={{ default: 'column' }}>
+      <Flex key="2" direction={{ default: 'column' }}>
         <FlexItem spacer={{ default: 'spacerNone' }}>
           <Split hasGutter>
             <SplitItem>Analysed dependencies:</SplitItem>

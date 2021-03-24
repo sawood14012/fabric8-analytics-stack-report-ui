@@ -21,7 +21,7 @@ class Security extends React.Component<SecurityProps> {
     const { vlunerablities, vulnerable } = this.props;
     const condition = vlunerablities > 0 || vulnerable > 0;
     return [
-      <Flex>
+      <Flex key="1">
         <FlexItem>
           <SecurityIcon className="icon-class" />
         </FlexItem>
@@ -36,7 +36,7 @@ class Security extends React.Component<SecurityProps> {
           </FlexItem>
         )}
       </Flex>,
-      <Flex direction={{ default: 'column' }}>
+      <Flex key="2" direction={{ default: 'column' }}>
         {vlunerablities >= 0 && (
           <FlexItem spacer={{ default: 'spacerNone' }}>
             <Split hasGutter>
