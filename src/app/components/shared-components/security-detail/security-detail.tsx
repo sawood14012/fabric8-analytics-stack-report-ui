@@ -8,10 +8,7 @@ import {
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon, SecurityIcon } from '@patternfly/react-icons';
 
-type SecurityProps = {
-  vlunerablities: number;
-  vulnerable: number;
-};
+type SecurityProps = Record<string, number>;
 
 class Security extends React.Component<SecurityProps> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
