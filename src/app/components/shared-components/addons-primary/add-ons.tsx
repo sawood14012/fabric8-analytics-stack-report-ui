@@ -12,7 +12,7 @@ type TableProps = Record<any, any>;
 // eslint-disable-next-line
 class AddonsTable extends React.Component {
   render() {
-    const columns = ['Repositories', 'Branches', 'Pull requests', 'Workspaces'];
+    const columns = ['Companion Dependencies', 'Confidence Score', 'Feedback'];
 
     return (
       <Table cells={columns}>
