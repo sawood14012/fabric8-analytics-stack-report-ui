@@ -17,7 +17,7 @@ import {
 import { ChartDonut } from '@patternfly/react-charts';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import ZoneIcon from '@patternfly/react-icons/dist/js/icons/zone-icon';
-import SimpleTable from '../../shared-components/addons-primary/add-ons';
+import AddonsTable from '../../shared-components/addons-primary/add-ons';
 import './overview.scss';
 
 class OverviewCard extends React.Component {
@@ -52,7 +52,7 @@ class OverviewCard extends React.Component {
               }
             >
               <br />
-              <SimpleTable />
+              <AddonsTable />
             </Tab>
             <Tab
               eventKey={1}
@@ -65,7 +65,7 @@ class OverviewCard extends React.Component {
                 </>
               }
             >
-              <SimpleTable />
+              <AddonsTable />
             </Tab>
           </Tabs>
         </CardBody>
