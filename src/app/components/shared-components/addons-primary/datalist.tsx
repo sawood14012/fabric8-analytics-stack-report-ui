@@ -14,6 +14,10 @@ import {
   DataListCheck,
   DataListItemCells,
   DataListAction,
+  Progress,
+  ProgressSize,
+  ProgressMeasureLocation,
+  ProgressVariant,
 } from '@patternfly/react-core';
 
 type DataListState = {
@@ -87,7 +91,7 @@ class SelectableDataList extends React.Component<DataProps, DataListState> {
                   </span>
                 </DataListCell>,
                 <DataListCell key="secondary content">
-                  Single actionable Secondary content
+                  <SingleLine />,
                 </DataListCell>,
               ]}
             />
@@ -127,7 +131,7 @@ class SelectableDataList extends React.Component<DataProps, DataListState> {
                   </span>
                 </DataListCell>,
                 <DataListCell key="secondary content">
-                  Selectable actions Secondary content
+                  <SingleLine />,
                 </DataListCell>,
               ]}
             />
@@ -160,5 +164,15 @@ class SelectableDataList extends React.Component<DataProps, DataListState> {
     );
   }
 }
+
+const SingleLine = () => {
+  return (
+    <Progress
+      value={33}
+      measureLocation={ProgressMeasureLocation.outside}
+      aria-label="Title"
+    />
+  );
+};
 
 export default SelectableDataList;
