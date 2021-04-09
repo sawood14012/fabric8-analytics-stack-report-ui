@@ -20,6 +20,8 @@ import {
   ProgressVariant,
 } from '@patternfly/react-core';
 
+import DrawerStack from './drawer';
+
 type DataListState = {
   isOpen1: boolean;
   isOpen2: boolean;
@@ -89,6 +91,7 @@ class SelectableDataList extends React.Component<DataProps, DataListState> {
                   <span id="selectable-action-item1">
                     Single actionable Primary content
                   </span>
+                  <DrawerStack />
                 </DataListCell>,
                 <DataListCell key="secondary content">
                   <SingleLine />,
