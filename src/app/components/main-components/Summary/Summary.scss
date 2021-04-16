@@ -1,73 +1,67 @@
-
 .heading {
   color: #151515;
   font-family: RedHatText;
   font-size: 21px;
   line-height: 27px;
   text-align: left;
-  }
-
-.title {
-    margin-top: 5px;
-    color: #151515;
-    font-family: RedHatText;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: justify; /* For Edge */
-    text-align-last: center;
-  }
-
-  .bitmap {
-    width: 49px;
-    height: 24px;
-  }
-
-
-  .pf-c-button.mybutton {
-      
-    --pf-c-button--m-small--FontSize: 0.7rem;
-    --pf-c-button--FontWeight: 900;
-    --pf-c-button--m-warning--Color:#fff;
-    --pf-c-button--m-warning--BackgroundColor: #6CA100;
-    --pf-c-button--m-warning--hover--BackgroundColor:#486B00;
-    --pf-c-button--m-warning--hover--after--BorderColor:#253600;
-    --pf-c-button--m-warning--focus--BackgroundColor:#486B00;
-    --pf-c-button--m-warning--hover--Color: #fff;
-    --pf-c-button--m-warning--focus--Color: #fff;
-    --pf-c-button--m-warning--active--Color:#fff;
-    --pf-c-button--m-warning--focus--after--BorderColor:#486B00;
-    --pf-c-button--m-warning--after--BorderColor:#486B00;
-    --pf-c-button--m-warning--active--BackgroundColor:#486B00;
-      
-  }
-
-  .pf-c-button.warningbtn {
-    --pf-c-button--m-small--FontSize: 0.7rem;
-    --pf-c-button--FontWeight: 900;
-    --pf-c-button--m-warning--Color:#fff;
-    --pf-c-button--m-warning--BackgroundColor: #EC7A08;
-    --pf-c-button--m-warning--hover--BackgroundColor:#C46100;
-    --pf-c-button--m-warning--focus--BackgroundColor:#C46100;
-    --pf-c-button--m-warning--hover--Color: #fff;
-    --pf-c-button--m-warning--focus--Color: #fff;
-    --pf-c-button--m-warning--active--Color:#fff;
-    --pf-c-button--m-warning--active--BackgroundColor:#C46100;
-
-    
-  }
-
-  .icon-class {
-   color: #6A6E73;
- }
-
-.icon-class-exclamation {
-  color:#C9190B;
 }
 
- .sign-up-text {
-    color: #151515;
-    font-family: RedHatText;
-    font-size: 13px;
-    line-height: 18px;
-    text-align: left;
-  }
+.title {
+  margin-top: 5px;
+  color: #151515;
+  font-family: RedHatText;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: justify; /* For Edge */
+  text-align-last: center;
+}
+
+.bitmap {
+  width: 49px;
+  height: 24px;
+}
+
+.pf-c-button.mybutton {
+  --pf-c-button--m-small--FontSize: 0.7rem;
+  --pf-c-button--FontWeight: 900;
+  --pf-c-button--m-warning--Color: #fff;
+  --pf-c-button--m-warning--BackgroundColor: #6ca100;
+  --pf-c-button--m-warning--hover--BackgroundColor: #486b00;
+  --pf-c-button--m-warning--hover--after--BorderColor: #253600;
+  --pf-c-button--m-warning--focus--BackgroundColor: #486b00;
+  --pf-c-button--m-warning--hover--Color: #fff;
+  --pf-c-button--m-warning--focus--Color: #fff;
+  --pf-c-button--m-warning--active--Color: #fff;
+  --pf-c-button--m-warning--focus--after--BorderColor: #486b00;
+  --pf-c-button--m-warning--after--BorderColor: #486b00;
+  --pf-c-button--m-warning--active--BackgroundColor: #486b00;
+}
+
+.pf-c-button.warningbtn {
+  --pf-c-button--m-small--FontSize: 0.7rem;
+  --pf-c-button--FontWeight: 900;
+  --pf-c-button--m-warning--Color: #fff;
+  --pf-c-button--m-warning--BackgroundColor: #ec7a08;
+  --pf-c-button--m-warning--hover--BackgroundColor: #c46100;
+  --pf-c-button--m-warning--focus--BackgroundColor: #c46100;
+  --pf-c-button--m-warning--hover--Color: #fff;
+  --pf-c-button--m-warning--focus--Color: #fff;
+  --pf-c-button--m-warning--active--Color: #fff;
+  --pf-c-button--m-warning--active--BackgroundColor: #c46100;
+}
+
+.icon-class {
+  color: #6a6e73;
+}
+
+.icon-class-exclamation {
+  color: #c9190b;
+}
+
+.sign-up-text {
+  color: #151515;
+  font-family: RedHatText;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: left;
+}
