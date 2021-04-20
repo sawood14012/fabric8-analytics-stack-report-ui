@@ -10,17 +10,15 @@ import styles from '@patternfly/react-styles/css/components/Table/table';
 type TableProps = Record<any, any>;
 
 // eslint-disable-next-line
-class AddonsTable extends React.Component {
-  render() {
-    const columns = ['Companion Dependencies', 'Confidence Score', 'Feedback'];
+function AddonsTable () {
+  const columns = ['Companion Dependencies', 'Confidence Score', 'Feedback'];
 
-    return (
-      <Table cells={columns}>
-        <TableHeader />
-        <TableBody />
-      </Table>
-    );
-  }
+  return (
+    <Table cells={columns}>
+      <TableHeader />
+      <TableBody />
+    </Table>
+  );
 }
 
 export default AddonsTable;
