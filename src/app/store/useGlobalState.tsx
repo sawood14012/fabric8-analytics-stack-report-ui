@@ -1,9 +1,6 @@
 import { useReducer } from 'react';
 
-const reducer = (
-  state: Record<string, unknown>,
-  action: Record<string, unknown>,
-) => {
+const reducer = (state: any, action: { type: any; data: any }) => {
   switch (action.type) {
     case 'APIData':
       return {

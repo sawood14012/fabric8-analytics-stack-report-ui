@@ -2,15 +2,14 @@ import React from 'react';
 import useGlobalState from './useGlobalState';
 import Context from './context';
 
-interface IProps {
-  // eslint-disable-next-line
-  children: any;
-}
+type GlobalStateProviderProps = {
+  children: React.ReactNode;
+};
 
-const GlobalStateProvider = ({ children }: IProps) => {
+function GlobalStateProvider({ children }: GlobalStateProviderProps) {
   return (
     <Context.Provider value={useGlobalState()}>{children}</Context.Provider>
   );
-};
+}
 
 export default GlobalStateProvider;
