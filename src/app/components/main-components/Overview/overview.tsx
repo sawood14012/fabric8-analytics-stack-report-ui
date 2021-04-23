@@ -15,10 +15,12 @@ import {
   TabTitleIcon,
 } from '@patternfly/react-core';
 import { ChartDonut } from '@patternfly/react-charts';
+import { Logger } from 'src/app/utils/logger';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import ZoneIcon from '@patternfly/react-icons/dist/js/icons/zone-icon';
+import AddonsTable from '../../shared-components/addons-primary/add-ons';
+import SelectableDataList from '../../shared-components/addons-primary/datalist';
 import './overview.scss';
-import { Logger } from 'src/app/utils/logger';
 
 class OverviewCard extends React.Component {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,7 +38,7 @@ class OverviewCard extends React.Component {
           </TextContent>
         </CardTitle>
         <CardBody>
-          <Tabs activeKey={0}>
+          <Tabs activeKey={1}>
             <Tab
               onSelect={() => {
                 Logger.log('hello');
@@ -65,7 +67,8 @@ class OverviewCard extends React.Component {
                 </>
               }
             >
-              Add-ons
+              <AddonsTable />
+              <SelectableDataList />
             </Tab>
           </Tabs>
         </CardBody>
