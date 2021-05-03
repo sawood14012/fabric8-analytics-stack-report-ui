@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { GetStackDetails } from 'src/app/utils/apiCalls';
 import {
   Page,
   PageHeader,
@@ -42,7 +43,7 @@ const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
     /// >
     <NavigationBar />
   );
-
+  GetStackDetails();
   return (
     <Page header={Header}>
       <PageSection>
