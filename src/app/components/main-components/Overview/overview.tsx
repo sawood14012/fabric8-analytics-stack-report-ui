@@ -121,8 +121,13 @@ const OverviewContent = () => {
   const [criticalVulnerabilities, setCriticalVulnerabilities] = useState(0);
   useEffect(() => {
     const analyzedDependencies = globalState.APIData?.analyzed_dependencies
-    setAnalyzedDependenciesCount(analyzedDependencies?.length);
-  }, []);
+    // @ts-ignore
+    analyzedDependencies?.forEach(dep => {
+      if (dep.public_vulnerabilities || dep.private_vulnerabilities) {
+        setAnalyzedDependenciesCount(analyzedDependenciesCount + 1);
+      }
+    });
+  }, [globalState]);
   return (
     <Grid>
       <GridItem span={4} rowSpan={4}>
