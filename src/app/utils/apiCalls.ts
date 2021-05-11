@@ -21,7 +21,7 @@ function GetStackDetails(requestId = 'ed16d5db91d64e8d8d0ea6d1ba6b727e') {
       .get(devUrl)
       .then((res: { data: any }) => {
         globalDispatch({ type: 'APIData', data: res.data });
-        console.log(res.data);
+        Logger.log(res.data);
       })
       .catch((err) => {
         Logger.log(err);
