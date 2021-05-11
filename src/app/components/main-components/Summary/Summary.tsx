@@ -97,7 +97,7 @@ class SummaryCard extends React.Component<SummaryProps, SummaryState> {
             </GridItem>
             <GridItem span={6}>
               <Security
-                vlunerablities={security.vlunerablities}
+                vulnerablities={security.vlunerablities}
                 vulnerable={security.vulnerable}
               />
             </GridItem>

@@ -8,19 +8,16 @@ import {
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon, FileAltIcon } from '@patternfly/react-icons';
 
-type LicensesProps = Record<string, number>;
+type LicensesProps = {
+  conflicts: number;
+  unknown: number;
+};
 
-class Licenses extends React.Component<LicensesProps> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: LicensesProps) {
-    super(props);
-    this.state = {};
-  }
+const Licenses = ({ conflicts, unknown }: LicensesProps) => {
+  const condition = conflicts > 0 || unknown > 0;
 
-  render() {
-    const { conflicts, unknown } = this.props;
-    const condition = conflicts > 0 || unknown > 0;
-    return [
+  return (
+    <div>
       <Flex key="1">
         <FlexItem>
           <FileAltIcon className="icon-class" />
@@ -35,7 +32,7 @@ class Licenses extends React.Component<LicensesProps> {
             <ExclamationCircleIcon className="icon-class-exclamation" />
           </FlexItem>
         )}
-      </Flex>,
+      </Flex>
       <Flex key="2" direction={{ default: 'column' }}>
         {conflicts >= 0 && (
           <FlexItem spacer={{ default: 'spacerNone' }}>
@@ -61,9 +58,9 @@ class Licenses extends React.Component<LicensesProps> {
             </Split>
           </FlexItem>
         )}
-      </Flex>,
-    ];
-  }
-}
+      </Flex>
+    </div>
+  );
+};
 
 export default Licenses;
