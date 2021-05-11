@@ -8,18 +8,15 @@ import {
 } from '@patternfly/react-core';
 import { CubeIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 
-type DependencyProps = Record<string, number>;
+type DependencyProps = {
+  analyzed: number;
+  transitive: number;
+  unknown: number;
+};
 
-class Dependency extends React.Component<DependencyProps> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: DependencyProps) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    const { analyzed, transitive, unknown } = this.props;
-    return [
+const Dependency = ({ analyzed, transitive, unknown }: DependencyProps) => {
+  return (
+    <div>
       <Flex key="1">
         <FlexItem>
           <CubeIcon className="icon-class" />
@@ -34,7 +31,7 @@ class Dependency extends React.Component<DependencyProps> {
             <ExclamationCircleIcon className="icon-class-exclamation" />
           </FlexItem>
         )}
-      </Flex>,
+      </Flex>
       <Flex key="2" direction={{ default: 'column' }}>
         <FlexItem spacer={{ default: 'spacerNone' }}>
           <Split hasGutter>
@@ -68,9 +65,9 @@ class Dependency extends React.Component<DependencyProps> {
             </Split>
           </FlexItem>
         )}
-      </Flex>,
-    ];
-  }
-}
+      </Flex>
+    </div>
+  );
+};
 
 export default Dependency;

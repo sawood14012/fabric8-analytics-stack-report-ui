@@ -87,63 +87,47 @@ const ModalComponent = ({ isModalOpen, handleToggle }: Modalprops) => {
   );
 };
 
-class BTSynktoken extends React.Component<Signprop, State> {
-  handleModalToggle: () => void;
+const BTSynktoken = ({ isUUID }: Signprop) => {
+  const [isModalOpen, setModalValue] = useState(false);
 
-  constructor(props: Signprop) {
-    super(props);
-    this.state = {
-      isModalOpen: false,
-    };
-    this.handleModalToggle = () => {
-      this.setState(({ isModalOpen }) => ({
-        isModalOpen: !isModalOpen,
-      }));
-    };
-  }
-
-  render() {
-    const { isUUID } = this.props;
-    const { isModalOpen } = this.state;
-    if (isUUID === false) {
-      return (
-        <div>
-          <Button
-            icon={<ExclamationTriangleIcon />}
-            iconPosition="right"
-            className="warningbtn"
-            isSmall
-            variant="warning"
-            onClick={this.handleModalToggle}
-          >
-            Snyk Token
-          </Button>
-          <ModalComponent
-            isModalOpen={isModalOpen}
-            handleToggle={this.handleModalToggle}
-          />
-        </div>
-      );
-    }
+  if (isUUID === false) {
     return (
       <div>
         <Button
-          icon={<CheckSquareIcon />}
+          icon={<ExclamationTriangleIcon />}
           iconPosition="right"
-          className="mybutton"
+          className="warningbtn"
           isSmall
           variant="warning"
-          onClick={this.handleModalToggle}
+          onClick={() => setModalValue(!isModalOpen)}
         >
           Snyk Token
         </Button>
         <ModalComponent
           isModalOpen={isModalOpen}
-          handleToggle={this.handleModalToggle}
+          handleToggle={() => setModalValue(!isModalOpen)}
         />
       </div>
     );
   }
-}
+  return (
+    <div>
+      <Button
+        icon={<CheckSquareIcon />}
+        iconPosition="right"
+        className="mybutton"
+        isSmall
+        variant="warning"
+        onClick={() => setModalValue(!isModalOpen)}
+      >
+        Snyk Token
+      </Button>
+      <ModalComponent
+        isModalOpen={isModalOpen}
+        handleToggle={() => setModalValue(!isModalOpen)}
+      />
+    </div>
+  );
+};
 
 export default BTSynktoken;

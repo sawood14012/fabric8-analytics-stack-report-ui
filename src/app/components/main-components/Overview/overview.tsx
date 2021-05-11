@@ -15,11 +15,11 @@ import {
   TabTitleIcon,
 } from '@patternfly/react-core';
 import { ChartDonut } from '@patternfly/react-charts';
-import { Logger } from 'src/app/utils/logger';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import ZoneIcon from '@patternfly/react-icons/dist/js/icons/zone-icon';
 import AddonsTable from '../../shared-components/addons-primary/add-ons';
 import SelectableDataList from '../../shared-components/addons-primary/datalist';
+import { Logger } from '../../../utils/logger';
 import './overview.scss';
 
 class OverviewCard extends React.Component {

@@ -8,18 +8,13 @@ import {
 } from '@patternfly/react-core';
 import { ZoneIcon } from '@patternfly/react-icons';
 
-type AddonsProps = Record<string, number>;
+type AddonsProps = {
+  companion: number;
+};
 
-class Addons extends React.Component<AddonsProps> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: AddonsProps) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    const { companion } = this.props;
-    return [
+const Addons = ({ companion }: AddonsProps) => {
+  return (
+    <div>
       <Flex key="1">
         <FlexItem>
           <ZoneIcon className="icon-class" />
@@ -29,7 +24,7 @@ class Addons extends React.Component<AddonsProps> {
             Add-ons
           </Title>
         </FlexItem>
-      </Flex>,
+      </Flex>
       <Flex key="2" direction={{ default: 'column' }}>
         {companion > 0 && (
           <FlexItem spacer={{ default: 'spacerNone' }}>
@@ -43,9 +38,9 @@ class Addons extends React.Component<AddonsProps> {
             </Split>
           </FlexItem>
         )}
-      </Flex>,
-    ];
-  }
-}
+      </Flex>
+    </div>
+  );
+};
 
 export default Addons;

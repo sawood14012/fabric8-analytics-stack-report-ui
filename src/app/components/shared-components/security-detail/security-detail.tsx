@@ -8,19 +8,15 @@ import {
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon, SecurityIcon } from '@patternfly/react-icons';
 
-type SecurityProps = Record<string, number>;
+type SecurityProps = {
+  vulnerablities: number;
+  vulnerable: number;
+};
 
-class Security extends React.Component<SecurityProps> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: SecurityProps) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    const { vlunerablities, vulnerable } = this.props;
-    const condition = vlunerablities > 0 || vulnerable > 0;
-    return [
+const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
+  const condition = vulnerablities > 0 || vulnerable > 0;
+  return (
+    <div>
       <Flex key="1">
         <FlexItem>
           <SecurityIcon className="icon-class" />
@@ -35,15 +31,15 @@ class Security extends React.Component<SecurityProps> {
             <ExclamationCircleIcon className="icon-class-exclamation" />
           </FlexItem>
         )}
-      </Flex>,
+      </Flex>
       <Flex key="2" direction={{ default: 'column' }}>
-        {vlunerablities >= 0 && (
+        {vulnerablities >= 0 && (
           <FlexItem spacer={{ default: 'spacerNone' }}>
             <Split hasGutter>
               <SplitItem>Total vulnerabilities:</SplitItem>
               <SplitItem>
                 <Title headingLevel="h6" size="md">
-                  {vlunerablities}
+                  {vulnerablities}
                 </Title>
               </SplitItem>
             </Split>
@@ -61,9 +57,9 @@ class Security extends React.Component<SecurityProps> {
             </Split>
           </FlexItem>
         )}
-      </Flex>,
-    ];
-  }
-}
+      </Flex>
+    </div>
+  );
+};
 
 export default Security;
