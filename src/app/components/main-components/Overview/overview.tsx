@@ -15,7 +15,7 @@ import {
   TabTitleIcon,
 } from '@patternfly/react-core';
 import { ChartDonut } from '@patternfly/react-charts';
-import { Logger } from 'src/app/utils/logger';
+import { Logger } from '../../../utils/logger';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import ZoneIcon from '@patternfly/react-icons/dist/js/icons/zone-icon';
 import AddonsTable from '../../shared-components/addons-primary/add-ons';

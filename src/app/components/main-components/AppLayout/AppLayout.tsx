@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { GetStackDetails } from 'src/app/utils/apiCalls';
+import { GetStackDetails } from '../../../utils/apiCalls';
 import {
   Page,
   PageHeader,
