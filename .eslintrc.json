@@ -24,7 +24,15 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "react/destructuring-assignment": [
+      "warn",
+      "never",
+      {
+        "ignoreClassFields": true
+      }
+    ],
+    "prettier/prettier": "warn",
+    "react/prop-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-one-expression-per-line": "off",
     "no-use-before-define": "off",

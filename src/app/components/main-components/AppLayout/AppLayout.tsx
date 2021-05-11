@@ -50,7 +50,7 @@ const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
         <Grid hasGutter>
           <GridItem span={5}>{Summary}</GridItem>
           <GridItem span={7}>{Overview}</GridItem>
-          <GridItem span={12}>{Table}</GridItem>
+          {/* <GridItem span={12}>{Table}</GridItem> */}
         </Grid>
       </PageSection>
     </Page>

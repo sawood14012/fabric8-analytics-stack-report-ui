@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Context from 'src/app/store/context';
 import {
   Card,
   CardTitle,
@@ -22,59 +23,53 @@ import SelectableDataList from '../../shared-components/addons-primary/datalist'
 import { Logger } from '../../../utils/logger';
 import './overview.scss';
 
-class OverviewCard extends React.Component {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-  }
+function OverviewCard() {
+  const [activeTab, setActiveTab] = useState(0);
 
-  render() {
-    return (
-      <Card className="pf-global--BorderColor--100">
-        <CardTitle>
-          <TextContent>
-            <Text className="overview-title">Overview of the Stack</Text>
-          </TextContent>
-        </CardTitle>
-        <CardBody>
-          <Tabs activeKey={1}>
-            <Tab
-              onSelect={() => {
-                Logger.log('hello');
-              }}
-              eventKey={0}
-              title={
-                <>
-                  <TabTitleIcon>
-                    <SecurityIcon />
-                  </TabTitleIcon>
-                  <TabTitleText>Security Issues</TabTitleText>
-                </>
-              }
-            >
-              <br />
-              <OverviewContent />
-            </Tab>
-            <Tab
-              eventKey={1}
-              title={
-                <>
-                  <TabTitleIcon>
-                    <ZoneIcon />
-                  </TabTitleIcon>
-                  <TabTitleText>Add-ons</TabTitleText>
-                </>
-              }
-            >
-              <AddonsTable />
-              <SelectableDataList />
-            </Tab>
-          </Tabs>
-        </CardBody>
-      </Card>
-    );
-  }
+  return (
+    <Card className="pf-global--BorderColor--100">
+      <CardTitle>
+        <TextContent>
+          <Text className="overview-title">Overview of the Stack</Text>
+        </TextContent>
+      </CardTitle>
+      <CardBody>
+        <Tabs activeKey={activeTab}>
+          <Tab
+            onSelect={() => {
+              Logger.log('hello');
+            }}
+            eventKey={0}
+            title={
+              <>
+                <TabTitleIcon>
+                  <SecurityIcon />
+                </TabTitleIcon>
+                <TabTitleText>Security Issues</TabTitleText>
+              </>
+            }
+          >
+            <br />
+            <OverviewContent />
+          </Tab>
+          <Tab
+            eventKey={1}
+            title={
+              <>
+                <TabTitleIcon>
+                  <ZoneIcon />
+                </TabTitleIcon>
+                <TabTitleText>Add-ons</TabTitleText>
+              </>
+            }
+          >
+            <AddonsTable />
+            <SelectableDataList />
+          </Tab>
+        </Tabs>
+      </CardBody>
+    </Card>
+  );
 }
 
 const SummaryDonut = () => (
@@ -94,10 +89,10 @@ const SummaryDonut = () => (
     width={202}
   />
 );
-
-const OverviewSummary = () => (
+// @ts-ignore
+const OverviewSummary = (props) => (
   <TextContent className="vulnerability-summary">
-    <Text>87 direct vulnerabilities in 12 dependencies</Text>
+    <Text>87 direct vulnerabilities in {props.analyzedDependenciesCount} dependencies</Text>
   </TextContent>
 );
 
@@ -118,36 +113,47 @@ const VulnerabilityCount = () => (
   </GridItem>
 );
 
-const OverviewContent = () => (
-  <Grid>
-    <GridItem span={4} rowSpan={4}>
-      <Flex>
-        <FlexItem>
-          <SummaryDonut />
-        </FlexItem>
-      </Flex>
-    </GridItem>
-    <GridItem span={8} rowSpan={4}>
-      <GridItem span={8}>
+const OverviewContent = () => {
+  // @ts-ignore
+  const { globalState } = useContext(Context);
+  const [analyzedDependenciesCount, setAnalyzedDependenciesCount] = useState(0);
+  const [directVulnerabilities, setDirectVulnerabilities] = useState(0);
+  const [criticalVulnerabilities, setCriticalVulnerabilities] = useState(0);
+  useEffect(() => {
+    const analyzedDependencies = globalState.APIData?.analyzed_dependencies
+    setAnalyzedDependenciesCount(analyzedDependencies?.length);
+  }, []);
+  return (
+    <Grid>
+      <GridItem span={4} rowSpan={4}>
         <Flex>
           <FlexItem>
-            <OverviewSummary />
+            <SummaryDonut />
           </FlexItem>
         </Flex>
       </GridItem>
-      <GridItem span={8}>
-        <Flex>
-          <FlexItem>
-            <VersionUpdates />
-          </FlexItem>
-        </Flex>
+      <GridItem span={8} rowSpan={4}>
+        <GridItem span={8}>
+          <Flex>
+            <FlexItem>
+              <OverviewSummary analyzedDependenciesCount={analyzedDependenciesCount} />
+            </FlexItem>
+          </Flex>
+        </GridItem>
+        <GridItem span={8}>
+          <Flex>
+            <FlexItem>
+              <VersionUpdates />
+            </FlexItem>
+          </Flex>
+        </GridItem>
+        <VulnerabilityCount />
+        <VulnerabilityCount />
+        <VulnerabilityCount />
+        <VulnerabilityCount />
+        <VulnerabilityCount />
       </GridItem>
-      <VulnerabilityCount />
-      <VulnerabilityCount />
-      <VulnerabilityCount />
-      <VulnerabilityCount />
-      <VulnerabilityCount />
-    </GridItem>
-  </Grid>
-);
+    </Grid>
+  );
+};
 export default OverviewCard;
