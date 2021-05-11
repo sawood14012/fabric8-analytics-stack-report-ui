@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { GetStackDetails } from '../../../utils/apiCalls';
 import {
   Page,
   PageHeader,
@@ -11,6 +10,7 @@ import {
   NavList,
   NavItem,
 } from '@patternfly/react-core';
+import { GetStackDetails } from '../../../utils/apiCalls';
 
 class NavigationBar extends React.Component {
   constructor(props: any) {
