@@ -24,7 +24,7 @@ import { Logger } from '../../../utils/logger';
 import './overview.scss';
 
 function OverviewCard() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(1);
 
   return (
     <Card className="pf-global--BorderColor--100">
