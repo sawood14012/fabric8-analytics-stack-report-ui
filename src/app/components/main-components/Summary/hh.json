@@ -1,0 +1,2996 @@
+{
+    "analyzed_dependencies": [
+        {
+            "dependencies": [
+                {
+                    "dependencies": null,
+                    "name": "python-dateutil",
+                    "version": "2.7.3"
+                },
+                {
+                    "dependencies": null,
+                    "name": "six",
+                    "version": "1.12.0"
+                }
+            ],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "31",
+                "dependent_repos": "3564",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2019-09-12 01:02:32",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "32",
+                "used_by": [
+                    {
+                        "name": "CanalTP/navitia",
+                        "stars": "217"
+                    },
+                    {
+                        "name": "DormyMo/SpiderKeeper",
+                        "stars": "890"
+                    },
+                    {
+                        "name": "RusticiSoftware/TinCanPython",
+                        "stars": "11"
+                    },
+                    {
+                        "name": "armadillica/flamenco",
+                        "stars": "124"
+                    },
+                    {
+                        "name": "biosustain/potion",
+                        "stars": "384"
+                    },
+                    {
+                        "name": "getredash/redash",
+                        "stars": "6989"
+                    },
+                    {
+                        "name": "hashbang/hashbang.sh",
+                        "stars": "48"
+                    },
+                    {
+                        "name": "jcjohnson/densecap",
+                        "stars": "769"
+                    },
+                    {
+                        "name": "mediadrop/mediadrop",
+                        "stars": "649"
+                    },
+                    {
+                        "name": "noirbizarre/flask-restplus",
+                        "stars": "470"
+                    }
+                ],
+                "watchers": "-1"
+            },
+            "latest_version": "9.0.1",
+            "licenses": [
+                "UNKNOWN"
+            ],
+            "name": "aniso8601",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "9.0.1",
+            "url": "https://snyk.io/vuln/pip:aniso8601",
+            "version": "1.2.0",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "29",
+                "dependent_repos": "8930",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2015-07-23 12:26:37",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "7",
+                "used_by": [
+                    {
+                        "name": "bslatkin/dpxdt",
+                        "stars": "1347"
+                    },
+                    {
+                        "name": "flask-restful/flask-restful",
+                        "stars": "2834"
+                    },
+                    {
+                        "name": "getredash/redash",
+                        "stars": "6989"
+                    },
+                    {
+                        "name": "idan/oauthlib",
+                        "stars": "1374"
+                    },
+                    {
+                        "name": "maxcountryman/flask-login",
+                        "stars": "1465"
+                    },
+                    {
+                        "name": "mitmproxy/mitmproxy",
+                        "stars": "7918"
+                    },
+                    {
+                        "name": "saimn/sigal",
+                        "stars": "340"
+                    },
+                    {
+                        "name": "sdispater/orator",
+                        "stars": "462"
+                    },
+                    {
+                        "name": "stormpath/stormpath-flask",
+                        "stars": "155"
+                    },
+                    {
+                        "name": "umutbozkurt/django-rest-framework-mongoengine",
+                        "stars": "231"
+                    }
+                ],
+                "watchers": "-1"
+            },
+            "latest_version": "-1",
+            "licenses": [
+                "MIT License"
+            ],
+            "name": "blinker",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "",
+            "url": "https://snyk.io/vuln/pip:blinker",
+            "version": "1.4",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "37",
+                "dependent_projects": "28",
+                "dependent_repos": "15035",
+                "first_release_date": null,
+                "forks_count": "205",
+                "issues": {
+                    "month": {
+                        "closed": 1,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 5,
+                        "opened": 11
+                    }
+                },
+                "latest_release_duration": "2017-06-08 14:34:33",
+                "open_issues_count": "63",
+                "pull_requests": {
+                    "month": {
+                        "closed": 2,
+                        "opened": 5
+                    },
+                    "year": {
+                        "closed": 23,
+                        "opened": 18
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "1505",
+                "total_releases": "11",
+                "used_by": [
+                    {
+                        "name": "DenisCarriere/geocoder",
+                        "stars": "663"
+                    },
+                    {
+                        "name": "DenisCarriere/geocoder",
+                        "stars": "685"
+                    },
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "1973"
+                    },
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "1989"
+                    },
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "1999"
+                    },
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "2222"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3172"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3184"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3186"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3275"
+                    },
+                    {
+                        "name": "aio-libs/aiohttp",
+                        "stars": "3433"
+                    },
+                    {
+                        "name": "aio-libs/aiohttp",
+                        "stars": "3474"
+                    },
+                    {
+                        "name": "aio-libs/aiohttp",
+                        "stars": "3532"
+                    },
+                    {
+                        "name": "aio-libs/aiohttp",
+                        "stars": "3846"
+                    },
+                    {
+                        "name": "binux/pyspider",
+                        "stars": "9151"
+                    },
+                    {
+                        "name": "binux/pyspider",
+                        "stars": "9228"
+                    },
+                    {
+                        "name": "binux/pyspider",
+                        "stars": "9232"
+                    },
+                    {
+                        "name": "binux/pyspider",
+                        "stars": "9449"
+                    },
+                    {
+                        "name": "buriy/python-readability",
+                        "stars": "1178"
+                    },
+                    {
+                        "name": "buriy/python-readability",
+                        "stars": "1183"
+                    },
+                    {
+                        "name": "channelcat/sanic",
+                        "stars": "6043"
+                    },
+                    {
+                        "name": "channelcat/sanic",
+                        "stars": "6122"
+                    },
+                    {
+                        "name": "channelcat/sanic",
+                        "stars": "6130"
+                    },
+                    {
+                        "name": "channelcat/sanic",
+                        "stars": "6826"
+                    },
+                    {
+                        "name": "home-assistant/home-assistant",
+                        "stars": "7400"
+                    },
+                    {
+                        "name": "home-assistant/home-assistant",
+                        "stars": "7671"
+                    },
+                    {
+                        "name": "home-assistant/home-assistant",
+                        "stars": "7681"
+                    },
+                    {
+                        "name": "home-assistant/home-assistant",
+                        "stars": "8620"
+                    },
+                    {
+                        "name": "html5lib/html5lib-python",
+                        "stars": "596"
+                    },
+                    {
+                        "name": "html5lib/html5lib-python",
+                        "stars": "600"
+                    },
+                    {
+                        "name": "html5lib/html5lib-python",
+                        "stars": "629"
+                    },
+                    {
+                        "name": "kennethreitz/pipenv",
+                        "stars": "4859"
+                    },
+                    {
+                        "name": "miguelgrinberg/python-socketio",
+                        "stars": "448"
+                    },
+                    {
+                        "name": "miguelgrinberg/python-socketio",
+                        "stars": "465"
+                    },
+                    {
+                        "name": "miguelgrinberg/python-socketio",
+                        "stars": "494"
+                    },
+                    {
+                        "name": "spyder-ide/spyder",
+                        "stars": "2101"
+                    },
+                    {
+                        "name": "spyder-ide/spyder",
+                        "stars": "2229"
+                    },
+                    {
+                        "name": "spyder-ide/spyder",
+                        "stars": "2231"
+                    }
+                ],
+                "watchers": "45"
+            },
+            "latest_version": "4.0.0",
+            "licenses": [
+                "LGPL"
+            ],
+            "name": "chardet",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "3.0.4",
+            "url": "https://snyk.io/vuln/pip:chardet",
+            "version": "3.0.4",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "36",
+                "dependent_projects": "72",
+                "dependent_repos": "9336",
+                "first_release_date": null,
+                "forks_count": "188",
+                "issues": {
+                    "month": {
+                        "closed": 1,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 15,
+                        "opened": 29
+                    }
+                },
+                "latest_release_duration": "2018-10-10 14:47:29",
+                "open_issues_count": "117",
+                "pull_requests": {
+                    "month": {
+                        "closed": 0,
+                        "opened": 0
+                    },
+                    "year": {
+                        "closed": 10,
+                        "opened": 13
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "2463",
+                "total_releases": "38",
+                "used_by": [
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3172"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3182"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3276"
+                    },
+                    {
+                        "name": "PokemonGoF/PokemonGo-Bot",
+                        "stars": "3696"
+                    },
+                    {
+                        "name": "PokemonGoF/PokemonGo-Bot",
+                        "stars": "3707"
+                    },
+                    {
+                        "name": "PokemonGoF/PokemonGo-Bot",
+                        "stars": "3755"
+                    },
+                    {
+                        "name": "achillean/shodan-python",
+                        "stars": "420"
+                    },
+                    {
+                        "name": "achillean/shodan-python",
+                        "stars": "427"
+                    },
+                    {
+                        "name": "achillean/shodan-python",
+                        "stars": "472"
+                    },
+                    {
+                        "name": "docker/compose",
+                        "stars": "10727"
+                    },
+                    {
+                        "name": "docker/compose",
+                        "stars": "9627"
+                    },
+                    {
+                        "name": "docker/compose",
+                        "stars": "9678"
+                    },
+                    {
+                        "name": "eudicots/Cactus",
+                        "stars": "3042"
+                    },
+                    {
+                        "name": "eudicots/Cactus",
+                        "stars": "3048"
+                    },
+                    {
+                        "name": "eudicots/Cactus",
+                        "stars": "3080"
+                    },
+                    {
+                        "name": "h2oai/h2o-3",
+                        "stars": "2187"
+                    },
+                    {
+                        "name": "h2oai/h2o-3",
+                        "stars": "2209"
+                    },
+                    {
+                        "name": "h2oai/h2o-3",
+                        "stars": "2530"
+                    },
+                    {
+                        "name": "kennethreitz/httpbin",
+                        "stars": "4995"
+                    },
+                    {
+                        "name": "metacloud/molecule",
+                        "stars": "622"
+                    },
+                    {
+                        "name": "metacloud/molecule",
+                        "stars": "641"
+                    },
+                    {
+                        "name": "metacloud/molecule",
+                        "stars": "763"
+                    },
+                    {
+                        "name": "nvbn/thefuck",
+                        "stars": "28176"
+                    },
+                    {
+                        "name": "nvbn/thefuck",
+                        "stars": "28352"
+                    },
+                    {
+                        "name": "nvbn/thefuck",
+                        "stars": "31541"
+                    },
+                    {
+                        "name": "pallets/click",
+                        "stars": "4468"
+                    },
+                    {
+                        "name": "pallets/click",
+                        "stars": "4506"
+                    },
+                    {
+                        "name": "pallets/click",
+                        "stars": "4636"
+                    },
+                    {
+                        "name": "servo/servo",
+                        "stars": "9517"
+                    },
+                    {
+                        "name": "servo/servo",
+                        "stars": "9583"
+                    }
+                ],
+                "watchers": "38"
+            },
+            "latest_version": "0.4.4",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "colorama",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "",
+            "url": "https://snyk.io/vuln/pip:colorama",
+            "version": "0.3.9",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "223",
+                "dependent_repos": "21297",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2019-07-30 10:06:52",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "23",
+                "used_by": [
+                    {
+                        "name": "Miserlou/Zappa",
+                        "stars": "4433"
+                    },
+                    {
+                        "name": "Miserlou/Zappa",
+                        "stars": "4981"
+                    },
+                    {
+                        "name": "amoffat/sh",
+                        "stars": "4025"
+                    },
+                    {
+                        "name": "amoffat/sh",
+                        "stars": "4079"
+                    },
+                    {
+                        "name": "boto/botocore",
+                        "stars": "359"
+                    },
+                    {
+                        "name": "boto/botocore",
+                        "stars": "379"
+                    },
+                    {
+                        "name": "carltongibson/django-filter",
+                        "stars": "1810"
+                    },
+                    {
+                        "name": "carltongibson/django-filter",
+                        "stars": "1900"
+                    },
+                    {
+                        "name": "dbader/schedule",
+                        "stars": "3231"
+                    },
+                    {
+                        "name": "dbader/schedule",
+                        "stars": "3345"
+                    },
+                    {
+                        "name": "django/django",
+                        "stars": "26970"
+                    },
+                    {
+                        "name": "django/django",
+                        "stars": "29030"
+                    },
+                    {
+                        "name": "oddbird/susy",
+                        "stars": "3800"
+                    },
+                    {
+                        "name": "oddbird/susy",
+                        "stars": "3822"
+                    },
+                    {
+                        "name": "python-pillow/Pillow",
+                        "stars": "3750"
+                    },
+                    {
+                        "name": "python-pillow/Pillow",
+                        "stars": "4055"
+                    },
+                    {
+                        "name": "requests/requests",
+                        "stars": "26454"
+                    },
+                    {
+                        "name": "requests/requests",
+                        "stars": "28116"
+                    },
+                    {
+                        "name": "twilio/twilio-php",
+                        "stars": "841"
+                    },
+                    {
+                        "name": "twilio/twilio-php",
+                        "stars": "859"
+                    }
+                ],
+                "watchers": "-1"
+            },
+            "latest_version": "0.16",
+            "licenses": [
+                "2-Clause BSD",
+                "GPL 3 (see COPYING.txt)",
+                "Python",
+                "public domain"
+            ],
+            "name": "docutils",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "0.16",
+            "url": "https://snyk.io/vuln/pip:docutils",
+            "version": "0.14",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "34",
+                "dependent_projects": "13",
+                "dependent_repos": "36253",
+                "first_release_date": null,
+                "forks_count": "180",
+                "issues": {
+                    "month": {
+                        "closed": 1,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 6,
+                        "opened": 5
+                    }
+                },
+                "latest_release_duration": "2014-03-28 11:09:28",
+                "open_issues_count": "1",
+                "pull_requests": {
+                    "month": {
+                        "closed": 10,
+                        "opened": 10
+                    },
+                    "year": {
+                        "closed": 77,
+                        "opened": 76
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "2205",
+                "total_releases": "17",
+                "used_by": [
+                    {
+                        "name": "NUKnightLab/TimelineJS",
+                        "stars": "8372"
+                    },
+                    {
+                        "name": "NUKnightLab/TimelineJS",
+                        "stars": "8383"
+                    },
+                    {
+                        "name": "Runscope/httpbin",
+                        "stars": "3807"
+                    },
+                    {
+                        "name": "capitalone/cloud-custodian",
+                        "stars": "860"
+                    },
+                    {
+                        "name": "capitalone/cloud-custodian",
+                        "stars": "879"
+                    },
+                    {
+                        "name": "mattupstate/flask-security",
+                        "stars": "918"
+                    },
+                    {
+                        "name": "mattupstate/flask-security",
+                        "stars": "927"
+                    },
+                    {
+                        "name": "miguelgrinberg/Flask-SocketIO",
+                        "stars": "1688"
+                    },
+                    {
+                        "name": "miguelgrinberg/Flask-SocketIO",
+                        "stars": "1702"
+                    },
+                    {
+                        "name": "miguelgrinberg/python-socketio",
+                        "stars": "448"
+                    },
+                    {
+                        "name": "miguelgrinberg/python-socketio",
+                        "stars": "464"
+                    },
+                    {
+                        "name": "mobolic/facebook-sdk",
+                        "stars": "1972"
+                    },
+                    {
+                        "name": "mobolic/facebook-sdk",
+                        "stars": "1984"
+                    },
+                    {
+                        "name": "pallets/flask",
+                        "stars": "27711"
+                    },
+                    {
+                        "name": "pallets/flask",
+                        "stars": "27952"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5147"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5178"
+                    },
+                    {
+                        "name": "sahat/satellizer",
+                        "stars": "8045"
+                    },
+                    {
+                        "name": "sahat/satellizer",
+                        "stars": "8057"
+                    }
+                ],
+                "watchers": "57"
+            },
+            "latest_version": "2.0.0",
+            "licenses": [
+                "UNKNOWN"
+            ],
+            "name": "itsdangerous",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "1.1.0",
+            "url": "https://snyk.io/vuln/pip:itsdangerous",
+            "version": "0.24",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "0",
+                "dependent_repos": "18",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2016-05-11 18:26:39",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "20",
+                "used_by": [],
+                "watchers": "-1"
+            },
+            "latest_version": "0.2.4",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "jsl",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "",
+            "url": "https://snyk.io/vuln/pip:jsl",
+            "version": "0.2.4",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "905",
+                "dependent_repos": "30170",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2019-07-27 12:48:34",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "134",
+                "used_by": [
+                    {
+                        "name": "Julian/jsonschema",
+                        "stars": "1190"
+                    },
+                    {
+                        "name": "Julian/jsonschema",
+                        "stars": "1234"
+                    },
+                    {
+                        "name": "bradleyayers/django-tables2",
+                        "stars": "719"
+                    },
+                    {
+                        "name": "cobrateam/splinter",
+                        "stars": "1405"
+                    },
+                    {
+                        "name": "cobrateam/splinter",
+                        "stars": "1532"
+                    },
+                    {
+                        "name": "codelucas/newspaper",
+                        "stars": "4799"
+                    },
+                    {
+                        "name": "codelucas/newspaper",
+                        "stars": "4968"
+                    },
+                    {
+                        "name": "django-tastypie/django-tastypie",
+                        "stars": "3213"
+                    },
+                    {
+                        "name": "django-tastypie/django-tastypie",
+                        "stars": "3265"
+                    },
+                    {
+                        "name": "gawel/pyquery",
+                        "stars": "1212"
+                    },
+                    {
+                        "name": "gawel/pyquery",
+                        "stars": "1287"
+                    },
+                    {
+                        "name": "html5lib/html5lib-python",
+                        "stars": "599"
+                    },
+                    {
+                        "name": "html5lib/html5lib-python",
+                        "stars": "629"
+                    },
+                    {
+                        "name": "lorien/grab",
+                        "stars": "1451"
+                    },
+                    {
+                        "name": "lorien/grab",
+                        "stars": "1477"
+                    },
+                    {
+                        "name": "pandas-dev/pandas",
+                        "stars": "10282"
+                    },
+                    {
+                        "name": "pandas-dev/pandas",
+                        "stars": "11234"
+                    },
+                    {
+                        "name": "peterbe/premailer",
+                        "stars": "679"
+                    },
+                    {
+                        "name": "robotframework/robotframework",
+                        "stars": "1520"
+                    },
+                    {
+                        "name": "robotframework/robotframework",
+                        "stars": "1775"
+                    }
+                ],
+                "watchers": "-1"
+            },
+            "latest_version": "4.6.3",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "lxml",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [
+                {
+                    "cve_ids": [
+                        "CVE-2018-19787"
+                    ],
+                    "cvss": 6.5,
+                    "cvss_v3": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                    "cwes": [
+                        "CWE-79"
+                    ],
+                    "id": "SNYK-PYTHON-LXML-72651",
+                    "severity": "medium",
+                    "title": "Cross-site Scripting (XSS)",
+                    "url": "https://snyk.io/vuln/SNYK-PYTHON-LXML-72651"
+                }
+            ],
+            "recommended_version": "4.6.3",
+            "url": "https://snyk.io/vuln/pip:lxml",
+            "version": "4.2.1",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "14",
+                "dependent_projects": "4",
+                "dependent_repos": "6839",
+                "first_release_date": null,
+                "forks_count": "22",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2017-01-26 22:13:14",
+                "open_issues_count": "5",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "189",
+                "total_releases": "11",
+                "used_by": [
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "1973"
+                    },
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "1988"
+                    },
+                    {
+                        "name": "PyCQA/flake8",
+                        "stars": "198"
+                    },
+                    {
+                        "name": "applegrew/django-select2",
+                        "stars": "451"
+                    },
+                    {
+                        "name": "applegrew/django-select2",
+                        "stars": "453"
+                    },
+                    {
+                        "name": "applegrew/django-select2",
+                        "stars": "454"
+                    },
+                    {
+                        "name": "bear/parsedatetime",
+                        "stars": "430"
+                    },
+                    {
+                        "name": "bear/parsedatetime",
+                        "stars": "432"
+                    },
+                    {
+                        "name": "bear/python-twitter",
+                        "stars": "1717"
+                    },
+                    {
+                        "name": "bear/python-twitter",
+                        "stars": "1727"
+                    },
+                    {
+                        "name": "bear/python-twitter",
+                        "stars": "1728"
+                    },
+                    {
+                        "name": "django-nose/django-nose",
+                        "stars": "747"
+                    },
+                    {
+                        "name": "ducu/rq-dashboard",
+                        "stars": "579"
+                    },
+                    {
+                        "name": "openstack-dev/hacking",
+                        "stars": "175"
+                    },
+                    {
+                        "name": "openstack-dev/hacking",
+                        "stars": "177"
+                    },
+                    {
+                        "name": "ottoyiu/django-cors-headers",
+                        "stars": "1513"
+                    },
+                    {
+                        "name": "ottoyiu/django-cors-headers",
+                        "stars": "1533"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5147"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5176"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5178"
+                    },
+                    {
+                        "name": "twilio/twilio-python",
+                        "stars": "909"
+                    },
+                    {
+                        "name": "twilio/twilio-python",
+                        "stars": "921"
+                    }
+                ],
+                "watchers": "13"
+            },
+            "latest_version": "0.6.1",
+            "licenses": [
+                "Expat license"
+            ],
+            "name": "mccabe",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "",
+            "url": "https://snyk.io/vuln/pip:mccabe",
+            "version": "0.6.1",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "11",
+                "dependent_repos": "3963",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2017-01-31 02:42:45",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "15",
+                "used_by": [
+                    {
+                        "name": "ab77/netflix-proxy",
+                        "stars": "732"
+                    },
+                    {
+                        "name": "ab77/netflix-proxy",
+                        "stars": "799"
+                    },
+                    {
+                        "name": "ajenti/ajenti",
+                        "stars": "4678"
+                    },
+                    {
+                        "name": "ajenti/ajenti",
+                        "stars": "4680"
+                    },
+                    {
+                        "name": "ajenti/ajenti",
+                        "stars": "4853"
+                    },
+                    {
+                        "name": "ansible/ansible",
+                        "stars": "24492"
+                    },
+                    {
+                        "name": "ansible/ansible",
+                        "stars": "24516"
+                    },
+                    {
+                        "name": "ansible/ansible",
+                        "stars": "26135"
+                    },
+                    {
+                        "name": "debops/debops-tools",
+                        "stars": "1043"
+                    },
+                    {
+                        "name": "debops/debops-tools",
+                        "stars": "1083"
+                    },
+                    {
+                        "name": "getredash/redash",
+                        "stars": "6989"
+                    },
+                    {
+                        "name": "getredash/redash",
+                        "stars": "6993"
+                    },
+                    {
+                        "name": "getredash/redash",
+                        "stars": "7235"
+                    },
+                    {
+                        "name": "lingthio/Flask-User",
+                        "stars": "510"
+                    },
+                    {
+                        "name": "lingthio/Flask-User",
+                        "stars": "525"
+                    },
+                    {
+                        "name": "mattupstate/flask-security",
+                        "stars": "927"
+                    },
+                    {
+                        "name": "mattupstate/flask-security",
+                        "stars": "929"
+                    },
+                    {
+                        "name": "mattupstate/flask-security",
+                        "stars": "960"
+                    },
+                    {
+                        "name": "mitmproxy/mitmproxy",
+                        "stars": "7918"
+                    },
+                    {
+                        "name": "mitmproxy/mitmproxy",
+                        "stars": "7922"
+                    },
+                    {
+                        "name": "mitmproxy/mitmproxy",
+                        "stars": "8505"
+                    },
+                    {
+                        "name": "odoo/odoo",
+                        "stars": "6888"
+                    },
+                    {
+                        "name": "odoo/odoo",
+                        "stars": "6893"
+                    },
+                    {
+                        "name": "odoo/odoo",
+                        "stars": "7728"
+                    },
+                    {
+                        "name": "pypiserver/pypiserver",
+                        "stars": "378"
+                    },
+                    {
+                        "name": "pypiserver/pypiserver",
+                        "stars": "380"
+                    },
+                    {
+                        "name": "pypiserver/pypiserver",
+                        "stars": "416"
+                    }
+                ],
+                "watchers": "-1"
+            },
+            "latest_version": "1.7.4",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "passlib",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "1.7.4",
+            "url": "https://snyk.io/vuln/pip:passlib",
+            "version": "1.6.5",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "20",
+                "dependent_repos": "59606",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2020-04-06 07:02:16",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "44",
+                "used_by": [
+                    {
+                        "name": "BertrandBordage/django-cachalot",
+                        "stars": "465"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3184"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3186"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3275"
+                    },
+                    {
+                        "name": "blaze/odo",
+                        "stars": "628"
+                    },
+                    {
+                        "name": "django-cache-machine/django-cache-machine",
+                        "stars": "663"
+                    },
+                    {
+                        "name": "django-cache-machine/django-cache-machine",
+                        "stars": "669"
+                    },
+                    {
+                        "name": "django-import-export/django-import-export",
+                        "stars": "997"
+                    },
+                    {
+                        "name": "django/django",
+                        "stars": "27191"
+                    },
+                    {
+                        "name": "django/django",
+                        "stars": "27210"
+                    },
+                    {
+                        "name": "django/django",
+                        "stars": "29003"
+                    },
+                    {
+                        "name": "djangonauts/django-hstore",
+                        "stars": "476"
+                    },
+                    {
+                        "name": "djangonauts/django-hstore",
+                        "stars": "477"
+                    },
+                    {
+                        "name": "flask-admin/flask-admin",
+                        "stars": "2301"
+                    },
+                    {
+                        "name": "flask-admin/flask-admin",
+                        "stars": "2304"
+                    },
+                    {
+                        "name": "flask-admin/flask-admin",
+                        "stars": "2485"
+                    },
+                    {
+                        "name": "jfinkels/flask-restless",
+                        "stars": "779"
+                    },
+                    {
+                        "name": "jfinkels/flask-restless",
+                        "stars": "780"
+                    },
+                    {
+                        "name": "jfinkels/flask-restless",
+                        "stars": "791"
+                    },
+                    {
+                        "name": "kennethreitz/records",
+                        "stars": "3484"
+                    },
+                    {
+                        "name": "lorien/grab",
+                        "stars": "1453"
+                    },
+                    {
+                        "name": "lorien/grab",
+                        "stars": "1454"
+                    },
+                    {
+                        "name": "lorien/grab",
+                        "stars": "1477"
+                    },
+                    {
+                        "name": "marcgibbons/django-rest-swagger",
+                        "stars": "1580"
+                    },
+                    {
+                        "name": "marcgibbons/django-rest-swagger",
+                        "stars": "1581"
+                    },
+                    {
+                        "name": "marcgibbons/django-rest-swagger",
+                        "stars": "1623"
+                    }
+                ],
+                "watchers": "-1"
+            },
+            "latest_version": "2.8.6",
+            "licenses": [
+                "LGPL with exceptions or ZPL"
+            ],
+            "name": "psycopg2",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "2.8.5",
+            "url": "https://snyk.io/vuln/pip:psycopg2",
+            "version": "2.7.4",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "60",
+                "dependent_projects": "7",
+                "dependent_repos": "9606",
+                "first_release_date": null,
+                "forks_count": "478",
+                "issues": {
+                    "month": {
+                        "closed": 2,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 21,
+                        "opened": 24
+                    }
+                },
+                "latest_release_duration": "2018-09-19 12:32:56",
+                "open_issues_count": "11",
+                "pull_requests": {
+                    "month": {
+                        "closed": 1,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 13,
+                        "opened": 13
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "2236",
+                "total_releases": "19",
+                "used_by": [
+                    {
+                        "name": "Azure/azure-cli",
+                        "stars": "451"
+                    },
+                    {
+                        "name": "Azure/azure-cli",
+                        "stars": "459"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3170"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3176"
+                    },
+                    {
+                        "name": "Kinto/kinto",
+                        "stars": "3276"
+                    },
+                    {
+                        "name": "blaze/odo",
+                        "stars": "622"
+                    },
+                    {
+                        "name": "blaze/odo",
+                        "stars": "627"
+                    },
+                    {
+                        "name": "blaze/odo",
+                        "stars": "691"
+                    },
+                    {
+                        "name": "certbot/certbot",
+                        "stars": "18914"
+                    },
+                    {
+                        "name": "certbot/certbot",
+                        "stars": "19025"
+                    },
+                    {
+                        "name": "certbot/certbot",
+                        "stars": "19665"
+                    },
+                    {
+                        "name": "istresearch/scrapy-cluster",
+                        "stars": "338"
+                    },
+                    {
+                        "name": "istresearch/scrapy-cluster",
+                        "stars": "342"
+                    },
+                    {
+                        "name": "istresearch/scrapy-cluster",
+                        "stars": "386"
+                    },
+                    {
+                        "name": "jarun/Buku",
+                        "stars": "1556"
+                    },
+                    {
+                        "name": "kennethreitz/httpbin",
+                        "stars": "4995"
+                    },
+                    {
+                        "name": "paypal/PayPal-Python-SDK",
+                        "stars": "405"
+                    },
+                    {
+                        "name": "paypal/PayPal-Python-SDK",
+                        "stars": "411"
+                    },
+                    {
+                        "name": "paypal/PayPal-Python-SDK",
+                        "stars": "422"
+                    },
+                    {
+                        "name": "pwndbg/pwndbg",
+                        "stars": "632"
+                    },
+                    {
+                        "name": "pwndbg/pwndbg",
+                        "stars": "643"
+                    },
+                    {
+                        "name": "pyinstaller/pyinstaller",
+                        "stars": "3259"
+                    },
+                    {
+                        "name": "pythonnet/pythonnet",
+                        "stars": "703"
+                    },
+                    {
+                        "name": "pythonnet/pythonnet",
+                        "stars": "710"
+                    },
+                    {
+                        "name": "pythonnet/pythonnet",
+                        "stars": "876"
+                    },
+                    {
+                        "name": "qtile/qtile",
+                        "stars": "1188"
+                    },
+                    {
+                        "name": "qtile/qtile",
+                        "stars": "1192"
+                    },
+                    {
+                        "name": "qtile/qtile",
+                        "stars": "1213"
+                    },
+                    {
+                        "name": "swapagarwal/JARVIS-on-Messenger",
+                        "stars": "426"
+                    },
+                    {
+                        "name": "swapagarwal/JARVIS-on-Messenger",
+                        "stars": "431"
+                    }
+                ],
+                "watchers": "92"
+            },
+            "latest_version": "2.20",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "pycparser",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "",
+            "url": "https://snyk.io/vuln/pip:pycparser",
+            "version": "2.18",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "66",
+                "dependent_projects": "25",
+                "dependent_repos": "10010",
+                "first_release_date": null,
+                "forks_count": "145",
+                "issues": {
+                    "month": {
+                        "closed": 2,
+                        "opened": 2
+                    },
+                    "year": {
+                        "closed": 62,
+                        "opened": 66
+                    }
+                },
+                "latest_release_duration": "2019-02-28 19:27:09",
+                "open_issues_count": "81",
+                "pull_requests": {
+                    "month": {
+                        "closed": 5,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 25,
+                        "opened": 25
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "1023",
+                "total_releases": "27",
+                "used_by": [
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "1961"
+                    },
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "1986"
+                    },
+                    {
+                        "name": "PyCQA/flake8",
+                        "stars": "198"
+                    },
+                    {
+                        "name": "aio-libs/aiohttp",
+                        "stars": "3417"
+                    },
+                    {
+                        "name": "aio-libs/aiohttp",
+                        "stars": "3464"
+                    },
+                    {
+                        "name": "davisp/ghp-import",
+                        "stars": "354"
+                    },
+                    {
+                        "name": "davisp/ghp-import",
+                        "stars": "355"
+                    },
+                    {
+                        "name": "maxcountryman/flask-login",
+                        "stars": "1390"
+                    },
+                    {
+                        "name": "maxcountryman/flask-login",
+                        "stars": "1464"
+                    },
+                    {
+                        "name": "openstack-dev/hacking",
+                        "stars": "174"
+                    },
+                    {
+                        "name": "openstack-dev/hacking",
+                        "stars": "177"
+                    },
+                    {
+                        "name": "ottoyiu/django-cors-headers",
+                        "stars": "1532"
+                    },
+                    {
+                        "name": "python-pillow/Pillow",
+                        "stars": "3717"
+                    },
+                    {
+                        "name": "python-pillow/Pillow",
+                        "stars": "3748"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5125"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5171"
+                    },
+                    {
+                        "name": "tmm1/pygments.rb",
+                        "stars": "521"
+                    },
+                    {
+                        "name": "tmm1/pygments.rb",
+                        "stars": "522"
+                    },
+                    {
+                        "name": "xolox/python-coloredlogs",
+                        "stars": "105"
+                    },
+                    {
+                        "name": "xolox/python-coloredlogs",
+                        "stars": "98"
+                    }
+                ],
+                "watchers": "30"
+            },
+            "latest_version": "2.3.1",
+            "licenses": [
+                "MIT"
+            ],
+            "name": "pyflakes",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "2.2.0",
+            "url": "https://snyk.io/vuln/pip:pyflakes",
+            "version": "1.6.0",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "290",
+                "dependent_repos": "28027",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2019-05-08 17:46:30",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "35",
+                "used_by": [],
+                "watchers": "-1"
+            },
+            "latest_version": "2.8.1",
+            "licenses": [
+                "BSD License"
+            ],
+            "name": "pygments",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "2.8.1",
+            "url": "https://snyk.io/vuln/pip:pygments",
+            "version": "2.2.0",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "28",
+                "dependent_projects": "258",
+                "dependent_repos": "27842",
+                "first_release_date": null,
+                "forks_count": "169",
+                "issues": {
+                    "month": {
+                        "closed": 9,
+                        "opened": 6
+                    },
+                    "year": {
+                        "closed": 37,
+                        "opened": 46
+                    }
+                },
+                "latest_release_duration": "2019-11-10 16:51:43",
+                "open_issues_count": "35",
+                "pull_requests": {
+                    "month": {
+                        "closed": 1,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 20,
+                        "opened": 20
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "1101",
+                "total_releases": "44",
+                "used_by": [
+                    {
+                        "name": "Fantomas42/django-blog-zinnia",
+                        "stars": "1464"
+                    },
+                    {
+                        "name": "Fantomas42/django-blog-zinnia",
+                        "stars": "1467"
+                    },
+                    {
+                        "name": "HypothesisWorks/hypothesis-python",
+                        "stars": "2224"
+                    },
+                    {
+                        "name": "RDFLib/rdflib",
+                        "stars": "608"
+                    },
+                    {
+                        "name": "RDFLib/rdflib",
+                        "stars": "668"
+                    },
+                    {
+                        "name": "apiaryio/dredd",
+                        "stars": "1743"
+                    },
+                    {
+                        "name": "apiaryio/dredd",
+                        "stars": "1748"
+                    },
+                    {
+                        "name": "certbot/certbot",
+                        "stars": "19081"
+                    },
+                    {
+                        "name": "certbot/certbot",
+                        "stars": "19194"
+                    },
+                    {
+                        "name": "certbot/certbot",
+                        "stars": "19195"
+                    },
+                    {
+                        "name": "certbot/certbot",
+                        "stars": "19667"
+                    },
+                    {
+                        "name": "edx/edx-platform",
+                        "stars": "3342"
+                    },
+                    {
+                        "name": "miguelgrinberg/python-socketio",
+                        "stars": "465"
+                    },
+                    {
+                        "name": "miguelgrinberg/python-socketio",
+                        "stars": "494"
+                    },
+                    {
+                        "name": "mitmproxy/mitmproxy",
+                        "stars": "7918"
+                    },
+                    {
+                        "name": "mitmproxy/mitmproxy",
+                        "stars": "7922"
+                    },
+                    {
+                        "name": "mitmproxy/mitmproxy",
+                        "stars": "7923"
+                    },
+                    {
+                        "name": "mitmproxy/mitmproxy",
+                        "stars": "8509"
+                    },
+                    {
+                        "name": "odoo/odoo",
+                        "stars": "6888"
+                    },
+                    {
+                        "name": "odoo/odoo",
+                        "stars": "6893"
+                    },
+                    {
+                        "name": "odoo/odoo",
+                        "stars": "6894"
+                    },
+                    {
+                        "name": "odoo/odoo",
+                        "stars": "7735"
+                    },
+                    {
+                        "name": "ottoyiu/django-cors-headers",
+                        "stars": "1533"
+                    },
+                    {
+                        "name": "ottoyiu/django-cors-headers",
+                        "stars": "1535"
+                    },
+                    {
+                        "name": "ottoyiu/django-cors-headers",
+                        "stars": "1599"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5178"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5184"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5377"
+                    },
+                    {
+                        "name": "sciunto-org/python-bibtexparser",
+                        "stars": "110"
+                    },
+                    {
+                        "name": "sciunto-org/python-bibtexparser",
+                        "stars": "129"
+                    }
+                ],
+                "watchers": "22"
+            },
+            "latest_version": "2.4.7",
+            "licenses": [
+                "MIT License"
+            ],
+            "name": "pyparsing",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "2.4.5",
+            "url": "https://snyk.io/vuln/pip:pyparsing",
+            "version": "2.2.0",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencies": null,
+                    "name": "certifi",
+                    "version": "2018.4.16"
+                },
+                {
+                    "dependencies": null,
+                    "name": "requests",
+                    "version": "2.18.4"
+                },
+                {
+                    "dependencies": null,
+                    "name": "urllib3",
+                    "version": "1.22"
+                },
+                {
+                    "dependencies": null,
+                    "name": "idna",
+                    "version": "2.6"
+                },
+                {
+                    "dependencies": null,
+                    "name": "chardet",
+                    "version": "3.0.4"
+                }
+            ],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "19",
+                "dependent_projects": "46",
+                "dependent_repos": "781",
+                "first_release_date": null,
+                "forks_count": "137",
+                "issues": {
+                    "month": {
+                        "closed": 0,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 3,
+                        "opened": 8
+                    }
+                },
+                "latest_release_duration": "2018-12-02 22:51:31",
+                "open_issues_count": "18",
+                "pull_requests": {
+                    "month": {
+                        "closed": 0,
+                        "opened": 0
+                    },
+                    "year": {
+                        "closed": 4,
+                        "opened": 4
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "1754",
+                "total_releases": "9",
+                "used_by": [
+                    {
+                        "name": "Murodese/pynab",
+                        "stars": "172"
+                    },
+                    {
+                        "name": "MycroftAI/mycroft-core",
+                        "stars": "1233"
+                    },
+                    {
+                        "name": "MycroftAI/mycroft-core",
+                        "stars": "1277"
+                    },
+                    {
+                        "name": "MycroftAI/mycroft-core",
+                        "stars": "1333"
+                    },
+                    {
+                        "name": "TechEmpower/FrameworkBenchmarks",
+                        "stars": "2735"
+                    },
+                    {
+                        "name": "TechEmpower/FrameworkBenchmarks",
+                        "stars": "2748"
+                    },
+                    {
+                        "name": "TechEmpower/FrameworkBenchmarks",
+                        "stars": "2749"
+                    },
+                    {
+                        "name": "datasift/datasift-python",
+                        "stars": "47"
+                    },
+                    {
+                        "name": "davidblaisonneau-orange/foreman",
+                        "stars": "5"
+                    },
+                    {
+                        "name": "mozilla/MozDef",
+                        "stars": "1335"
+                    },
+                    {
+                        "name": "mozilla/MozDef",
+                        "stars": "1337"
+                    },
+                    {
+                        "name": "mozilla/MozDef",
+                        "stars": "1339"
+                    },
+                    {
+                        "name": "mozilla/libmozdata",
+                        "stars": "4"
+                    },
+                    {
+                        "name": "openstack/poppy",
+                        "stars": "64"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5147"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5178"
+                    },
+                    {
+                        "name": "quantopian/zipline",
+                        "stars": "5184"
+                    },
+                    {
+                        "name": "sesh/piprot",
+                        "stars": "340"
+                    },
+                    {
+                        "name": "sesh/piprot",
+                        "stars": "342"
+                    },
+                    {
+                        "name": "sesh/piprot",
+                        "stars": "343"
+                    }
+                ],
+                "watchers": "41"
+            },
+            "latest_version": "1.0.0",
+            "licenses": [
+                "Apache License v2"
+            ],
+            "name": "requests-futures",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "",
+            "url": "https://snyk.io/vuln/pip:requests-futures",
+            "version": "0.9.7",
+            "vulnerable_dependencies": [
+                {
+                    "dependencies": null,
+                    "ecosystem": "pypi",
+                    "github": {
+                        "contributors": "30",
+                        "dependent_projects": "13533",
+                        "dependent_repos": "152228",
+                        "first_release_date": null,
+                        "forks_count": "7054",
+                        "issues": {
+                            "month": {
+                                "closed": -1,
+                                "opened": -1
+                            },
+                            "year": {
+                                "closed": -1,
+                                "opened": -1
+                            }
+                        },
+                        "latest_release_duration": "2020-06-17 16:30:08",
+                        "open_issues_count": "219",
+                        "pull_requests": {
+                            "month": {
+                                "closed": -1,
+                                "opened": -1
+                            },
+                            "year": {
+                                "closed": -1,
+                                "opened": -1
+                            }
+                        },
+                        "size": "N/A",
+                        "stargazers_count": "38628",
+                        "total_releases": "137",
+                        "used_by": [
+                            {
+                                "name": "Azure/autorest",
+                                "stars": "892"
+                            },
+                            {
+                                "name": "Sylius/Sylius",
+                                "stars": "3226"
+                            },
+                            {
+                                "name": "Sylius/Sylius",
+                                "stars": "3479"
+                            },
+                            {
+                                "name": "amoffat/sh",
+                                "stars": "4020"
+                            },
+                            {
+                                "name": "amoffat/sh",
+                                "stars": "4076"
+                            },
+                            {
+                                "name": "boto/boto",
+                                "stars": "5930"
+                            },
+                            {
+                                "name": "boto/boto",
+                                "stars": "5973"
+                            },
+                            {
+                                "name": "certbot/certbot",
+                                "stars": "19059"
+                            },
+                            {
+                                "name": "certbot/certbot",
+                                "stars": "19655"
+                            },
+                            {
+                                "name": "docker/docker-py",
+                                "stars": "2482"
+                            },
+                            {
+                                "name": "h2oai/h2o-3",
+                                "stars": "2501"
+                            },
+                            {
+                                "name": "mozilla-b2g/gaia",
+                                "stars": "2058"
+                            },
+                            {
+                                "name": "pyca/cryptography",
+                                "stars": "1589"
+                            },
+                            {
+                                "name": "pyca/cryptography",
+                                "stars": "1720"
+                            },
+                            {
+                                "name": "python-pillow/Pillow",
+                                "stars": "3748"
+                            },
+                            {
+                                "name": "python-pillow/Pillow",
+                                "stars": "4047"
+                            },
+                            {
+                                "name": "requests/requests-oauthlib",
+                                "stars": "695"
+                            },
+                            {
+                                "name": "requests/requests-oauthlib",
+                                "stars": "758"
+                            },
+                            {
+                                "name": "sahat/satellizer",
+                                "stars": "8056"
+                            },
+                            {
+                                "name": "sahat/satellizer",
+                                "stars": "8091"
+                            }
+                        ],
+                        "watchers": "1429"
+                    },
+                    "latest_version": "2.25.1",
+                    "licenses": [
+                        "Apache 2.0"
+                    ],
+                    "name": "requests",
+                    "private_vulnerabilities": [],
+                    "public_vulnerabilities": [
+                        {
+                            "cve_ids": [
+                                "CVE-2018-18074"
+                            ],
+                            "cvss": 9.8,
+                            "cvss_v3": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                            "cwes": [
+                                "CWE-200"
+                            ],
+                            "id": "SNYK-PYTHON-REQUESTS-72435",
+                            "severity": "critical",
+                            "title": "Information Exposure",
+                            "url": "https://snyk.io/vuln/SNYK-PYTHON-REQUESTS-72435"
+                        }
+                    ],
+                    "recommended_version": "2.25.1",
+                    "url": "https://snyk.io/vuln/pip:requests",
+                    "version": "2.18.4",
+                    "vulnerable_dependencies": null
+                },
+                {
+                    "dependencies": null,
+                    "ecosystem": "pypi",
+                    "github": {
+                        "contributors": "-1",
+                        "dependent_projects": "1506",
+                        "dependent_repos": "37717",
+                        "first_release_date": null,
+                        "forks_count": "-1",
+                        "issues": {
+                            "month": {
+                                "closed": -1,
+                                "opened": -1
+                            },
+                            "year": {
+                                "closed": -1,
+                                "opened": -1
+                            }
+                        },
+                        "latest_release_duration": "2020-04-16 15:44:06",
+                        "open_issues_count": "-1",
+                        "pull_requests": {
+                            "month": {
+                                "closed": -1,
+                                "opened": -1
+                            },
+                            "year": {
+                                "closed": -1,
+                                "opened": -1
+                            }
+                        },
+                        "size": "N/A",
+                        "stargazers_count": "-1",
+                        "total_releases": "56",
+                        "used_by": [
+                            {
+                                "name": "DenisCarriere/geocoder",
+                                "stars": "664"
+                            },
+                            {
+                                "name": "DenisCarriere/geocoder",
+                                "stars": "685"
+                            },
+                            {
+                                "name": "HypothesisWorks/hypothesis-python",
+                                "stars": "1989"
+                            },
+                            {
+                                "name": "HypothesisWorks/hypothesis-python",
+                                "stars": "1999"
+                            },
+                            {
+                                "name": "HypothesisWorks/hypothesis-python",
+                                "stars": "2224"
+                            },
+                            {
+                                "name": "Kinto/kinto",
+                                "stars": "3184"
+                            },
+                            {
+                                "name": "Kinto/kinto",
+                                "stars": "3186"
+                            },
+                            {
+                                "name": "Kinto/kinto",
+                                "stars": "3276"
+                            },
+                            {
+                                "name": "coursera-dl/coursera-dl",
+                                "stars": "5198"
+                            },
+                            {
+                                "name": "elastic/elasticsearch-py",
+                                "stars": "1243"
+                            },
+                            {
+                                "name": "elastic/elasticsearch-py",
+                                "stars": "1245"
+                            },
+                            {
+                                "name": "elastic/elasticsearch-py",
+                                "stars": "1383"
+                            },
+                            {
+                                "name": "gabrielfalcao/HTTPretty",
+                                "stars": "1391"
+                            },
+                            {
+                                "name": "gabrielfalcao/HTTPretty",
+                                "stars": "1392"
+                            },
+                            {
+                                "name": "gabrielfalcao/HTTPretty",
+                                "stars": "1406"
+                            },
+                            {
+                                "name": "h2oai/h2o-3",
+                                "stars": "2217"
+                            },
+                            {
+                                "name": "h2oai/h2o-3",
+                                "stars": "2220"
+                            },
+                            {
+                                "name": "h2oai/h2o-3",
+                                "stars": "2504"
+                            },
+                            {
+                                "name": "jplana/python-etcd",
+                                "stars": "326"
+                            },
+                            {
+                                "name": "jplana/python-etcd",
+                                "stars": "327"
+                            },
+                            {
+                                "name": "jplana/python-etcd",
+                                "stars": "335"
+                            },
+                            {
+                                "name": "kubernetes-incubator/client-python",
+                                "stars": "333"
+                            },
+                            {
+                                "name": "lorien/grab",
+                                "stars": "1453"
+                            },
+                            {
+                                "name": "lorien/grab",
+                                "stars": "1455"
+                            },
+                            {
+                                "name": "lorien/grab",
+                                "stars": "1477"
+                            },
+                            {
+                                "name": "pyelasticsearch/pyelasticsearch",
+                                "stars": "329"
+                            },
+                            {
+                                "name": "swagger-api/swagger-codegen",
+                                "stars": "4647"
+                            },
+                            {
+                                "name": "swagger-api/swagger-codegen",
+                                "stars": "4654"
+                            },
+                            {
+                                "name": "swagger-api/swagger-codegen",
+                                "stars": "5231"
+                            }
+                        ],
+                        "watchers": "-1"
+                    },
+                    "latest_version": "1.26.4",
+                    "licenses": [
+                        "MIT"
+                    ],
+                    "name": "urllib3",
+                    "private_vulnerabilities": [],
+                    "public_vulnerabilities": [
+                        {
+                            "cve_ids": [
+                                "CVE-2019-11236"
+                            ],
+                            "cvss": 7.3,
+                            "cvss_v3": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L/E:H/RL:O/RC:C",
+                            "cwes": [
+                                "CWE-93"
+                            ],
+                            "id": "SNYK-PYTHON-URLLIB3-174323",
+                            "severity": "high",
+                            "title": "CRLF injection",
+                            "url": "https://snyk.io/vuln/SNYK-PYTHON-URLLIB3-174323"
+                        },
+                        {
+                            "cve_ids": [
+                                "CVE-2019-11324"
+                            ],
+                            "cvss": 7.5,
+                            "cvss_v3": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+                            "cwes": [
+                                "CWE-295"
+                            ],
+                            "id": "SNYK-PYTHON-URLLIB3-174464",
+                            "severity": "high",
+                            "title": "Improper Certificate Validation",
+                            "url": "https://snyk.io/vuln/SNYK-PYTHON-URLLIB3-174464"
+                        },
+                        {
+                            "cve_ids": [
+                                "CVE-2018-20060"
+                            ],
+                            "cvss": 5.9,
+                            "cvss_v3": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+                            "cwes": [
+                                "CWE-288"
+                            ],
+                            "id": "SNYK-PYTHON-URLLIB3-72681",
+                            "severity": "medium",
+                            "title": "Authentication Bypass",
+                            "url": "https://snyk.io/vuln/SNYK-PYTHON-URLLIB3-72681"
+                        }
+                    ],
+                    "recommended_version": "1.26.4",
+                    "url": "https://snyk.io/vuln/pip:urllib3",
+                    "version": "1.22",
+                    "vulnerable_dependencies": null
+                }
+            ]
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "13",
+                "dependent_projects": "-1",
+                "dependent_repos": "-1",
+                "first_release_date": null,
+                "forks_count": "55",
+                "issues": {
+                    "month": {
+                        "closed": 0,
+                        "opened": 1
+                    },
+                    "year": {
+                        "closed": 3,
+                        "opened": 8
+                    }
+                },
+                "latest_release_duration": "2017-06-01 07:34:46",
+                "open_issues_count": "34",
+                "pull_requests": {
+                    "month": {
+                        "closed": 3,
+                        "opened": 2
+                    },
+                    "year": {
+                        "closed": 3,
+                        "opened": 6
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "201",
+                "total_releases": "-1",
+                "used_by": [],
+                "watchers": "8"
+            },
+            "latest_version": "2.8.5",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "semantic-version",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "",
+            "url": "https://snyk.io/vuln/pip:semantic-version",
+            "version": "2.6.0",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "408",
+                "dependent_projects": "1345",
+                "dependent_repos": "114481",
+                "first_release_date": null,
+                "forks_count": "14303",
+                "issues": {
+                    "month": {
+                        "closed": 25,
+                        "opened": 24
+                    },
+                    "year": {
+                        "closed": 170,
+                        "opened": 168
+                    }
+                },
+                "latest_release_duration": "2019-07-08 18:00:28",
+                "open_issues_count": "24",
+                "pull_requests": {
+                    "month": {
+                        "closed": 47,
+                        "opened": 48
+                    },
+                    "year": {
+                        "closed": 248,
+                        "opened": 247
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "54899",
+                "total_releases": "32",
+                "used_by": [],
+                "watchers": "2252"
+            },
+            "latest_version": "2.0.0",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "flask",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "1.1.2",
+            "url": "https://snyk.io/vuln/pip:flask",
+            "version": "0.12.4",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "1717",
+                "dependent_repos": "93497",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2020-04-13 16:16:44",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "38",
+                "used_by": [],
+                "watchers": "-1"
+            },
+            "latest_version": "2.11.3",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "jinja2",
+            "private_vulnerabilities": [],
+            "public_vulnerabilities": [],
+            "recommended_version": "2.11.3",
+            "url": "https://snyk.io/vuln/pip:jinja2",
+            "version": "2.10.1",
+            "vulnerable_dependencies": []
+        },
+        {
+            "dependencies": [],
+            "ecosystem": "pypi",
+            "github": {
+                "contributors": "-1",
+                "dependent_projects": "14",
+                "dependent_repos": "11138",
+                "first_release_date": null,
+                "forks_count": "-1",
+                "issues": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "latest_release_duration": "2018-06-07 22:16:33",
+                "open_issues_count": "-1",
+                "pull_requests": {
+                    "month": {
+                        "closed": -1,
+                        "opened": -1
+                    },
+                    "year": {
+                        "closed": -1,
+                        "opened": -1
+                    }
+                },
+                "size": "N/A",
+                "stargazers_count": "-1",
+                "total_releases": "18",
+                "used_by": [],
+                "watchers": "-1"
+            },
+            "latest_version": "2.3.3",
+            "licenses": [
+                "BSD"
+            ],
+            "name": "wtforms",
+            "private_vulnerabilities": [
+                {
+                    "cve_ids": [],
+                    "cvss": 6.5,
+                    "cvss_v3": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+                    "cwes": [
+                        "CWE-79"
+                    ],
+                    "id": "SNYK-PYTHON-WTFORMS-40581",
+                    "severity": "medium",
+                    "title": "Cross-site Scripting (XSS)",
+                    "url": "https://snyk.io/vuln/SNYK-PYTHON-WTFORMS-40581"
+                }
+            ],
+            "public_vulnerabilities": [],
+            "recommended_version": "2.3.3",
+            "url": "https://snyk.io/vuln/pip:wtforms",
+            "version": "2.1",
+            "vulnerable_dependencies": []
+        }
+    ],
+    "ecosystem": "pypi",
+    "ended_at": "2021-05-17T13:51:36.986012",
+    "external_request_id": "5264cdab4838457d9c7ce2a420039dd2",
+    "license_analysis": {
+        "conflict_packages": [],
+        "current_stack_license": null,
+        "distinct_licenses": [
+            "GPL 3 (see COPYING.txt)",
+            "2-Clause BSD",
+            "LGPL with exceptions or ZPL",
+            "public domain",
+            "LGPL",
+            "Expat license",
+            "Apache License v2",
+            "MIT",
+            "Python",
+            "MIT License",
+            "BSD",
+            "BSD License",
+            "UNKNOWN"
+        ],
+        "outlier_packages": [],
+        "reason": "Cannot calculate stack license due to unknown dependencies or license not supported.",
+        "recommended_licenses": null,
+        "status": "Unknown",
+        "unknown_licenses": {
+            "component_conflict": [],
+            "unknown": [
+                {
+                    "license": "unknown",
+                    "package": "aniso8601"
+                },
+                {
+                    "license": "unknown",
+                    "package": "itsdangerous"
+                },
+                {
+                    "license": "lgpl with exceptions or zpl",
+                    "package": "psycopg2"
+                }
+            ]
+        }
+    },
+    "manifest_file_path": "/tmp/",
+    "manifest_name": "pylist.json",
+    "recommendation": {
+        "companion": [
+            {
+                "cooccurrence_count": 0,
+                "cooccurrence_probability": 79.11193,
+                "dependencies": null,
+                "ecosystem": "pypi",
+                "github": {
+                    "contributors": "-1",
+                    "dependent_projects": "1014",
+                    "dependent_repos": "41853",
+                    "first_release_date": null,
+                    "forks_count": "-1",
+                    "issues": {
+                        "month": {
+                            "closed": -1,
+                            "opened": -1
+                        },
+                        "year": {
+                            "closed": -1,
+                            "opened": -1
+                        }
+                    },
+                    "latest_release_duration": "2020-05-13 21:40:28",
+                    "open_issues_count": "-1",
+                    "pull_requests": {
+                        "month": {
+                            "closed": -1,
+                            "opened": -1
+                        },
+                        "year": {
+                            "closed": -1,
+                            "opened": -1
+                        }
+                    },
+                    "size": "N/A",
+                    "stargazers_count": "-1",
+                    "total_releases": "201",
+                    "used_by": [],
+                    "watchers": "-1"
+                },
+                "latest_version": "1.4.6",
+                "licenses": [],
+                "name": "sqlalchemy",
+                "topic_list": [],
+                "url": "https://snyk.io/vuln/pip:sqlalchemy",
+                "version": "1.4.6"
+            },
+            {
+                "cooccurrence_count": 0,
+                "cooccurrence_probability": 68.458916,
+                "dependencies": null,
+                "ecosystem": "pypi",
+                "github": {
+                    "contributors": "35",
+                    "dependent_projects": "3183",
+                    "dependent_repos": "56690",
+                    "first_release_date": null,
+                    "forks_count": "322",
+                    "issues": {
+                        "month": {
+                            "closed": 6,
+                            "opened": 9
+                        },
+                        "year": {
+                            "closed": 53,
+                            "opened": 80
+                        }
+                    },
+                    "latest_release_duration": "2019-12-02 21:35:31",
+                    "open_issues_count": "194",
+                    "pull_requests": {
+                        "month": {
+                            "closed": 1,
+                            "opened": 1
+                        },
+                        "year": {
+                            "closed": 26,
+                            "opened": 44
+                        }
+                    },
+                    "size": "N/A",
+                    "stargazers_count": "1486",
+                    "total_releases": "21",
+                    "used_by": [],
+                    "watchers": "46"
+                },
+                "latest_version": "5.4.1",
+                "licenses": [],
+                "name": "pyyaml",
+                "topic_list": [],
+                "url": "https://snyk.io/vuln/pip:pyyaml",
+                "version": "5.3.1"
+            },
+            {
+                "cooccurrence_count": 0,
+                "cooccurrence_probability": 63.09259,
+                "dependencies": null,
+                "ecosystem": "pypi",
+                "github": {
+                    "contributors": "32",
+                    "dependent_projects": "22",
+                    "dependent_repos": "52931",
+                    "first_release_date": null,
+                    "forks_count": "101",
+                    "issues": {
+                        "month": {
+                            "closed": 2,
+                            "opened": 1
+                        },
+                        "year": {
+                            "closed": 9,
+                            "opened": 8
+                        }
+                    },
+                    "latest_release_duration": "2017-03-07 15:32:13",
+                    "open_issues_count": "0",
+                    "pull_requests": {
+                        "month": {
+                            "closed": 12,
+                            "opened": 12
+                        },
+                        "year": {
+                            "closed": 84,
+                            "opened": 84
+                        }
+                    },
+                    "size": "N/A",
+                    "stargazers_count": "387",
+                    "total_releases": "18",
+                    "used_by": [],
+                    "watchers": "23"
+                },
+                "latest_version": "2.0.0",
+                "licenses": [],
+                "name": "markupsafe",
+                "topic_list": [],
+                "url": "https://snyk.io/vuln/pip:markupsafe",
+                "version": "1.1.1"
+            },
+            {
+                "cooccurrence_count": 0,
+                "cooccurrence_probability": 41.458683,
+                "dependencies": null,
+                "ecosystem": "pypi",
+                "github": {
+                    "contributors": "-1",
+                    "dependent_projects": "378",
+                    "dependent_repos": "67722",
+                    "first_release_date": null,
+                    "forks_count": "-1",
+                    "issues": {
+                        "month": {
+                            "closed": -1,
+                            "opened": -1
+                        },
+                        "year": {
+                            "closed": -1,
+                            "opened": -1
+                        }
+                    },
+                    "latest_release_duration": "2020-03-31 18:03:34",
+                    "open_issues_count": "-1",
+                    "pull_requests": {
+                        "month": {
+                            "closed": -1,
+                            "opened": -1
+                        },
+                        "year": {
+                            "closed": -1,
+                            "opened": -1
+                        }
+                    },
+                    "size": "N/A",
+                    "stargazers_count": "-1",
+                    "total_releases": "67",
+                    "used_by": [],
+                    "watchers": "-1"
+                },
+                "latest_version": "1.0.1",
+                "licenses": [],
+                "name": "werkzeug",
+                "topic_list": [],
+                "url": "https://snyk.io/vuln/pip:werkzeug",
+                "version": "1.0.1"
+            },
+            {
+                "cooccurrence_count": 0,
+                "cooccurrence_probability": 36.612873,
+                "dependencies": null,
+                "ecosystem": "pypi",
+                "github": {
+                    "contributors": "90",
+                    "dependent_projects": "169",
+                    "dependent_repos": "25980",
+                    "first_release_date": null,
+                    "forks_count": "831",
+                    "issues": {
+                        "month": {
+                            "closed": 2,
+                            "opened": 4
+                        },
+                        "year": {
+                            "closed": 77,
+                            "opened": 58
+                        }
+                    },
+                    "latest_release_duration": "2020-05-26 22:15:55",
+                    "open_issues_count": "46",
+                    "pull_requests": {
+                        "month": {
+                            "closed": 12,
+                            "opened": 14
+                        },
+                        "year": {
+                            "closed": 108,
+                            "opened": 92
+                        }
+                    },
+                    "size": "N/A",
+                    "stargazers_count": "3480",
+                    "total_releases": "22",
+                    "used_by": [],
+                    "watchers": "114"
+                },
+                "latest_version": "2.5.1",
+                "licenses": [],
+                "name": "flask-sqlalchemy",
+                "topic_list": [],
+                "url": "https://snyk.io/vuln/pip:flask-sqlalchemy",
+                "version": "2.4.3"
+            }
+        ],
+        "manifest_file_path": "/tmp/",
+        "usage_outliers": []
+    },
+    "registration_link": "https://snyk.io/login",
+    "registration_status": "FREETIER",
+    "started_at": "2021-05-17T13:51:36.470483",
+    "unknown_dependencies": [],
+    "uuid": null,
+    "version": "v2"
+}

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 import {
   Page,
   PageHeader,
@@ -9,25 +10,29 @@ import {
   Nav,
   NavList,
   NavItem,
+  Backdrop,
+  Bullseye,
+  Spinner,
+  Alert,
 } from '@patternfly/react-core';
-import { GetStackDetails } from '../../../utils/apiCalls';
+import Context from 'src/app/store/context';
+import { GetStackDetails, RegisterUser } from '../../../utils/apiCalls';
+import './AppLayout.scss';
 
-class NavigationBar extends React.Component {
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-  }
+type NavigationBarProps = {
+  manifest : string;
+};
 
-  render() {
-    const nav = (
-      <Nav variant="horizontal">
-        <NavList>
-          <NavItem isActive>Pom.xml</NavItem>
-        </NavList>
-      </Nav>
-    );
-    return <PageHeader topNav={nav} />;
-  }
+const NavigationBar = ({manifest}: NavigationBarProps) => {
+  
+  const nav = (
+    <Nav variant="horizontal">
+      <NavList>
+        <NavItem isActive>{manifest}</NavItem>
+      </NavList>
+    </Nav>
+  );
+  return <PageHeader topNav={nav} />;
 }
 
 type LayoutProps = {
@@ -36,14 +41,38 @@ type LayoutProps = {
   Table: any;
 };
 const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
+  // @ts-ignore
+  const { globalState } = useContext(Context);
+  const [Load, setLoad] = useState(false);
+  const [manifest, setManifest] = useState('None');
+  useEffect(() => {
+    const loading = globalState.Loading
+    const manifestName = globalState.APIData?.manifest_name
+    setLoad(loading)
+    setManifest(manifestName)
+    // @ts-ignore
+
+  }, [globalState]);
   const Header = (
     // <PageHeader
     // logo="Pom.xml"
     // logoProps={logoProps}
     /// >
-    <NavigationBar />
+    <NavigationBar manifest={manifest} />
   );
-  GetStackDetails();
+  const params = useParams<{ id: string }>();
+  console.log(params.id);
+  GetStackDetails(params.id);
+  // RegisterUser();
+   if (Load) {
+    return (
+      <Backdrop>
+        <Bullseye>
+          <Spinner />
+        </Bullseye>
+      </Backdrop>
+    )
+  }  
   return (
     <Page header={Header}>
       <PageSection>
@@ -52,6 +81,7 @@ const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
           <GridItem span={7}>{Overview}</GridItem>
           {/* <GridItem span={12}>{Table}</GridItem> */}
         </Grid>
+        
       </PageSection>
     </Page>
   );

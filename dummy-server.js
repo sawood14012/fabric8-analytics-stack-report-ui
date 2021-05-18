@@ -9,7 +9,31 @@ const app = http.createServer(function (req, res) {
     JSON.stringify({
       analyzed_dependencies: [
         {
-          dependencies: [],
+          dependencies: [
+            {
+              "dependencies": null,
+              "name": "python-dateutil",
+              "version": "2.7.3"
+          },
+          {
+              "dependencies": [{
+                "dependencies": [{
+                  "dependencies": null,
+                  "name": "python-dateutil",
+                  "version": "2.7.3"
+              },
+              {
+                  "dependencies": null,
+                  "name": "six",
+                  "version": "1.12.0"
+              }],
+                "name": "python-dateutil",
+                "version": "2.7.3"
+            },],
+              "name": "six",
+              "version": "1.12.0"
+          }
+          ],
           ecosystem: 'npm',
           github: {
             contributors: '69',
@@ -109,7 +133,18 @@ const app = http.createServer(function (req, res) {
           vulnerable_dependencies: [],
         },
         {
-          dependencies: [],
+          dependencies: [
+            {
+              "dependencies": null,
+              "name": "python-dateutil",
+              "version": "2.7.3"
+          },
+          {
+              "dependencies": null,
+              "name": "six",
+              "version": "1.12.0"
+          }
+          ],
           ecosystem: 'npm',
           github: {
             contributors: '19',
@@ -197,7 +232,18 @@ const app = http.createServer(function (req, res) {
           vulnerable_dependencies: [],
         },
         {
-          dependencies: [],
+          dependencies: [
+            {
+              "dependencies": null,
+              "name": "python-dateutil",
+              "version": "2.7.3"
+          },
+          {
+              "dependencies": null,
+              "name": "six",
+              "version": "1.12.0"
+          }
+          ],
           ecosystem: 'npm',
           github: {
             contributors: '8',
@@ -244,7 +290,9 @@ const app = http.createServer(function (req, res) {
           vulnerable_dependencies: [],
         },
         {
-          dependencies: [],
+          dependencies: [
+            
+          ],
           ecosystem: 'npm',
           github: {
             contributors: '76',

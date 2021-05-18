@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.scss';
 import App from './app/App';
 
@@ -18,8 +19,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+    <React.StrictMode>
+      <Route path="/stack/analyze/:id" component={App} />
+    </React.StrictMode>
+  </Router>,
   document.getElementById('root'),
 );

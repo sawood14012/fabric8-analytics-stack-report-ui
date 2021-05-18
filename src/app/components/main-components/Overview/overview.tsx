@@ -20,13 +20,24 @@ import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import ZoneIcon from '@patternfly/react-icons/dist/js/icons/zone-icon';
 import AddonsTable from '../../shared-components/addons-primary/add-ons';
 import SelectableDataList from '../../shared-components/addons-primary/datalist';
+import DrawerFC from '../../shared-components/addons-primary/drawerNew';
 import { Logger } from '../../../utils/logger';
 import './overview.scss';
 
+
+
+
+
+
+
 function OverviewCard() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(1);
+  // @ts-ignore
+  const { globalState, globalDispatch } = useContext(Context);
+  
 
   return (
+    <div>
     <Card className="pf-global--BorderColor--100">
       <CardTitle>
         <TextContent>
@@ -34,7 +45,7 @@ function OverviewCard() {
         </TextContent>
       </CardTitle>
       <CardBody>
-        <Tabs activeKey={activeTab}>
+        <Tabs activeKey={activeTab} onSelect={(event, tabIndex) => setActiveTab(Number(tabIndex))}>
           <Tab
             onSelect={() => {
               Logger.log('hello');
@@ -63,12 +74,18 @@ function OverviewCard() {
               </>
             }
           >
-            <AddonsTable />
-            <SelectableDataList />
+            <DrawerFC />
+            
+            {// <SelectableDataList />
+            }
           </Tab>
         </Tabs>
+        
       </CardBody>
+      
     </Card>
+    
+    </div>
   );
 }
 

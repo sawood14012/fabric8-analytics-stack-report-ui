@@ -15,6 +15,15 @@
   text-align: left;
 }
 
+.textDrawer {
+  color: #151515;
+  font-family: RedHatText;
+  font-size: 14px;
+  line-height: 21px;
+  width: 240px;
+  text-align: left;
+}
+
 .overview-content {
   height: 232px;
 }
@@ -34,3 +43,8 @@
   line-height: 24px;
   text-align: left;
 }
+
+.pf-c-progress{
+  --pf-c-progress__indicator--BackgroundColor: #3e8635;
+}
+
