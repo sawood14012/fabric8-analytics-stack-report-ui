@@ -1,6 +1,6 @@
-import React from 'react';
-import useGlobalState from './useGlobalState';
-import Context from './context';
+import React from "react";
+import useGlobalState from "./useGlobalState";
+import Context from "./context";
 
 type GlobalStateProviderProps = {
   children: React.ReactNode;

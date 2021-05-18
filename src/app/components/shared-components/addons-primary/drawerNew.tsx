@@ -13,24 +13,24 @@ import {
   Button,
   Text,
   TextVariants,
-} from "@patternfly/react-core"
+} from "@patternfly/react-core";
 import {
   Table,
   TableHeader,
   TableBody,
   TableText,
   TableVariant,
-} from "@patternfly/react-table"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons"
-import React, { useState } from "react"
+} from "@patternfly/react-table";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
 
 const TextTable = (data: string) => {
-  return <TableText wrapModifier="wrap">{data}</TableText>
-}
+  return <TableText wrapModifier="wrap">{data}</TableText>;
+};
 
 const ProgressBar = (data: number) => {
-  const title = String(data).concat("%")
+  const title = String(data).concat("%");
   return (
     <Progress
       value={data}
@@ -38,8 +38,8 @@ const ProgressBar = (data: number) => {
       size={ProgressSize.sm}
       measureLocation={ProgressMeasureLocation.none}
     />
-  )
-}
+  );
+};
 
 const FeedbackButtons = () => {
   return (
@@ -47,12 +47,12 @@ const FeedbackButtons = () => {
       <Button variant="link" icon={<FontAwesomeIcon icon={faThumbsUp} />} />
       <Button variant="link" icon={<FontAwesomeIcon icon={faThumbsDown} />} />
     </div>
-  )
-}
+  );
+};
 
 const DrawerFC = () => {
-  const [drawerSta, setDrawerState] = useState(false)
-  const columns = ["Companion Dependencies", "Confidence Score", "Feedback"]
+  const [drawerSta, setDrawerState] = useState(false);
+  const columns = ["Companion Dependencies", "Confidence Score", "Feedback"];
   const rows = [
     [
       { title: TextTable("org.apache.commons:commons-lang3") },
@@ -69,7 +69,7 @@ const DrawerFC = () => {
       { title: ProgressBar(60) },
       { title: FeedbackButtons() },
     ],
-  ]
+  ];
   const panelc = (
     <DrawerPanelContent>
       <DrawerHead>
@@ -78,7 +78,7 @@ const DrawerFC = () => {
         </DrawerActions>
       </DrawerHead>
     </DrawerPanelContent>
-  )
+  );
   return (
     <Drawer isExpanded={drawerSta}>
       <DrawerContent panelContent={panelc}>
@@ -97,7 +97,7 @@ const DrawerFC = () => {
         </DrawerContentBody>
       </DrawerContent>
     </Drawer>
-  )
-}
+  );
+};
 
-export default DrawerFC
+export default DrawerFC;

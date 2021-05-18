@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Button,
   Modal,
@@ -6,13 +6,13 @@ import {
   FormGroup,
   TextInput,
   FormHelperText,
-} from '@patternfly/react-core';
+} from "@patternfly/react-core";
 import {
   CheckSquareIcon,
   ExclamationCircleIcon,
   ExclamationTriangleIcon,
-} from '@patternfly/react-icons';
-import PoweredBySynk from '../powerd-by/powerd-by';
+} from "@patternfly/react-icons";
+import PoweredBySynk from "../powerd-by/powerd-by";
 
 type Signprop = {
   isUUID: boolean;
@@ -29,8 +29,8 @@ type Modalprops = {
 
 const ModalComponent = ({ isModalOpen, handleToggle }: Modalprops) => {
   const text =
-    ' to get your free Snyk token and get access to all premium fields.';
-  const [tokenValue, setTokenValue] = useState('');
+    " to get your free Snyk token and get access to all premium fields.";
+  const [tokenValue, setTokenValue] = useState("");
 
   return (
     <Modal

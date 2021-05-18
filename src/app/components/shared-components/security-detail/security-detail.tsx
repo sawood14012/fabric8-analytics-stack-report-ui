@@ -1,14 +1,20 @@
-import React from "react"
-import { Flex, FlexItem, Split, SplitItem, Title } from "@patternfly/react-core"
-import { ExclamationCircleIcon, SecurityIcon } from "@patternfly/react-icons"
+import React from "react";
+import {
+  Flex,
+  FlexItem,
+  Split,
+  SplitItem,
+  Title,
+} from "@patternfly/react-core";
+import { ExclamationCircleIcon, SecurityIcon } from "@patternfly/react-icons";
 
 type SecurityProps = {
-  vulnerablities: number
-  vulnerable: number
-}
+  vulnerablities: number;
+  vulnerable: number;
+};
 
 const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
-  const condition = vulnerablities > 0 || vulnerable > 0
+  const condition = vulnerablities > 0 || vulnerable > 0;
   return (
     <div>
       <Flex key="1">
@@ -53,7 +59,7 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
         )}
       </Flex>
     </div>
-  )
-}
+  );
+};
 
-export default Security
+export default Security;

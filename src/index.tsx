@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './index.scss';
-import App from './app/App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./index.scss";
+import App from "./app/App";
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   /* const config = {
     rules: [
       {
@@ -24,5 +24,5 @@ ReactDOM.render(
       <Route path="/stack/analyze/:id" component={App} />
     </React.StrictMode>
   </Router>,
-  document.getElementById('root'),
+  document.getElementById("root"),
 );

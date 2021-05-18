@@ -1,8 +1,8 @@
 const stageApiUrl =
-  'https://f8a-analytics-preview-2445582058137.staging.gw.apicast.io';
-const stageApiKey = '3e42fa66f65124e6b1266a23431e3d08';
+  "https://f8a-analytics-preview-2445582058137.staging.gw.apicast.io";
+const stageApiKey = "3e42fa66f65124e6b1266a23431e3d08";
 
-const localDevURL = 'http://localhost:8080/';
+const localDevURL = "http://localhost:8080/";
 
 export { stageApiUrl, stageApiKey, localDevURL };
 

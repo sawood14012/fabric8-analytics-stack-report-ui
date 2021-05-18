@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, CardTitle, CardBody, CardFooter } from '@patternfly/react-core';
+import React from "react";
+import { Card, CardTitle, CardBody, CardFooter } from "@patternfly/react-core";
 
 class Tableview extends React.Component {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
