@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import {
   Page,
   PageHeader,
@@ -15,16 +15,15 @@ import {
   Spinner,
   Alert,
 } from '@patternfly/react-core';
-import Context from 'src/app/store/context';
+import Context from '../../../store/context';
 import { GetStackDetails, RegisterUser } from '../../../utils/apiCalls';
 import './AppLayout.scss';
 
 type NavigationBarProps = {
-  manifest : string;
+  manifest: string;
 };
 
-const NavigationBar = ({manifest}: NavigationBarProps) => {
-  
+const NavigationBar = ({ manifest }: NavigationBarProps) => {
   const nav = (
     <Nav variant="horizontal">
       <NavList>
@@ -33,46 +32,41 @@ const NavigationBar = ({manifest}: NavigationBarProps) => {
     </Nav>
   );
   return <PageHeader topNav={nav} />;
-}
+};
 
 type LayoutProps = {
   Summary: any;
   Overview: any;
   Table: any;
 };
+
 const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
   // @ts-ignore
   const { globalState } = useContext(Context);
   const [Load, setLoad] = useState(false);
   const [manifest, setManifest] = useState('None');
   useEffect(() => {
-    const loading = globalState.Loading
-    const manifestName = globalState.APIData?.manifest_name
-    setLoad(loading)
-    setManifest(manifestName)
+    const loading = globalState.Loading;
+    const manifestName = globalState.APIData?.manifest_name;
+    setLoad(loading);
+    setManifest(manifestName);
     // @ts-ignore
-
   }, [globalState]);
-  const Header = (
-    // <PageHeader
-    // logo="Pom.xml"
-    // logoProps={logoProps}
-    /// >
-    <NavigationBar manifest={manifest} />
-  );
+
+  const Header = <NavigationBar manifest={manifest} />;
+
   const params = useParams<{ id: string }>();
-  console.log(params.id);
   GetStackDetails(params.id);
   // RegisterUser();
-   if (Load) {
+  if (Load) {
     return (
       <Backdrop>
         <Bullseye>
           <Spinner />
         </Bullseye>
       </Backdrop>
-    )
-  }  
+    );
+  }
   return (
     <Page header={Header}>
       <PageSection>
@@ -81,7 +75,6 @@ const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
           <GridItem span={7}>{Overview}</GridItem>
           {/* <GridItem span={12}>{Table}</GridItem> */}
         </Grid>
-        
       </PageSection>
     </Page>
   );

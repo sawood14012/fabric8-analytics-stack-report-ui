@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Context from 'src/app/store/context';
+import Context from '../../../store/context';
 import {
   Card,
   CardTitle,
@@ -24,67 +24,57 @@ import DrawerFC from '../../shared-components/addons-primary/drawerNew';
 import { Logger } from '../../../utils/logger';
 import './overview.scss';
 
-
-
-
-
-
-
 function OverviewCard() {
   const [activeTab, setActiveTab] = useState(1);
   // @ts-ignore
   const { globalState, globalDispatch } = useContext(Context);
-  
 
   return (
     <div>
-    <Card className="pf-global--BorderColor--100">
-      <CardTitle>
-        <TextContent>
-          <Text className="overview-title">Overview of the Stack</Text>
-        </TextContent>
-      </CardTitle>
-      <CardBody>
-        <Tabs activeKey={activeTab} onSelect={(event, tabIndex) => setActiveTab(Number(tabIndex))}>
-          <Tab
-            onSelect={() => {
-              Logger.log('hello');
-            }}
-            eventKey={0}
-            title={
-              <>
-                <TabTitleIcon>
-                  <SecurityIcon />
-                </TabTitleIcon>
-                <TabTitleText>Security Issues</TabTitleText>
-              </>
-            }
+      <Card className="pf-global--BorderColor--100">
+        <CardTitle>
+          <TextContent>
+            <Text className="overview-title">Overview of the Stack</Text>
+          </TextContent>
+        </CardTitle>
+        <CardBody>
+          <Tabs
+            activeKey={activeTab}
+            onSelect={(event, tabIndex) => setActiveTab(Number(tabIndex))}
           >
-            <br />
-            <OverviewContent />
-          </Tab>
-          <Tab
-            eventKey={1}
-            title={
-              <>
-                <TabTitleIcon>
-                  <ZoneIcon />
-                </TabTitleIcon>
-                <TabTitleText>Add-ons</TabTitleText>
-              </>
-            }
-          >
-            <DrawerFC />
-            
-            {// <SelectableDataList />
-            }
-          </Tab>
-        </Tabs>
-        
-      </CardBody>
-      
-    </Card>
-    
+            <Tab
+              onSelect={() => {
+                Logger.log('hello');
+              }}
+              eventKey={0}
+              title={
+                <>
+                  <TabTitleIcon>
+                    <SecurityIcon />
+                  </TabTitleIcon>
+                  <TabTitleText>Security Issues</TabTitleText>
+                </>
+              }
+            >
+              <br />
+              <OverviewContent />
+            </Tab>
+            <Tab
+              eventKey={1}
+              title={
+                <>
+                  <TabTitleIcon>
+                    <ZoneIcon />
+                  </TabTitleIcon>
+                  <TabTitleText>Add-ons</TabTitleText>
+                </>
+              }
+            >
+              <DrawerFC />
+            </Tab>
+          </Tabs>
+        </CardBody>
+      </Card>
     </div>
   );
 }
@@ -109,7 +99,11 @@ const SummaryDonut = () => (
 // @ts-ignore
 const OverviewSummary = (props) => (
   <TextContent className="vulnerability-summary">
-    <Text>87 direct vulnerabilities in {props.analyzedDependenciesCount} dependencies</Text>
+    <Text>
+      87 direct vulnerabilities in
+      {props.analyzedDependenciesCount}
+      dependencies
+    </Text>
   </TextContent>
 );
 
@@ -137,9 +131,9 @@ const OverviewContent = () => {
   const [directVulnerabilities, setDirectVulnerabilities] = useState(0);
   const [criticalVulnerabilities, setCriticalVulnerabilities] = useState(0);
   useEffect(() => {
-    const analyzedDependencies = globalState.APIData?.analyzed_dependencies
+    const analyzedDependencies = globalState.APIData?.analyzed_dependencies;
     // @ts-ignore
-    analyzedDependencies?.forEach(dep => {
+    analyzedDependencies?.forEach((dep) => {
       if (dep.public_vulnerabilities || dep.private_vulnerabilities) {
         setAnalyzedDependenciesCount(analyzedDependenciesCount + 1);
       }
@@ -158,7 +152,9 @@ const OverviewContent = () => {
         <GridItem span={8}>
           <Flex>
             <FlexItem>
-              <OverviewSummary analyzedDependenciesCount={analyzedDependenciesCount} />
+              <OverviewSummary
+                analyzedDependenciesCount={analyzedDependenciesCount}
+              />
             </FlexItem>
           </Flex>
         </GridItem>

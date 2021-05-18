@@ -1,20 +1,14 @@
-import React from 'react';
-import {
-  Flex,
-  FlexItem,
-  Split,
-  SplitItem,
-  Title,
-} from '@patternfly/react-core';
-import { ExclamationCircleIcon, SecurityIcon } from '@patternfly/react-icons';
+import React from "react"
+import { Flex, FlexItem, Split, SplitItem, Title } from "@patternfly/react-core"
+import { ExclamationCircleIcon, SecurityIcon } from "@patternfly/react-icons"
 
 type SecurityProps = {
-  vulnerablities: number;
-  vulnerable: number;
-};
+  vulnerablities: number
+  vulnerable: number
+}
 
 const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
-  const condition = vulnerablities > 0 || vulnerable > 0;
+  const condition = vulnerablities > 0 || vulnerable > 0
   return (
     <div>
       <Flex key="1">
@@ -32,9 +26,9 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
           </FlexItem>
         )}
       </Flex>
-      <Flex key="2" direction={{ default: 'column' }}>
+      <Flex key="2" direction={{ default: "column" }}>
         {vulnerablities >= 0 && (
-          <FlexItem spacer={{ default: 'spacerNone' }}>
+          <FlexItem spacer={{ default: "spacerNone" }}>
             <Split hasGutter>
               <SplitItem>Total vulnerabilities:</SplitItem>
               <SplitItem>
@@ -46,7 +40,7 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
           </FlexItem>
         )}
         {vulnerable >= 0 && (
-          <FlexItem spacer={{ default: 'spacerNone' }}>
+          <FlexItem spacer={{ default: "spacerNone" }}>
             <Split hasGutter>
               <SplitItem>Vulnerable dependencies:</SplitItem>
               <SplitItem>
@@ -59,7 +53,7 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
         )}
       </Flex>
     </div>
-  );
-};
+  )
+}
 
-export default Security;
+export default Security

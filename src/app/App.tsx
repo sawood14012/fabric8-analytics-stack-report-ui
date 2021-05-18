@@ -9,7 +9,6 @@ import GlobalStateProvider from './store/GlobalStateProvider';
 import { GetStackDetails } from './utils/apiCalls';
 
 function App() {
-  
   return (
     <GlobalStateProvider>
       <AppLayout

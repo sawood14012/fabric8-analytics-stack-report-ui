@@ -1,6 +1,6 @@
-import React from 'react';
-import { Split, SplitItem } from '@patternfly/react-core';
-import logo from '../../../images/snyk.png'
+import React from "react"
+import { Split, SplitItem } from "@patternfly/react-core"
+import logo from "../../../images/snyk.png"
 
 const PoweredBySynk = () => {
   return (
@@ -9,10 +9,10 @@ const PoweredBySynk = () => {
         <p className="title">Powered by:</p>
       </SplitItem>
       <SplitItem>
-        <img className="bitmap" id="imgHome" alt="snyk" src={logo}/>
+        <img className="bitmap" id="imgHome" alt="snyk" src={logo} />
       </SplitItem>
     </Split>
-  );
-};
+  )
+}
 
-export default PoweredBySynk;
+export default PoweredBySynk

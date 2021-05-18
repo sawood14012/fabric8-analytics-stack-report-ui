@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react"
 import {
   Card,
   CardTitle,
@@ -11,29 +11,28 @@ import {
   Grid,
   GridItem,
   Skeleton,
-} from '@patternfly/react-core';
-import { ShareSquareIcon, DownloadIcon } from '@patternfly/react-icons';
-import './Summary.scss';
-import SignUp from '../../shared-components/synk-signup/synk-signup';
-import PoweredBySynk from '../../shared-components/powerd-by/powerd-by';
-import BTSynktoken from '../../shared-components/synk-token-button/synk-token-button';
-import Dependency from '../../shared-components/summary-detail/summary-detail';
-import Security from '../../shared-components/security-detail/security-detail';
-import Licenses from '../../shared-components/licenses-detail/licenses-detail';
-import Addons from '../../shared-components/addons-detail/addons-detail';
-import Context from '../../../store/context';
-import Utils from '../../../utils/utility';
-
+} from "@patternfly/react-core"
+import { ShareSquareIcon, DownloadIcon } from "@patternfly/react-icons"
+import "./Summary.scss"
+import SignUp from "../../shared-components/synk-signup/synk-signup"
+import PoweredBySynk from "../../shared-components/powerd-by/powerd-by"
+import BTSynktoken from "../../shared-components/synk-token-button/synk-token-button"
+import Dependency from "../../shared-components/summary-detail/summary-detail"
+import Security from "../../shared-components/security-detail/security-detail"
+import Licenses from "../../shared-components/licenses-detail/licenses-detail"
+import Addons from "../../shared-components/addons-detail/addons-detail"
+import Context from "../../../store/context"
+import Utils from "../../../utils/utility"
 
 type SummaryState = {
-  dependency: Record<string, number>;
-  addons: Record<string, number>;
-  licenses: Record<string, number>;
-  security: Record<string, number>;
-};
+  dependency: Record<string, number>
+  addons: Record<string, number>
+  licenses: Record<string, number>
+  security: Record<string, number>
+}
 
 // eslint-disable-next-line
-type SummaryProps = Record<any, any>;
+type SummaryProps = Record<any, any>
 
 const PercentageWidths = () => (
   <div>
@@ -53,7 +52,7 @@ const PercentageWidths = () => (
 
 const SummaryCard = () => {
   // @ts-ignore
-  const { globalState, globalDispatch } = useContext(Context);
+  const { globalState, globalDispatch } = useContext(Context)
   const [Analyzed, setAnalyzed] = useState(0)
   const [Transitive, setTransitive] = useState(0)
   const [Unknown, setUnknown] = useState(0)
@@ -63,26 +62,25 @@ const SummaryCard = () => {
   const [LicenseUnknown, setLicenseUnknown] = useState(0)
   const [Companion, setCompanion] = useState(0)
   const [Showsignup, setShowSignup] = useState(false)
-  const [Load, setLoad] = useState(false);
-  const utils = new Utils();
+  const [Load, setLoad] = useState(false)
+  const utils = new Utils()
   const signUpText =
-  'Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit';
+    "Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit"
 
   useEffect(() => {
     const analyzedDependencies = globalState.APIData?.analyzed_dependencies
     const unknownDependencies = globalState.APIData?.unknown_dependencies
-    const TransitiveDeps = utils.GetTransitiveCount(analyzedDependencies);
-    const LicensesD = globalState.APIData?.license_analysis;
-    const SecurityData = utils.GetTotalVulnerabilityCount(analyzedDependencies);
+    const TransitiveDeps = utils.GetTransitiveCount(analyzedDependencies)
+    const LicensesD = globalState.APIData?.license_analysis
+    const SecurityData = utils.GetTotalVulnerabilityCount(analyzedDependencies)
     const RecommendationD = globalState.APIData?.recommendation
     const loading = globalState.Loading
     const isRegisteredUser = globalState.IsRegUser
     const uuid = globalState.APIData?.uuid
     setLoad(loading)
-    if(isRegisteredUser && uuid !== null){
+    if (isRegisteredUser && uuid !== null) {
       setShowSignup(true)
     }
-
 
     setAnalyzed(analyzedDependencies?.length)
     setUnknown(unknownDependencies?.length)
@@ -91,16 +89,14 @@ const SummaryCard = () => {
     setVlunerablities(SecurityData?.total)
     setVulnerable(SecurityData?.vulnerable)
     setCompanion(RecommendationD?.companion.length)
-    setTransitive(TransitiveDeps);
-
+    setTransitive(TransitiveDeps)
 
     // @ts-ignore
-    
-  }, [globalState]);
+  }, [globalState])
 
-    /* if(Load){
-     return PercentageWidths();
-   } */
+  if (Load) {
+    return PercentageWidths()
+  }
 
   return (
     <Card className="--pf-c-card--BoxShadow summary-of-the-stack">
@@ -114,7 +110,7 @@ const SummaryCard = () => {
           <FlexItem>
             <BTSynktoken isUUID={Showsignup} />
           </FlexItem>
-          <FlexItem align={{ default: 'alignRight' }}>
+          <FlexItem align={{ default: "alignRight" }}>
             <ShareSquareIcon className="icon-class" />
           </FlexItem>
           <FlexItem>
@@ -136,17 +132,11 @@ const SummaryCard = () => {
             />
           </GridItem>
           <GridItem span={6}>
-            <Security
-              vulnerablities={Vlunerablities}
-              vulnerable={Vulnerable}
-            />
+            <Security vulnerablities={Vlunerablities} vulnerable={Vulnerable} />
           </GridItem>
           <Divider component="div" />
           <GridItem span={6}>
-            <Licenses
-              conflicts={LicenseConflicts}
-              unknown={LicenseUnknown}
-            />
+            <Licenses conflicts={LicenseConflicts} unknown={LicenseUnknown} />
           </GridItem>
           <GridItem span={6}>
             <Addons companion={Companion} />
@@ -154,18 +144,18 @@ const SummaryCard = () => {
         </Grid>
       </CardBody>
     </Card>
-  );
+  )
 }
 
 class SummaryCardC extends React.Component<SummaryProps, SummaryState> {
-  showsignup = false;
+  showsignup = false
 
   signUpText =
-    'Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit';
+    "Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit"
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
-    super(props);
+    super(props)
     this.state = {
       dependency: {
         analyzed: 17,
@@ -183,13 +173,11 @@ class SummaryCardC extends React.Component<SummaryProps, SummaryState> {
         vlunerablities: 87,
         vulnerable: 18,
       },
-    };
+    }
   }
 
-  
-
   render() {
-    const { dependency, addons, licenses, security } = this.state;
+    const { dependency, addons, licenses, security } = this.state
     return (
       <Card className="--pf-c-card--BoxShadow summary-of-the-stack">
         <CardTitle className="">
@@ -202,7 +190,7 @@ class SummaryCardC extends React.Component<SummaryProps, SummaryState> {
             <FlexItem>
               <BTSynktoken isUUID={this.showsignup} />
             </FlexItem>
-            <FlexItem align={{ default: 'alignRight' }}>
+            <FlexItem align={{ default: "alignRight" }}>
               <ShareSquareIcon className="icon-class" />
             </FlexItem>
             <FlexItem>
@@ -242,8 +230,8 @@ class SummaryCardC extends React.Component<SummaryProps, SummaryState> {
           </Grid>
         </CardBody>
       </Card>
-    );
+    )
   }
 }
 
-export default SummaryCard;
+export default SummaryCard
