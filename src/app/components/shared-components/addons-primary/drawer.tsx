@@ -12,7 +12,10 @@ import {
   DrawerActions,
   DrawerCloseButton,
   Button,
+  Grid,
+  GridItem,
 } from '@patternfly/react-core';
+import GithubStats from './github_stats';
 
 function DrawerStack() {
   const [isExpanded, setisExpanded] = useState(false);
@@ -20,16 +23,24 @@ function DrawerStack() {
   const panelContent = (
     <DrawerPanelContent>
       <DrawerHead>
-        <h3 className="pf-c-title pf-m-2xl">drawer title </h3>
+        <h3 className="pf-c-title pf-m-2xl">Companion dependency </h3>
         <DrawerActions>
           <DrawerCloseButton onClick={() => setisExpanded(false)} />
         </DrawerActions>
-        drawer-panel
       </DrawerHead>
-      <DrawerPanelBody hasNoPadding>
-        drawer-panel with no padding
+      <DrawerPanelBody>
+        <Grid hasGutter>
+          <GridItem span={6}>
+            <GithubStats
+              contributors={25}
+              dependentRepos={2}
+              usage={5}
+              forks={10}
+              stars={5}
+            />
+          </GridItem>
+        </Grid>
       </DrawerPanelBody>
-      <DrawerPanelBody>drawer-panel</DrawerPanelBody>
     </DrawerPanelContent>
   );
 
