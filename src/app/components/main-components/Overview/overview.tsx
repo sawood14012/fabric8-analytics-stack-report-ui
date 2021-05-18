@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Context from 'src/app/store/context';
+import React, { useContext, useEffect, useState } from "react";
 import {
   Card,
   CardTitle,
@@ -14,61 +13,69 @@ import {
   Tab,
   TabTitleText,
   TabTitleIcon,
-} from '@patternfly/react-core';
-import { ChartDonut } from '@patternfly/react-charts';
-import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
-import ZoneIcon from '@patternfly/react-icons/dist/js/icons/zone-icon';
-import AddonsTable from '../../shared-components/addons-primary/add-ons';
-import SelectableDataList from '../../shared-components/addons-primary/datalist';
-import { Logger } from '../../../utils/logger';
-import './overview.scss';
+} from "@patternfly/react-core";
+import { ChartDonut } from "@patternfly/react-charts";
+import SecurityIcon from "@patternfly/react-icons/dist/js/icons/security-icon";
+import ZoneIcon from "@patternfly/react-icons/dist/js/icons/zone-icon";
+import AddonsTable from "../../shared-components/addons-primary/add-ons";
+import SelectableDataList from "../../shared-components/addons-primary/datalist";
+import DrawerFC from "../../shared-components/addons-primary/drawerNew";
+import Context from "../../../store/context";
+import { Logger } from "../../../utils/logger";
+import "./overview.scss";
 
 function OverviewCard() {
   const [activeTab, setActiveTab] = useState(1);
+  // @ts-ignore
+  const { globalState, globalDispatch } = useContext(Context);
 
   return (
-    <Card className="pf-global--BorderColor--100">
-      <CardTitle>
-        <TextContent>
-          <Text className="overview-title">Overview of the Stack</Text>
-        </TextContent>
-      </CardTitle>
-      <CardBody>
-        <Tabs activeKey={activeTab}>
-          <Tab
-            onSelect={() => {
-              Logger.log('hello');
-            }}
-            eventKey={0}
-            title={
-              <>
-                <TabTitleIcon>
-                  <SecurityIcon />
-                </TabTitleIcon>
-                <TabTitleText>Security Issues</TabTitleText>
-              </>
-            }
+    <div>
+      <Card className="pf-global--BorderColor--100">
+        <CardTitle>
+          <TextContent>
+            <Text className="overview-title">Overview of the Stack</Text>
+          </TextContent>
+        </CardTitle>
+        <CardBody>
+          <Tabs
+            activeKey={activeTab}
+            onSelect={(event, tabIndex) => setActiveTab(Number(tabIndex))}
           >
-            <br />
-            <OverviewContent />
-          </Tab>
-          <Tab
-            eventKey={1}
-            title={
-              <>
-                <TabTitleIcon>
-                  <ZoneIcon />
-                </TabTitleIcon>
-                <TabTitleText>Add-ons</TabTitleText>
-              </>
-            }
-          >
-            <AddonsTable />
-            <SelectableDataList />
-          </Tab>
-        </Tabs>
-      </CardBody>
-    </Card>
+            <Tab
+              onSelect={() => {
+                Logger.log("hello");
+              }}
+              eventKey={0}
+              title={
+                <>
+                  <TabTitleIcon>
+                    <SecurityIcon />
+                  </TabTitleIcon>
+                  <TabTitleText>Security Issues</TabTitleText>
+                </>
+              }
+            >
+              <br />
+              <OverviewContent />
+            </Tab>
+            <Tab
+              eventKey={1}
+              title={
+                <>
+                  <TabTitleIcon>
+                    <ZoneIcon />
+                  </TabTitleIcon>
+                  <TabTitleText>Add-ons</TabTitleText>
+                </>
+              }
+            >
+              <DrawerFC />
+            </Tab>
+          </Tabs>
+        </CardBody>
+      </Card>
+    </div>
   );
 }
 
@@ -78,9 +85,9 @@ const SummaryDonut = () => (
     ariaTitle="Donut chart example"
     constrainToVisibleArea
     data={[
-      { x: 'a', y: 35 },
-      { x: 'b', y: 55 },
-      { x: 'c', y: 10 },
+      { x: "a", y: 35 },
+      { x: "b", y: 55 },
+      { x: "c", y: 10 },
     ]}
     height={208}
     labels={({ datum }) => `${datum.x}: ${datum.y}%`}
@@ -92,7 +99,11 @@ const SummaryDonut = () => (
 // @ts-ignore
 const OverviewSummary = (props) => (
   <TextContent className="vulnerability-summary">
-    <Text>87 direct vulnerabilities in {props.analyzedDependenciesCount} dependencies</Text>
+    <Text>
+      87 direct vulnerabilities in
+      {props.analyzedDependenciesCount}
+      dependencies
+    </Text>
   </TextContent>
 );
 
@@ -120,9 +131,9 @@ const OverviewContent = () => {
   const [directVulnerabilities, setDirectVulnerabilities] = useState(0);
   const [criticalVulnerabilities, setCriticalVulnerabilities] = useState(0);
   useEffect(() => {
-    const analyzedDependencies = globalState.APIData?.analyzed_dependencies
+    const analyzedDependencies = globalState.APIData?.analyzed_dependencies;
     // @ts-ignore
-    analyzedDependencies?.forEach(dep => {
+    analyzedDependencies?.forEach((dep) => {
       if (dep.public_vulnerabilities || dep.private_vulnerabilities) {
         setAnalyzedDependenciesCount(analyzedDependenciesCount + 1);
       }
@@ -141,7 +152,9 @@ const OverviewContent = () => {
         <GridItem span={8}>
           <Flex>
             <FlexItem>
-              <OverviewSummary analyzedDependenciesCount={analyzedDependenciesCount} />
+              <OverviewSummary
+                analyzedDependenciesCount={analyzedDependenciesCount}
+              />
             </FlexItem>
           </Flex>
         </GridItem>
@@ -161,4 +174,5 @@ const OverviewContent = () => {
     </Grid>
   );
 };
+
 export default OverviewCard;

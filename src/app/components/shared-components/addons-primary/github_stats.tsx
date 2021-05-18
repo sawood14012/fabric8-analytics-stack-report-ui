@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 import {
   Flex,
   FlexItem,
   Split,
   SplitItem,
   Title,
-} from '@patternfly/react-core';
+} from "@patternfly/react-core";
 import {
   UserAltIcon,
   CodeBranchIcon,
   StarIcon,
   GithubIcon,
   CodeIcon,
-} from '@patternfly/react-icons';
+} from "@patternfly/react-icons";
 
 type GithubStatsProps = {
   contributors: number;
@@ -38,8 +38,8 @@ const GithubStats = ({
           </Title>
         </FlexItem>
       </Flex>
-      <Flex key="2" direction={{ default: 'column' }}>
-        <FlexItem spacer={{ default: 'spacerNone' }}>
+      <Flex key="2" direction={{ default: "column" }}>
+        <FlexItem spacer={{ default: "spacerNone" }}>
           <Split hasGutter>
             <UserAltIcon className="icon-class" />
             <SplitItem>Contributors:</SplitItem>
@@ -50,7 +50,7 @@ const GithubStats = ({
             </SplitItem>
           </Split>
         </FlexItem>
-        <FlexItem spacer={{ default: 'spacerNone' }}>
+        <FlexItem spacer={{ default: "spacerNone" }}>
           <Split hasGutter>
             <CodeIcon className="icon-class" />
             <SplitItem>DependentRepos:</SplitItem>
@@ -61,7 +61,7 @@ const GithubStats = ({
             </SplitItem>
           </Split>
         </FlexItem>
-        <FlexItem spacer={{ default: 'spacerNone' }}>
+        <FlexItem spacer={{ default: "spacerNone" }}>
           <Split hasGutter>
             <GithubIcon className="icon-class" />
             <SplitItem>Usage:</SplitItem>
@@ -72,7 +72,7 @@ const GithubStats = ({
             </SplitItem>
           </Split>
         </FlexItem>
-        <FlexItem spacer={{ default: 'spacerNone' }}>
+        <FlexItem spacer={{ default: "spacerNone" }}>
           <Split hasGutter>
             <CodeBranchIcon className="icon-class" />
             <SplitItem>Forks:</SplitItem>
@@ -83,7 +83,7 @@ const GithubStats = ({
             </SplitItem>
           </Split>
         </FlexItem>
-        <FlexItem spacer={{ default: 'spacerNone' }}>
+        <FlexItem spacer={{ default: "spacerNone" }}>
           <Split hasGutter>
             <StarIcon className="icon-class" />
             <SplitItem>Stars:</SplitItem>

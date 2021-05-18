@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   Flex,
   FlexItem,
   Split,
   SplitItem,
   Title,
-} from '@patternfly/react-core';
-import { ZoneIcon } from '@patternfly/react-icons';
+} from "@patternfly/react-core";
+import { ZoneIcon } from "@patternfly/react-icons";
 
 type AddonsProps = {
   companion: number;
@@ -25,9 +25,9 @@ const Addons = ({ companion }: AddonsProps) => {
           </Title>
         </FlexItem>
       </Flex>
-      <Flex key="2" direction={{ default: 'column' }}>
+      <Flex key="2" direction={{ default: "column" }}>
         {companion > 0 && (
-          <FlexItem spacer={{ default: 'spacerNone' }}>
+          <FlexItem spacer={{ default: "spacerNone" }}>
             <Split hasGutter>
               <SplitItem>Companion Dependencies:</SplitItem>
               <SplitItem>

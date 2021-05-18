@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   Flex,
   FlexItem,
   Split,
   SplitItem,
   Title,
-} from '@patternfly/react-core';
-import { ExclamationCircleIcon, SecurityIcon } from '@patternfly/react-icons';
+} from "@patternfly/react-core";
+import { ExclamationCircleIcon, SecurityIcon } from "@patternfly/react-icons";
 
 type SecurityProps = {
   vulnerablities: number;
@@ -32,9 +32,9 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
           </FlexItem>
         )}
       </Flex>
-      <Flex key="2" direction={{ default: 'column' }}>
+      <Flex key="2" direction={{ default: "column" }}>
         {vulnerablities >= 0 && (
-          <FlexItem spacer={{ default: 'spacerNone' }}>
+          <FlexItem spacer={{ default: "spacerNone" }}>
             <Split hasGutter>
               <SplitItem>Total vulnerabilities:</SplitItem>
               <SplitItem>
@@ -46,7 +46,7 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
           </FlexItem>
         )}
         {vulnerable >= 0 && (
-          <FlexItem spacer={{ default: 'spacerNone' }}>
+          <FlexItem spacer={{ default: "spacerNone" }}>
             <Split hasGutter>
               <SplitItem>Vulnerable dependencies:</SplitItem>
               <SplitItem>

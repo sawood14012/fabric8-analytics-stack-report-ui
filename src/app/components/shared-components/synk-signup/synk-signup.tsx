@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Split, SplitItem, Button } from '@patternfly/react-core';
+import React, { useState } from "react";
+import { Split, SplitItem, Button } from "@patternfly/react-core";
 
 type Signprop = {
   isUUID: boolean;
@@ -11,7 +11,7 @@ type State = {
 
 const SignUp = ({ isUUID }: Signprop) => {
   const Text =
-    'Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit';
+    "Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit";
   const [signUpText, setSignUpText] = useState(Text);
   if (isUUID === false) {
     return (

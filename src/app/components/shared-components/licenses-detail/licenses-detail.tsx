@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   Flex,
   FlexItem,
   Split,
   SplitItem,
   Title,
-} from '@patternfly/react-core';
-import { ExclamationCircleIcon, FileAltIcon } from '@patternfly/react-icons';
+} from "@patternfly/react-core";
+import { ExclamationCircleIcon, FileAltIcon } from "@patternfly/react-icons";
 
 type LicensesProps = {
   conflicts: number;
@@ -33,9 +33,9 @@ const Licenses = ({ conflicts, unknown }: LicensesProps) => {
           </FlexItem>
         )}
       </Flex>
-      <Flex key="2" direction={{ default: 'column' }}>
+      <Flex key="2" direction={{ default: "column" }}>
         {conflicts >= 0 && (
-          <FlexItem spacer={{ default: 'spacerNone' }}>
+          <FlexItem spacer={{ default: "spacerNone" }}>
             <Split hasGutter>
               <SplitItem>License conflicts:</SplitItem>
               <SplitItem>
@@ -47,7 +47,7 @@ const Licenses = ({ conflicts, unknown }: LicensesProps) => {
           </FlexItem>
         )}
         {unknown > 0 && (
-          <FlexItem spacer={{ default: 'spacerNone' }}>
+          <FlexItem spacer={{ default: "spacerNone" }}>
             <Split hasGutter>
               <SplitItem>Unknown licenses:</SplitItem>
               <SplitItem>

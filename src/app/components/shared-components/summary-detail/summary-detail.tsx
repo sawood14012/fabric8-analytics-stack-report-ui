@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   Flex,
   FlexItem,
   Split,
   SplitItem,
   Title,
-} from '@patternfly/react-core';
-import { CubeIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
+} from "@patternfly/react-core";
+import { CubeIcon, ExclamationCircleIcon } from "@patternfly/react-icons";
 
 type DependencyProps = {
   analyzed: number;
@@ -32,8 +32,8 @@ const Dependency = ({ analyzed, transitive, unknown }: DependencyProps) => {
           </FlexItem>
         )}
       </Flex>
-      <Flex key="2" direction={{ default: 'column' }}>
-        <FlexItem spacer={{ default: 'spacerNone' }}>
+      <Flex key="2" direction={{ default: "column" }}>
+        <FlexItem spacer={{ default: "spacerNone" }}>
           <Split hasGutter>
             <SplitItem>Analysed dependencies:</SplitItem>
             <SplitItem>
@@ -43,7 +43,7 @@ const Dependency = ({ analyzed, transitive, unknown }: DependencyProps) => {
             </SplitItem>
           </Split>
         </FlexItem>
-        <FlexItem spacer={{ default: 'spacerNone' }}>
+        <FlexItem spacer={{ default: "spacerNone" }}>
           <Split hasGutter>
             <SplitItem>Transitive dependencies:</SplitItem>
             <SplitItem>
@@ -54,7 +54,7 @@ const Dependency = ({ analyzed, transitive, unknown }: DependencyProps) => {
           </Split>
         </FlexItem>
         {unknown > 0 && (
-          <FlexItem spacer={{ default: 'spacerNone' }}>
+          <FlexItem spacer={{ default: "spacerNone" }}>
             <Split hasGutter>
               <SplitItem>Unknown dependencies:</SplitItem>
               <SplitItem>

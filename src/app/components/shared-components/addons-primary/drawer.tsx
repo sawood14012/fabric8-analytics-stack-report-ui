@@ -1,6 +1,6 @@
-import ReactDOM from 'react-dom';
-import React, { useState } from 'react';
-import '@patternfly/react-core/dist/styles/base.css';
+import ReactDOM from "react-dom";
+import React, { useState } from "react";
+import "@patternfly/react-core/dist/styles/base.css";
 
 import {
   Drawer,
@@ -14,8 +14,8 @@ import {
   Button,
   Grid,
   GridItem,
-} from '@patternfly/react-core';
-import GithubStats from './github_stats';
+} from "@patternfly/react-core";
+import GithubStats from "./github_stats";
 
 function DrawerStack() {
   const [isExpanded, setisExpanded] = useState(false);

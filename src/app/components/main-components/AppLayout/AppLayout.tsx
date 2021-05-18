@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   Page,
   PageHeader,
@@ -9,41 +10,62 @@ import {
   Nav,
   NavList,
   NavItem,
-} from '@patternfly/react-core';
-import { GetStackDetails } from '../../../utils/apiCalls';
+  Backdrop,
+  Bullseye,
+  Spinner,
+  Alert,
+} from "@patternfly/react-core";
+import Context from "../../../store/context";
+import { GetStackDetails, RegisterUser } from "../../../utils/apiCalls";
 
-class NavigationBar extends React.Component {
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-  }
+type NavigationBarProps = {
+  manifest: string;
+};
 
-  render() {
-    const nav = (
-      <Nav variant="horizontal">
-        <NavList>
-          <NavItem isActive>Pom.xml</NavItem>
-        </NavList>
-      </Nav>
-    );
-    return <PageHeader topNav={nav} />;
-  }
-}
+const NavigationBar = ({ manifest }: NavigationBarProps) => {
+  const nav = (
+    <Nav variant="horizontal">
+      <NavList>
+        <NavItem isActive>{manifest}</NavItem>
+      </NavList>
+    </Nav>
+  );
+  return <PageHeader topNav={nav} />;
+};
 
 type LayoutProps = {
   Summary: any;
   Overview: any;
   Table: any;
 };
+
 const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
-  const Header = (
-    // <PageHeader
-    // logo="Pom.xml"
-    // logoProps={logoProps}
-    /// >
-    <NavigationBar />
-  );
-  GetStackDetails();
+  // @ts-ignore
+  const { globalState } = useContext(Context);
+  const [Load, setLoad] = useState(false);
+  const [manifest, setManifest] = useState("None");
+  useEffect(() => {
+    const loading = globalState.Loading;
+    const manifestName = globalState.APIData?.manifest_name;
+    setLoad(loading);
+    setManifest(manifestName);
+    // @ts-ignore
+  }, [globalState]);
+
+  const Header = <NavigationBar manifest={manifest} />;
+
+  const params = useParams<{ id: string }>();
+  GetStackDetails(params.id);
+  // RegisterUser();
+  if (Load) {
+    return (
+      <Backdrop>
+        <Bullseye>
+          <Spinner />
+        </Bullseye>
+      </Backdrop>
+    );
+  }
   return (
     <Page header={Header}>
       <PageSection>

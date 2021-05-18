@@ -1,6 +1,6 @@
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Button,
   Dropdown,
@@ -18,9 +18,9 @@ import {
   ProgressSize,
   ProgressMeasureLocation,
   ProgressVariant,
-} from '@patternfly/react-core';
+} from "@patternfly/react-core";
 
-import DrawerStack from './drawer';
+import DrawerStack from "./drawer";
 
 type DataListState = {
   isOpen1: boolean;
@@ -34,12 +34,12 @@ type DataProps = Record<any, any>;
 function SelectableDataList(props: any) {
   const [isOpen1, setisOpen1] = useState(false);
   const [isOpen2, setisOpen2] = useState(false);
-  const [selectedDataListItemId, setselectableDataListItemId] = useState('');
+  const [selectedDataListItemId, setselectableDataListItemId] = useState("");
   const [onToggle1, setonToggle1] = useState(false);
   const [onToggle2, setonToggle2] = useState(false);
   const [onSelect1, setonSelect1] = useState(false);
   const [onSelect2, setonSelect2] = useState(false);
-  const [onSelectDataListItem, setonSelectDataListItem] = useState('');
+  const [onSelectDataListItem, setonSelectDataListItem] = useState("");
   const newItem = (id: any) => setonSelectDataListItem(id);
 
   return (
