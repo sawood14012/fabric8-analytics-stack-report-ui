@@ -17,7 +17,6 @@ import {
 } from "@patternfly/react-core";
 import Context from "../../../store/context";
 import { GetStackDetails, RegisterUser } from "../../../utils/apiCalls";
-import "./AppLayout.scss";
 
 type NavigationBarProps = {
   manifest: string;
