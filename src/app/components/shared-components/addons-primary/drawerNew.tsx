@@ -5,12 +5,20 @@ import {
   DrawerContent,
   DrawerContentBody,
   DrawerHead,
+  DrawerPanelBody,
   DrawerPanelContent,
+  Flex,
+  FlexItem,
+  Grid,
+  GridItem,
   Progress,
   ProgressSize,
   ProgressMeasureLocation,
   ProgressVariant,
   Button,
+  Split,
+  SplitItem,
+  Title,
   Text,
   TextVariants,
 } from "@patternfly/react-core";
@@ -24,6 +32,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
+import GithubStats from "./github_stats";
 
 const TextTable = (data: string) => {
   return <TableText wrapModifier="wrap">{data}</TableText>;
@@ -83,10 +92,44 @@ const DrawerFC = () => {
   const panelc = (
     <DrawerPanelContent>
       <DrawerHead>
+        <h3 className="pf-c-title pf-m-2xl">Companion dependency </h3>
         <DrawerActions>
-          <DrawerCloseButton onClick={() => setDrawerState(!drawerSta)} />
+          <DrawerCloseButton onClick={() => setDrawerState(false)} />
         </DrawerActions>
       </DrawerHead>
+      <DrawerPanelBody>
+        <Grid hasGutter>
+          <GridItem span={6}>
+            <Flex key="2" direction={{ default: "column" }}>
+              <FlexItem spacer={{ default: "spacerNone" }}>
+                <Split>
+                  <SplitItem>
+                    Latest Version
+                    <div>3.11</div>
+                  </SplitItem>
+                </Split>
+              </FlexItem>
+              <FlexItem spacer={{ default: "spacerNone" }}>
+                <Split>
+                  <Title headingLevel="h6" size="md">
+                    Licence(s) used
+                    <div>Apache License,version2.0</div>
+                  </Title>
+                </Split>
+              </FlexItem>
+            </Flex>
+          </GridItem>
+          <GridItem span={6}>
+            <GithubStats
+              contributors={25}
+              dependentRepos={2}
+              usage={5}
+              forks={10}
+              stars={5}
+            />
+          </GridItem>
+        </Grid>
+      </DrawerPanelBody>
     </DrawerPanelContent>
   );
   return (
