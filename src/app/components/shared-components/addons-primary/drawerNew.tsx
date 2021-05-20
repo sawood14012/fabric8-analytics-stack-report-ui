@@ -65,6 +65,16 @@ const DrawerFC = () => {
       { title: FeedbackButtons() },
     ],
     [
+      { title: TextTable("joda-time:joda-time") },
+      { title: ProgressBar(63) },
+      { title: FeedbackButtons() },
+    ],
+    [
+      { title: TextTable("joda-time:joda-time") },
+      { title: ProgressBar(63) },
+      { title: FeedbackButtons() },
+    ],
+    [
       { title: TextTable("org.springframework.boot:spring-boot-starter-web") },
       { title: ProgressBar(60) },
       { title: FeedbackButtons() },
@@ -80,20 +90,21 @@ const DrawerFC = () => {
     </DrawerPanelContent>
   );
   return (
-    <Drawer isExpanded={drawerSta}>
+    <Drawer className="DrawerSize" isExpanded={drawerSta}>
       <DrawerContent panelContent={panelc}>
         <DrawerContentBody>
-          <div>
             <Table
+              className="tableHeight"
               aria-label="Sortable Table"
               cells={columns}
               rows={rows}
+              isStickyHeader
               variant={TableVariant.compact}
             >
               <TableHeader />
               <TableBody onRowClick={(e, row) => setDrawerState(!drawerSta)} />
             </Table>
-          </div>
+          
         </DrawerContentBody>
       </DrawerContent>
     </Drawer>

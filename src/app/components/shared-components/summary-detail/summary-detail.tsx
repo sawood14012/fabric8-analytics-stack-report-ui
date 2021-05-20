@@ -17,23 +17,25 @@ type DependencyProps = {
 const Dependency = ({ analyzed, transitive, unknown }: DependencyProps) => {
   return (
     <div>
-      <Flex key="1">
-        <FlexItem>
-          <CubeIcon className="icon-class" />
+      <Flex key="1" direction={{ default: "column" }} display={{ default: 'inlineFlex' }}>
+      <FlexItem spacer={{ default: "spacerXs" }}>
+        <Split hasGutter>
+          <SplitItem><CubeIcon className="icon-class" /></SplitItem>
+          <SplitItem>
+            <Title headingLevel="h6" size="md">
+              Dependency Details
+            </Title>
+          </SplitItem>
+          {unknown > 0 && (
+            <SplitItem>
+              <ExclamationCircleIcon className="icon-class-exclamation" />
+            </SplitItem>
+            )}
+        </Split>
         </FlexItem>
-        <FlexItem>
-          <Title headingLevel="h6" size="md">
-            Dependency Details
-          </Title>
-        </FlexItem>
-        {unknown > 0 && (
-          <FlexItem>
-            <ExclamationCircleIcon className="icon-class-exclamation" />
-          </FlexItem>
-        )}
       </Flex>
       <Flex key="2" direction={{ default: "column" }}>
-        <FlexItem spacer={{ default: "spacerNone" }}>
+        <FlexItem spacer={{ default: "spacerXs" }}>
           <Split hasGutter>
             <SplitItem>Analysed dependencies:</SplitItem>
             <SplitItem>
@@ -43,7 +45,7 @@ const Dependency = ({ analyzed, transitive, unknown }: DependencyProps) => {
             </SplitItem>
           </Split>
         </FlexItem>
-        <FlexItem spacer={{ default: "spacerNone" }}>
+        <FlexItem spacer={{ default: "spacerXs" }}>
           <Split hasGutter>
             <SplitItem>Transitive dependencies:</SplitItem>
             <SplitItem>
@@ -54,7 +56,7 @@ const Dependency = ({ analyzed, transitive, unknown }: DependencyProps) => {
           </Split>
         </FlexItem>
         {unknown > 0 && (
-          <FlexItem spacer={{ default: "spacerNone" }}>
+          <FlexItem spacer={{ default: "spacerXs" }}>
             <Split hasGutter>
               <SplitItem>Unknown dependencies:</SplitItem>
               <SplitItem>

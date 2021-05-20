@@ -1,8 +1,9 @@
 import { useReducer } from "react";
+import { RegisterUser } from "../utils/apiCalls";
 
 const initialState = {
   APIData: {},
-  Loading: false,
+  Loading: true,
   IsRegUser: false,
   UUID: null,
 };
@@ -13,7 +14,7 @@ const reducer = (state: any, action: { type: any; data: any }) => {
       return {
         ...state,
         APIData: action.data,
-        IsRegUser: action.data?.registration_status === "REGISTERED",
+        IsRegUser: localStorage.getItem("UUID") !== null,
       };
     case "Loading":
       return {

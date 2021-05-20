@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Button,
   Modal,
@@ -13,6 +13,8 @@ import {
   ExclamationTriangleIcon,
 } from "@patternfly/react-icons";
 import PoweredBySynk from "../powerd-by/powerd-by";
+import { RegisterUser, GetUUID, GetStackDetails } from "../../../utils/apiCalls";
+import Context from "../../../store/context";
 
 type Signprop = {
   isUUID: boolean;
@@ -27,10 +29,27 @@ type Modalprops = {
   handleToggle: () => void;
 };
 
+function RegisterAndSetUUID(token: string, globalDispatch: any){
+  globalDispatch({ type: "Loading", data: true });
+  GetUUID().then((uuid)=>{
+    RegisterUser(token, uuid).then((res)=>{
+      globalDispatch({ type: "UUID", data: res })
+      localStorage.setItem("UUID", res);
+      const requestId = localStorage.getItem("requestId")
+      GetStackDetails(requestId != null? requestId: "").then((result)=>{
+        globalDispatch({ type: "APIData", data: result });
+        globalDispatch({ type: "Loading", data: false });
+      });
+    });
+  });
+}
+
 const ModalComponent = ({ isModalOpen, handleToggle }: Modalprops) => {
   const text =
     " to get your free Snyk token and get access to all premium fields.";
   const [tokenValue, setTokenValue] = useState("");
+  // @ts-ignore
+  const { globalState, globalDispatch } = useContext(Context);
 
   return (
     <Modal
@@ -39,7 +58,7 @@ const ModalComponent = ({ isModalOpen, handleToggle }: Modalprops) => {
       isOpen={isModalOpen}
       onClose={handleToggle}
       actions={[
-        <Button key="confirm" variant="primary" onClick={handleToggle}>
+        <Button key="confirm" variant="primary" onClick={()=> {RegisterAndSetUUID(tokenValue, globalDispatch); handleToggle();}}>
           Submit
         </Button>,
         <Button key="cancel" variant="link" onClick={handleToggle}>

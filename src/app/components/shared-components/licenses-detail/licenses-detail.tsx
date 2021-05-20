@@ -2,6 +2,7 @@ import React from "react";
 import {
   Flex,
   FlexItem,
+  FlexProps,
   Split,
   SplitItem,
   Title,
@@ -14,28 +15,30 @@ type LicensesProps = {
 };
 
 const Licenses = ({ conflicts, unknown }: LicensesProps) => {
-  const condition = conflicts > 0 || unknown > 0;
+  const condition = true // conflicts > 0 || unknown > 0;
 
   return (
     <div>
-      <Flex key="1">
-        <FlexItem>
-          <FileAltIcon className="icon-class" />
+      <Flex key="1" direction={{ default: "column" }} display={{ default: 'inlineFlex' }}>
+        <FlexItem spacer={{ default: "spacerXs" }}>
+        <Split hasGutter>
+          <SplitItem><FileAltIcon className="icon-class" /></SplitItem>
+          <SplitItem>
+            <Title headingLevel="h6" size="md">
+              Licences
+            </Title>
+          </SplitItem>
+          {condition && (
+            <SplitItem>
+              <ExclamationCircleIcon className="icon-class-exclamation" />
+              </SplitItem>
+            )}
+        </Split>
         </FlexItem>
-        <FlexItem>
-          <Title headingLevel="h6" size="md">
-            Licences
-          </Title>
-        </FlexItem>
-        {condition && (
-          <FlexItem>
-            <ExclamationCircleIcon className="icon-class-exclamation" />
-          </FlexItem>
-        )}
       </Flex>
       <Flex key="2" direction={{ default: "column" }}>
         {conflicts >= 0 && (
-          <FlexItem spacer={{ default: "spacerNone" }}>
+          <FlexItem spacer={{ default: "spacerXs" }}>
             <Split hasGutter>
               <SplitItem>License conflicts:</SplitItem>
               <SplitItem>
@@ -47,7 +50,7 @@ const Licenses = ({ conflicts, unknown }: LicensesProps) => {
           </FlexItem>
         )}
         {unknown > 0 && (
-          <FlexItem spacer={{ default: "spacerNone" }}>
+          <FlexItem spacer={{ default: "spacerXs" }}>
             <Split hasGutter>
               <SplitItem>Unknown licenses:</SplitItem>
               <SplitItem>

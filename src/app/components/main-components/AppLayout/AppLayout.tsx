@@ -17,6 +17,7 @@ import {
 } from "@patternfly/react-core";
 import Context from "../../../store/context";
 import { GetStackDetails, RegisterUser } from "../../../utils/apiCalls";
+import CRDALoader  from "../EmptyLayout/EmptyLayout";
 
 type NavigationBarProps = {
   manifest: string;
@@ -39,38 +40,48 @@ type LayoutProps = {
   Table: any;
 };
 
+function GetAndSetStackData(globalDispatch: any, id: string){
+  useEffect(()=>{
+    globalDispatch({ type: "Loading", data: true });
+    GetStackDetails(id).then((res)=>{
+    globalDispatch({ type: "APIData", data: res });
+    globalDispatch({ type: "Loading", data: false });
+  });
+  }, []);
+}
+
 const AppLayout = ({ Summary, Overview, Table }: LayoutProps) => {
   // @ts-ignore
-  const { globalState } = useContext(Context);
+  const { globalState, globalDispatch } = useContext(Context);
   const [Load, setLoad] = useState(false);
   const [manifest, setManifest] = useState("None");
+  const params = useParams<{ id: string }>();
   useEffect(() => {
     const loading = globalState.Loading;
     const manifestName = globalState.APIData?.manifest_name;
     setLoad(loading);
     setManifest(manifestName);
+    
     // @ts-ignore
   }, [globalState]);
 
   const Header = <NavigationBar manifest={manifest} />;
 
-  const params = useParams<{ id: string }>();
-  GetStackDetails(params.id);
+  GetAndSetStackData(globalDispatch, params.id);
+  
   // RegisterUser();
   if (Load) {
     return (
-      <Backdrop>
-        <Bullseye>
-          <Spinner />
-        </Bullseye>
-      </Backdrop>
+      
+        <CRDALoader loading={Load} Header={Header}/>
+      
     );
   }
   return (
     <Page header={Header}>
-      <PageSection>
+      <PageSection hasOverflowScroll>
         <Grid hasGutter>
-          <GridItem span={5}>{Summary}</GridItem>
+          <GridItem span={5} >{Summary}</GridItem>
           <GridItem span={7}>{Overview}</GridItem>
           {/* <GridItem span={12}>{Table}</GridItem> */}
         </Grid>

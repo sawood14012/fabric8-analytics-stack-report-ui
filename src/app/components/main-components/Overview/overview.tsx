@@ -13,6 +13,7 @@ import {
   Tab,
   TabTitleText,
   TabTitleIcon,
+  PageSection,
 } from "@patternfly/react-core";
 import { ChartDonut } from "@patternfly/react-charts";
 import SecurityIcon from "@patternfly/react-icons/dist/js/icons/security-icon";
@@ -30,8 +31,7 @@ function OverviewCard() {
   const { globalState, globalDispatch } = useContext(Context);
 
   return (
-    <div>
-      <Card className="pf-global--BorderColor--100">
+      <Card isHoverable className="GridCard">
         <CardTitle>
           <TextContent>
             <Text className="overview-title">Overview of the Stack</Text>
@@ -75,7 +75,6 @@ function OverviewCard() {
           </Tabs>
         </CardBody>
       </Card>
-    </div>
   );
 }
 

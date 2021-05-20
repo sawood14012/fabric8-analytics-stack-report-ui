@@ -15,19 +15,21 @@ type AddonsProps = {
 const Addons = ({ companion }: AddonsProps) => {
   return (
     <div>
-      <Flex key="1">
-        <FlexItem>
-          <ZoneIcon className="icon-class" />
-        </FlexItem>
-        <FlexItem>
-          <Title headingLevel="h6" size="md">
+      <Flex key="1" direction={{ default: "column" }} display={{ default: 'inlineFlex' }}>
+      <FlexItem spacer={{ default: "spacerXs" }}>
+        <Split hasGutter>
+          <SplitItem><ZoneIcon className="icon-class" /></SplitItem>
+          <SplitItem>
+            <Title headingLevel="h6" size="md">
             Add-ons
-          </Title>
+            </Title>
+          </SplitItem>
+        </Split>
         </FlexItem>
       </Flex>
       <Flex key="2" direction={{ default: "column" }}>
         {companion > 0 && (
-          <FlexItem spacer={{ default: "spacerNone" }}>
+          <FlexItem spacer={{ default: "spacerXs" }}>
             <Split hasGutter>
               <SplitItem>Companion Dependencies:</SplitItem>
               <SplitItem>
