@@ -21,6 +21,8 @@
   height: 24px;
 }
 
+
+
 .pf-c-button.mybutton {
   --pf-c-button--m-small--FontSize: 0.7rem;
   --pf-c-button--FontWeight: 900;
@@ -48,6 +50,34 @@
   --pf-c-button--m-warning--focus--Color: #fff;
   --pf-c-button--m-warning--active--Color: #fff;
   --pf-c-button--m-warning--active--BackgroundColor: #c46100;
+}
+
+
+
+.GridCard {
+  height: 420px; 
+}
+
+@media only screen 
+and (max-width : 991px){
+    /* Styles */
+}
+
+@media only screen 
+and (max-width : 768px){
+    /* Styles */
+}
+
+@media only screen 
+and (max-width : 414px){
+    /* Styles */
+    .GridCard{
+      height: 900px;
+    }
+}
+
+.pf-c-card.SummaryCard {
+  --pf-c-card--m-full-height--Height: 0%;
 }
 
 .icon-class {

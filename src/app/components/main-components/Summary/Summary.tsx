@@ -11,6 +11,9 @@ import {
   Grid,
   GridItem,
   Skeleton,
+  Gallery,
+  GalleryItem,
+  CardFooter,
 } from "@patternfly/react-core";
 import { ShareSquareIcon, DownloadIcon } from "@patternfly/react-icons";
 import "./Summary.scss";
@@ -34,22 +37,6 @@ type SummaryState = {
 // eslint-disable-next-line
 type SummaryProps = Record<any, any>;
 
-const PercentageWidths = () => (
-  <div>
-    <Skeleton width="25%" screenreaderText="Loading contents" />
-    <br />
-    <Skeleton width="33%" />
-    <br />
-    <Skeleton width="50%" />
-    <br />
-    <Skeleton width="66%" />
-    <br />
-    <Skeleton width="75%" />
-    <br />
-    <Skeleton />
-  </div>
-);
-
 const SummaryCard = () => {
   // @ts-ignore
   const { globalState, globalDispatch } = useContext(Context);
@@ -64,6 +51,7 @@ const SummaryCard = () => {
   const [Showsignup, setShowSignup] = useState(false);
   const [Load, setLoad] = useState(false);
   const utils = new Utils();
+
   const signUpText =
     "Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit";
 
@@ -77,8 +65,10 @@ const SummaryCard = () => {
     const loading = globalState.Loading;
     const isRegisteredUser = globalState.IsRegUser;
     const uuid = globalState.APIData?.uuid;
+    const registeredfeild = globalState.APIData?.registration_status;
+    // const isReg = globalState.IsRegUser;
     setLoad(loading);
-    if (isRegisteredUser && uuid !== null) {
+    if (isRegisteredUser) {
       setShowSignup(true);
     }
 
@@ -94,12 +84,8 @@ const SummaryCard = () => {
     // @ts-ignore
   }, [globalState]);
 
-  if (Load) {
-    return PercentageWidths();
-  }
-
   return (
-    <Card className="--pf-c-card--BoxShadow summary-of-the-stack">
+    <Card isHoverable className="GridCard" isFullHeight>
       <CardTitle className="">
         <Flex>
           <FlexItem>
@@ -123,115 +109,33 @@ const SummaryCard = () => {
         <PoweredBySynk />
         <SignUp isUUID={Showsignup} />
         <br />
-        <Grid hasGutter>
-          <GridItem span={6}>
+        <Grid xl={6} xl2={6} span={12} hasGutter>
+          <GridItem sm={12} md={6} lg={6}>
             <Dependency
               analyzed={Analyzed}
               transitive={Transitive}
               unknown={Unknown}
             />
           </GridItem>
-          <GridItem span={6}>
+          <GridItem sm={12} md={6} lg={6}>
             <Security vulnerablities={Vlunerablities} vulnerable={Vulnerable} />
           </GridItem>
-          <Divider component="div" />
-          <GridItem span={6}>
+        </Grid>
+        <br />
+        <Divider component="div" />
+        <br />
+        <Grid xl={6} xl2={6} span={12} hasGutter>
+          <GridItem sm={12} md={6} lg={6} rowSpan={4}>
             <Licenses conflicts={LicenseConflicts} unknown={LicenseUnknown} />
           </GridItem>
-          <GridItem span={6}>
+          <GridItem sm={12} md={6} lg={6} rowSpan={4}>
             <Addons companion={Companion} />
           </GridItem>
         </Grid>
       </CardBody>
+      <Divider component="div" />
     </Card>
   );
 };
-
-class SummaryCardC extends React.Component<SummaryProps, SummaryState> {
-  showsignup = false;
-
-  signUpText =
-    "Sign up for a free Snyk account to find out about the vulnerabilities that have been found, and whether any have a publicly known exploit";
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      dependency: {
-        analyzed: 17,
-        transitive: 112,
-        unknown: 10,
-      },
-      addons: {
-        companion: 3,
-      },
-      licenses: {
-        conflicts: 2,
-        unknown: 1,
-      },
-      security: {
-        vlunerablities: 87,
-        vulnerable: 18,
-      },
-    };
-  }
-
-  render() {
-    const { dependency, addons, licenses, security } = this.state;
-    return (
-      <Card className="--pf-c-card--BoxShadow summary-of-the-stack">
-        <CardTitle className="">
-          <Flex>
-            <FlexItem>
-              <TextContent>
-                <Text className="heading"> Summary of the stack </Text>
-              </TextContent>
-            </FlexItem>
-            <FlexItem>
-              <BTSynktoken isUUID={this.showsignup} />
-            </FlexItem>
-            <FlexItem align={{ default: "alignRight" }}>
-              <ShareSquareIcon className="icon-class" />
-            </FlexItem>
-            <FlexItem>
-              <DownloadIcon className="icon-class" />
-            </FlexItem>
-          </Flex>
-        </CardTitle>
-        <Divider />
-        <CardBody>
-          <PoweredBySynk />
-          <SignUp isUUID={this.showsignup} />
-          <br />
-          <Grid hasGutter>
-            <GridItem span={6}>
-              <Dependency
-                analyzed={dependency.analyzed}
-                transitive={dependency.transitive}
-                unknown={dependency.unknown}
-              />
-            </GridItem>
-            <GridItem span={6}>
-              <Security
-                vulnerablities={security.vlunerablities}
-                vulnerable={security.vulnerable}
-              />
-            </GridItem>
-            <Divider component="div" />
-            <GridItem span={6}>
-              <Licenses
-                conflicts={licenses.conflicts}
-                unknown={licenses.unknown}
-              />
-            </GridItem>
-            <GridItem span={6}>
-              <Addons companion={addons.companion} />
-            </GridItem>
-          </Grid>
-        </CardBody>
-      </Card>
-    );
-  }
-}
 
 export default SummaryCard;

@@ -5,3 +5,4 @@ export const mybutton: string;
 export const pfCButton: string;
 export const signUpText: string;
 export const title: string;
+export const SummaryCard: string;

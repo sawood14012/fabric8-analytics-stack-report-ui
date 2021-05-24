@@ -13,6 +13,7 @@ import {
   Tab,
   TabTitleText,
   TabTitleIcon,
+  PageSection,
 } from "@patternfly/react-core";
 import { ChartDonut } from "@patternfly/react-charts";
 import SecurityIcon from "@patternfly/react-icons/dist/js/icons/security-icon";
@@ -30,52 +31,50 @@ function OverviewCard() {
   const { globalState, globalDispatch } = useContext(Context);
 
   return (
-    <div>
-      <Card className="pf-global--BorderColor--100">
-        <CardTitle>
-          <TextContent>
-            <Text className="overview-title">Overview of the Stack</Text>
-          </TextContent>
-        </CardTitle>
-        <CardBody>
-          <Tabs
-            activeKey={activeTab}
-            onSelect={(event, tabIndex) => setActiveTab(Number(tabIndex))}
+    <Card isHoverable isFullHeight className="GridCard">
+      <CardTitle>
+        <TextContent>
+          <Text className="overview-title">Overview of the Stack</Text>
+        </TextContent>
+      </CardTitle>
+      <CardBody className="CardBodySize">
+        <Tabs
+          activeKey={activeTab}
+          onSelect={(event, tabIndex) => setActiveTab(Number(tabIndex))}
+        >
+          <Tab
+            onSelect={() => {
+              Logger.log("hello");
+            }}
+            eventKey={0}
+            title={
+              <>
+                <TabTitleIcon>
+                  <SecurityIcon />
+                </TabTitleIcon>
+                <TabTitleText>Security Issues</TabTitleText>
+              </>
+            }
           >
-            <Tab
-              onSelect={() => {
-                Logger.log("hello");
-              }}
-              eventKey={0}
-              title={
-                <>
-                  <TabTitleIcon>
-                    <SecurityIcon />
-                  </TabTitleIcon>
-                  <TabTitleText>Security Issues</TabTitleText>
-                </>
-              }
-            >
-              <br />
-              <OverviewContent />
-            </Tab>
-            <Tab
-              eventKey={1}
-              title={
-                <>
-                  <TabTitleIcon>
-                    <ZoneIcon />
-                  </TabTitleIcon>
-                  <TabTitleText>Add-ons</TabTitleText>
-                </>
-              }
-            >
-              <DrawerFC />
-            </Tab>
-          </Tabs>
-        </CardBody>
-      </Card>
-    </div>
+            <br />
+            <OverviewContent />
+          </Tab>
+          <Tab
+            eventKey={1}
+            title={
+              <>
+                <TabTitleIcon>
+                  <ZoneIcon />
+                </TabTitleIcon>
+                <TabTitleText>Add-ons</TabTitleText>
+              </>
+            }
+          >
+            <DrawerFC />
+          </Tab>
+        </Tabs>
+      </CardBody>
+    </Card>
   );
 }
 

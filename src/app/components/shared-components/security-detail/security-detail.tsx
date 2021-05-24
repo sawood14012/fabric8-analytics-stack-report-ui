@@ -17,24 +17,32 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
   const condition = vulnerablities > 0 || vulnerable > 0;
   return (
     <div>
-      <Flex key="1">
-        <FlexItem>
-          <SecurityIcon className="icon-class" />
+      <Flex
+        key="1"
+        direction={{ default: "column" }}
+        display={{ default: "inlineFlex" }}
+      >
+        <FlexItem spacer={{ default: "spacerXs" }}>
+          <Split hasGutter>
+            <SplitItem>
+              <SecurityIcon className="icon-class" />
+            </SplitItem>
+            <SplitItem>
+              <Title headingLevel="h6" size="md">
+                Security Issues
+              </Title>
+            </SplitItem>
+            {condition && (
+              <SplitItem>
+                <ExclamationCircleIcon className="icon-class-exclamation" />
+              </SplitItem>
+            )}
+          </Split>
         </FlexItem>
-        <FlexItem>
-          <Title headingLevel="h6" size="md">
-            Security Issues
-          </Title>
-        </FlexItem>
-        {condition && (
-          <FlexItem>
-            <ExclamationCircleIcon className="icon-class-exclamation" />
-          </FlexItem>
-        )}
       </Flex>
       <Flex key="2" direction={{ default: "column" }}>
         {vulnerablities >= 0 && (
-          <FlexItem spacer={{ default: "spacerNone" }}>
+          <FlexItem spacer={{ default: "spacerXs" }}>
             <Split hasGutter>
               <SplitItem>Total vulnerabilities:</SplitItem>
               <SplitItem>
@@ -46,7 +54,7 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
           </FlexItem>
         )}
         {vulnerable >= 0 && (
-          <FlexItem spacer={{ default: "spacerNone" }}>
+          <FlexItem spacer={{ default: "spacerXs" }}>
             <Split hasGutter>
               <SplitItem>Vulnerable dependencies:</SplitItem>
               <SplitItem>
