@@ -54,7 +54,6 @@ type tableProps = {
 };
 
 const GenerateRows = (data: any) => {
-  console.log(data);
   const rowsData: (
     | { title: JSX.Element; drawer: any }
     | { title: JSX.Element; drawer?: undefined }
@@ -67,7 +66,6 @@ const GenerateRows = (data: any) => {
     ];
     rowsData.push(result);
   });
-  console.log(rowsData);
   return rowsData;
 };
 
@@ -84,7 +82,6 @@ const ComposableTableMisc = ({
     borderLeft: "3px solid var(--pf-global--primary-color--100)",
   };
   const onRowClick = (rowIndex: number, data: any, cellIndex: boolean) => {
-    console.log(cellIndex);
     if (cellIndex) {
       setDrawerData(data);
       setDrawerState(!drawerSta);
