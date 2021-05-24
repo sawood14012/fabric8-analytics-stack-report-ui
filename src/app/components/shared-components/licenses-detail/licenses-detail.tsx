@@ -15,25 +15,31 @@ type LicensesProps = {
 };
 
 const Licenses = ({ conflicts, unknown }: LicensesProps) => {
-  const condition = true // conflicts > 0 || unknown > 0;
+  const condition = true; // conflicts > 0 || unknown > 0;
 
   return (
     <div>
-      <Flex key="1" direction={{ default: "column" }} display={{ default: 'inlineFlex' }}>
+      <Flex
+        key="1"
+        direction={{ default: "column" }}
+        display={{ default: "inlineFlex" }}
+      >
         <FlexItem spacer={{ default: "spacerXs" }}>
-        <Split hasGutter>
-          <SplitItem><FileAltIcon className="icon-class" /></SplitItem>
-          <SplitItem>
-            <Title headingLevel="h6" size="md">
-              Licences
-            </Title>
-          </SplitItem>
-          {condition && (
+          <Split hasGutter>
             <SplitItem>
-              <ExclamationCircleIcon className="icon-class-exclamation" />
+              <FileAltIcon className="icon-class" />
+            </SplitItem>
+            <SplitItem>
+              <Title headingLevel="h6" size="md">
+                Licences
+              </Title>
+            </SplitItem>
+            {condition && (
+              <SplitItem>
+                <ExclamationCircleIcon className="icon-class-exclamation" />
               </SplitItem>
             )}
-        </Split>
+          </Split>
         </FlexItem>
       </Flex>
       <Flex key="2" direction={{ default: "column" }}>

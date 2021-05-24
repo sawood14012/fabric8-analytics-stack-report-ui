@@ -17,21 +17,27 @@ const Security = ({ vulnerablities, vulnerable }: SecurityProps) => {
   const condition = vulnerablities > 0 || vulnerable > 0;
   return (
     <div>
-      <Flex key="1" direction={{ default: "column" }} display={{ default: 'inlineFlex' }}>
-      <FlexItem spacer={{ default: "spacerXs" }}>
-        <Split hasGutter>
-          <SplitItem><SecurityIcon className="icon-class" /></SplitItem>
-          <SplitItem>
-            <Title headingLevel="h6" size="md">
-            Security Issues
-            </Title>
-          </SplitItem>
-          {condition && (
+      <Flex
+        key="1"
+        direction={{ default: "column" }}
+        display={{ default: "inlineFlex" }}
+      >
+        <FlexItem spacer={{ default: "spacerXs" }}>
+          <Split hasGutter>
             <SplitItem>
-              <ExclamationCircleIcon className="icon-class-exclamation" />
+              <SecurityIcon className="icon-class" />
+            </SplitItem>
+            <SplitItem>
+              <Title headingLevel="h6" size="md">
+                Security Issues
+              </Title>
+            </SplitItem>
+            {condition && (
+              <SplitItem>
+                <ExclamationCircleIcon className="icon-class-exclamation" />
               </SplitItem>
-          )}
-        </Split>
+            )}
+          </Split>
         </FlexItem>
       </Flex>
       <Flex key="2" direction={{ default: "column" }}>

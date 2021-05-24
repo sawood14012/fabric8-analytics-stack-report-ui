@@ -65,14 +65,12 @@ const SummaryCard = () => {
     const loading = globalState.Loading;
     const isRegisteredUser = globalState.IsRegUser;
     const uuid = globalState.APIData?.uuid;
-    const registeredfeild = globalState.APIData?.registration_status
+    const registeredfeild = globalState.APIData?.registration_status;
     // const isReg = globalState.IsRegUser;
     setLoad(loading);
     if (isRegisteredUser) {
-      console.log(registeredfeild);
       setShowSignup(true);
     }
-
 
     setAnalyzed(analyzedDependencies?.length);
     setUnknown(unknownDependencies?.length);
@@ -87,7 +85,7 @@ const SummaryCard = () => {
   }, [globalState]);
 
   return (
-    <Card isHoverable className="GridCard">
+    <Card isHoverable className="GridCard" isFullHeight>
       <CardTitle className="">
         <Flex>
           <FlexItem>
@@ -111,29 +109,33 @@ const SummaryCard = () => {
         <PoweredBySynk />
         <SignUp isUUID={Showsignup} />
         <br />
-        <Grid hasGutter>
-          <GridItem span={6}>
+        <Grid xl={6} xl2={6} span={12} hasGutter>
+          <GridItem sm={12} md={6} lg={6}>
             <Dependency
               analyzed={Analyzed}
               transitive={Transitive}
               unknown={Unknown}
             />
           </GridItem>
-          <GridItem span={6}>
+          <GridItem sm={12} md={6} lg={6}>
             <Security vulnerablities={Vlunerablities} vulnerable={Vulnerable} />
           </GridItem>
-          <Divider component="div" />
-          <GridItem span={6}>
+        </Grid>
+        <br />
+        <Divider component="div" />
+        <br />
+        <Grid xl={6} xl2={6} span={12} hasGutter>
+          <GridItem sm={12} md={6} lg={6} rowSpan={4}>
             <Licenses conflicts={LicenseConflicts} unknown={LicenseUnknown} />
           </GridItem>
-          <GridItem span={6}>
+          <GridItem sm={12} md={6} lg={6} rowSpan={4}>
             <Addons companion={Companion} />
           </GridItem>
         </Grid>
-      </CardBody> 
+      </CardBody>
+      <Divider component="div" />
     </Card>
   );
 };
-
 
 export default SummaryCard;

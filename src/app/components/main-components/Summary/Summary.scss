@@ -58,6 +58,24 @@
   height: 420px; 
 }
 
+@media only screen 
+and (max-width : 991px){
+    /* Styles */
+}
+
+@media only screen 
+and (max-width : 768px){
+    /* Styles */
+}
+
+@media only screen 
+and (max-width : 414px){
+    /* Styles */
+    .GridCard{
+      height: 900px;
+    }
+}
+
 .pf-c-card.SummaryCard {
   --pf-c-card--m-full-height--Height: 0%;
 }

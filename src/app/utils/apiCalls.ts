@@ -1,86 +1,97 @@
+/* eslint-disable no-console */
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { stageApiKey, stageApiUrl, localDevURL } from "./constants";
 import { Logger } from "./logger";
 
-async function GetStackDetails(requestId = "ed16d5db91d64e8d8d0ea6d1ba6b727e") {
-    let result = {};
-    const url = `${stageApiUrl}/api/v2/stack-analyses/${requestId}?user_key=${stageApiKey}`;
-    Logger.log(url);
-    const config = getConfig();
+type ApiResponse = {
+  code: number;
+  data: any;
+};
+
+async function GetStackDetails(
+  requestId: string,
+  uuid: string,
+): Promise<ApiResponse> {
+  const result: ApiResponse = { code: 0, data: {} };
+  const url = `${stageApiUrl}/api/v2/stack-analyses/${requestId}?user_key=${stageApiKey}`;
+  Logger.log(url);
+  await getStatus(uuid).then(async (value) => {
+    const config = value;
     console.log(config);
     const devUrl = localDevURL;
     await axios
       .get(url, config)
       .then((res: AxiosResponse) => {
-        if(res.status === 200){
-          result = res.data;
-          localStorage.setItem("requestId", res.data.external_request_id)
-        }
+        result.code = res.status;
+        result.data = res.data;
       })
       .catch((err) => {
         Logger.log(err);
+        result.code = err.response.status;
+        result.data = err.response.data;
       });
+  });
   return result;
 }
 
-function getConfig(){
-  if(localStorage.getItem("UUID") !== null){
-      return {
-        headers: {
-          // @ts-ignore
-          UUID: localStorage.getItem("UUID"),
-        },
+async function getStatus(uuid: string) {
+  const url = `${stageApiUrl}/user/${uuid}?user_key=${stageApiKey}`;
+  localStorage.setItem("UUID", uuid);
+  let result = {};
+  await axios
+    .get(url)
+    .then((res: AxiosResponse) => {
+      console.log("hello ".concat(res.status.toString()));
+      const statusCode = res.status;
+      const data = res.data.status;
+      if (statusCode === 200 && data === "REGISTERED") {
+        result = {
+          headers: {
+            UUID: uuid,
+          },
+        };
       }
-  }
-  return {
-    headers: {},
-  }
+    })
+    .catch((err: AxiosError) => {
+      console.log(err.response);
+    });
+  return result;
 }
 
-async function RegisterUser(snykToken : string, uuid: string) {
+type Register = {
+  code: number;
+  data: any;
+};
+
+async function RegisterUser(
+  snykToken: string,
+  uuid: string,
+): Promise<Register> {
   const data = {
     snyk_api_token: snykToken,
     user_id: uuid,
   };
-  let result = '';
-  console.log(snykToken);
-  console.log("function start")
-  const url = `${stageApiUrl}/user?user_key=${stageApiKey}`; 
-  await axios.put(url, data).then((res: AxiosResponse) => {
-      if(res.status === 200){
-        result = res.data.user_id;
-      }
-  }).catch((error : AxiosError) => {
-    if (error.response) {
-      console.log(error.response.data);
-      console.log(error.response.status);
-    }
-  }); 
-  return result;
-}
-
-async function GetUUID() {
-  const UUID = localStorage.getItem("UUID");
+  let result: Register = { code: 0, data: {} };
   const url = `${stageApiUrl}/user?user_key=${stageApiKey}`;
-  let result = '';
-  if(UUID !== null){
-    result = UUID;
-  }
-  else {
-    await axios.post(url).then((res : AxiosResponse) => {
-      if(res.status === 200){
-        result = res.data.user_id;
-      }
-    }).catch((error : AxiosError) => {
+  await axios
+    .put(url, data)
+    .then((res: AxiosResponse) => {
+      result = {
+        code: res.status,
+        data: res.data,
+      };
+    })
+    .catch((error: AxiosError) => {
       if (error.response) {
+        result = {
+          code: error.response.status,
+          data: error.response.data,
+        };
         console.log(error.response.data);
         console.log(error.response.status);
       }
     });
-  }
   return result;
 }
 
-
-
-export { GetStackDetails, RegisterUser, GetUUID };
+export { GetStackDetails, RegisterUser };

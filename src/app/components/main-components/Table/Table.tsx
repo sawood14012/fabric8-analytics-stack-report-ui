@@ -10,7 +10,7 @@ class Tableview extends React.Component {
 
   render() {
     return (
-      <Card className="pf-global--BorderColor--100">
+      <Card className="GridCard">
         <CardTitle>Header</CardTitle>
         <CardBody>Body</CardBody>
         <CardFooter>Footer</CardFooter>

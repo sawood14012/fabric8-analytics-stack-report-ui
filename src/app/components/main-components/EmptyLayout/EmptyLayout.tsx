@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react"
+import React, { useEffect, useState, useContext } from "react";
 import {
   Title,
   Button,
@@ -12,56 +12,77 @@ import {
   GridItem,
   Card,
   CardBody,
-} from "@patternfly/react-core"
-import CubesIcon from "@patternfly/react-icons/dist/js/icons/cubes-icon"
-import "./EmptyLayout.scss"
+  Backdrop,
+  Bullseye,
+  Spinner,
+  Nav,
+  NavItem,
+  NavList,
+  PageHeader,
+} from "@patternfly/react-core";
+import CubesIcon from "@patternfly/react-icons/dist/js/icons/cubes-icon";
+import "./EmptyLayout.scss";
 
 const PercentageWidths = () => (
-  <Card className="GridCard">
-    <CardBody>
-      <Skeleton width="25%" screenreaderText="Loading contents" />
-      <br />
-      <Skeleton width="33%" />
-      <br />
-      <Skeleton width="50%" />
-      <br />
-      <Skeleton width="66%" />
-      <br />
-      <Skeleton width="75%" />
-      <br />
-      <Skeleton />
-    </CardBody>
-  </Card>
-)
+  <div>
+    <Skeleton width="100%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="95%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="85%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="75%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="65%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="55%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="45%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="35%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="25%" screenreaderText="Loading contents" />
+    <br />
+    <Skeleton width="15%" screenreaderText="Loading contents" />
+    <br />
+  </div>
+);
 type BasicProps = {
-  Header: JSX.Element
-}
+  Header: JSX.Element;
+};
+const Header = () => {
+  const nav = <Nav variant="horizontal" />;
+  return <PageHeader topNav={nav} />;
+};
 
-const Basic = ({ Header }: BasicProps) => (
-  <Page header={Header}>
-    <PageSection>
-      <Grid hasGutter>
-        <GridItem span={5}>{PercentageWidths}</GridItem>
-        <GridItem span={7}>{PercentageWidths}</GridItem>
-        <GridItem span={12}>
-          <div style={{ height: "200px" }}>
-            <Skeleton
-              height="100%"
-              screenreaderText="Loading large rectangle contents"
-            />
-          </div>
-        </GridItem>
-      </Grid>
-    </PageSection>
-  </Page>
-)
+const Basic = () => (
+  <Backdrop className="myBackdrop">
+    <Page header={Header}>
+      <PageSection height="1340px">
+        <Grid hasGutter>
+          <GridItem className="GridCard" span={6}>
+            <PercentageWidths />
+          </GridItem>
+          <GridItem className="GridCard" span={6}>
+            <PercentageWidths />
+          </GridItem>
+          <Bullseye>
+            <Spinner className="Spinner" isSVG />
+          </Bullseye>
+          <GridItem span={12}>
+            <PercentageWidths />
+          </GridItem>
+        </Grid>
+      </PageSection>
+    </Page>
+  </Backdrop>
+);
 type Loader = {
-  loading: boolean
-  Header: JSX.Element
-}
-const CRDALoader = ({ loading, Header }: Loader) => {
+  loading: boolean;
+};
+const CRDALoader = ({ loading }: Loader) => {
   if (loading) {
-    return <Basic Header={Header} />
+    return <Basic />;
   }
   return (
     <EmptyState>
@@ -75,7 +96,7 @@ const CRDALoader = ({ loading, Header }: Loader) => {
       </EmptyStateBody>
       <Button variant="primary">Go Home</Button>
     </EmptyState>
-  )
-}
+  );
+};
 
-export default CRDALoader
+export default CRDALoader;

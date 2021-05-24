@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   Drawer,
   DrawerActions,
@@ -11,88 +12,148 @@ import {
   FlexItem,
   Grid,
   GridItem,
-  Progress,
-  ProgressSize,
-  ProgressMeasureLocation,
-  ProgressVariant,
-  Button,
   Split,
   SplitItem,
   Title,
-  Text,
-  TextVariants,
 } from "@patternfly/react-core";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableText,
-  TableVariant,
-} from "@patternfly/react-table";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import GithubStats from "./github_stats";
-
-const TextTable = (data: string) => {
-  return <TableText wrapModifier="wrap">{data}</TableText>;
-};
-
-const ProgressBar = (data: number) => {
-  const title = String(data).concat("%");
-  return (
-    <Progress
-      value={data}
-      title={title}
-      size={ProgressSize.sm}
-      measureLocation={ProgressMeasureLocation.none}
-    />
-  );
-};
-
-const FeedbackButtons = () => {
-  return (
-    <div>
-      <Button variant="link" icon={<FontAwesomeIcon icon={faThumbsUp} />} />
-      <Button variant="link" icon={<FontAwesomeIcon icon={faThumbsDown} />} />
-    </div>
-  );
-};
+import ComposableTableMisc from "./addonstable";
 
 const DrawerFC = () => {
+  const drawD = {
+    name: "Hello",
+    licenses: "Apache License,version2.0",
+    latest_version: "2.0.0",
+    github: {
+      contributors: "32",
+      dependent_projects: "22",
+      dependent_repos: "5",
+      first_release_date: null,
+      forks_count: "101",
+      issues: {
+        month: {
+          closed: 2,
+          opened: 1,
+        },
+        year: {
+          closed: 9,
+          opened: 8,
+        },
+      },
+      latest_release_duration: "2017-03-07 15:32:13",
+      open_issues_count: "0",
+      pull_requests: {
+        month: {
+          closed: 12,
+          opened: 12,
+        },
+        year: {
+          closed: 84,
+          opened: 84,
+        },
+      },
+      size: "N/A",
+      stargazers_count: "387",
+      total_releases: "18",
+      used_by: [],
+      watchers: "23",
+    },
+  };
+  const drawD2 = {
+    name: "joda-time:joda-time",
+    licenses: "Apache License,version2.0",
+    latest_version: "2.0.0",
+    github: {
+      contributors: "32",
+      dependent_projects: "22",
+      dependent_repos: "5",
+      first_release_date: null,
+      forks_count: "105",
+      issues: {
+        month: {
+          closed: 2,
+          opened: 1,
+        },
+        year: {
+          closed: 9,
+          opened: 8,
+        },
+      },
+      latest_release_duration: "2017-03-07 15:32:13",
+      open_issues_count: "0",
+      pull_requests: {
+        month: {
+          closed: 12,
+          opened: 12,
+        },
+        year: {
+          closed: 84,
+          opened: 84,
+        },
+      },
+      size: "N/A",
+      stargazers_count: "387",
+      total_releases: "18",
+      used_by: [],
+      watchers: "23",
+    },
+  };
+  const drawD1 = {
+    name: "org.apache.commons:commons-lang3",
+    licenses: "Apache License,version2.0",
+    latest_version: "2.0.0",
+    github: {
+      contributors: "32",
+      dependent_projects: "22",
+      dependent_repos: "5",
+      first_release_date: null,
+      forks_count: "101",
+      issues: {
+        month: {
+          closed: 2,
+          opened: 1,
+        },
+        year: {
+          closed: 9,
+          opened: 8,
+        },
+      },
+      latest_release_duration: "2017-03-07 15:32:13",
+      open_issues_count: "0",
+      pull_requests: {
+        month: {
+          closed: 12,
+          opened: 12,
+        },
+        year: {
+          closed: 84,
+          opened: 84,
+        },
+      },
+      size: "N/A",
+      stargazers_count: "387",
+      total_releases: "18",
+      used_by: [],
+      watchers: "23",
+    },
+  };
   const [drawerSta, setDrawerState] = useState(false);
-  const columns = ["Companion Dependencies", "Confidence Score", "Feedback"];
-  const rows = [
-    [
-      { title: TextTable("org.apache.commons:commons-lang3") },
-      { title: ProgressBar(85) },
-      { title: FeedbackButtons() },
-    ],
-    [
-      { title: TextTable("joda-time:joda-time") },
-      { title: ProgressBar(63) },
-      { title: FeedbackButtons() },
-    ],
-    [
-      { title: TextTable("joda-time:joda-time") },
-      { title: ProgressBar(63) },
-      { title: FeedbackButtons() },
-    ],
-    [
-      { title: TextTable("joda-time:joda-time") },
-      { title: ProgressBar(63) },
-      { title: FeedbackButtons() },
-    ],
-    [
-      { title: TextTable("org.springframework.boot:spring-boot-starter-web") },
-      { title: ProgressBar(60) },
-      { title: FeedbackButtons() },
-    ],
+  const [drawerData, setDrawerData] = useState(drawD);
+  const rowData = [
+    { name: "org.apache.commons:commons-lang3", progress: 75, drawer: drawD1 },
+    { name: "joda-time:joda-time", progress: 35, drawer: drawD2 },
+    {
+      name: "org.springframework.boot:spring-boot-starter-web",
+      progress: 35,
+      drawer: drawD,
+    },
+    { name: "joda-time:joda-time", progress: 35, drawer: drawD },
   ];
   const panelc = (
     <DrawerPanelContent>
       <DrawerHead>
-        <h3 className="pf-c-title pf-m-2xl">Companion dependency </h3>
+        <h3 className="pf-c-title pf-m-2xl">{drawerData.name}</h3>
         <DrawerActions>
           <DrawerCloseButton onClick={() => setDrawerState(false)} />
         </DrawerActions>
@@ -105,7 +166,7 @@ const DrawerFC = () => {
                 <Split>
                   <SplitItem>
                     Latest Version
-                    <div>3.11</div>
+                    <div>{drawerData.latest_version}</div>
                   </SplitItem>
                 </Split>
               </FlexItem>
@@ -113,7 +174,7 @@ const DrawerFC = () => {
                 <Split>
                   <Title headingLevel="h6" size="md">
                     Licence(s) used
-                    <div>Apache License,version2.0</div>
+                    <div>{drawerData.licenses}</div>
                   </Title>
                 </Split>
               </FlexItem>
@@ -121,11 +182,11 @@ const DrawerFC = () => {
           </GridItem>
           <GridItem span={6}>
             <GithubStats
-              contributors={25}
-              dependentRepos={2}
-              usage={5}
-              forks={10}
-              stars={5}
+              contributors={Number(drawerData.github.contributors)}
+              dependentRepos={Number(drawerData.github.dependent_repos)}
+              usage={Number(drawerData.github.used_by.length)}
+              forks={Number(drawerData.github.forks_count)}
+              stars={Number(drawerData.github.stargazers_count)}
             />
           </GridItem>
         </Grid>
@@ -136,18 +197,12 @@ const DrawerFC = () => {
     <Drawer className="DrawerSize" isExpanded={drawerSta}>
       <DrawerContent panelContent={panelc}>
         <DrawerContentBody>
-            <Table
-              className="tableHeight"
-              aria-label="Sortable Table"
-              cells={columns}
-              rows={rows}
-              isStickyHeader
-              variant={TableVariant.compact}
-            >
-              <TableHeader />
-              <TableBody onRowClick={(e, row) => setDrawerState(!drawerSta)} />
-            </Table>
-          
+          <ComposableTableMisc
+            drawerSta={drawerSta}
+            setDrawerState={setDrawerState}
+            rowData={rowData}
+            setDrawerData={setDrawerData}
+          />
         </DrawerContentBody>
       </DrawerContent>
     </Drawer>

@@ -4,8 +4,11 @@ import { RegisterUser } from "../utils/apiCalls";
 const initialState = {
   APIData: {},
   Loading: true,
+  LoadingSpinner: false,
   IsRegUser: false,
   UUID: null,
+  Error: false,
+  ErrorData: {},
 };
 
 const reducer = (state: any, action: { type: any; data: any }) => {
@@ -14,12 +17,23 @@ const reducer = (state: any, action: { type: any; data: any }) => {
       return {
         ...state,
         APIData: action.data,
-        IsRegUser: localStorage.getItem("UUID") !== null,
+        IsRegUser: action.data?.registration_status === "REGISTERED",
+        UUID: action.data?.uuid,
       };
     case "Loading":
       return {
         ...state,
         Loading: action.data,
+      };
+    case "Error":
+      return {
+        ...state,
+        Error: action.data,
+      };
+    case "ErrorData":
+      return {
+        ...state,
+        ErrorData: action.data,
       };
     case "UUID":
       return {

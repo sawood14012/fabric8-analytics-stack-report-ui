@@ -17,21 +17,27 @@ type DependencyProps = {
 const Dependency = ({ analyzed, transitive, unknown }: DependencyProps) => {
   return (
     <div>
-      <Flex key="1" direction={{ default: "column" }} display={{ default: 'inlineFlex' }}>
-      <FlexItem spacer={{ default: "spacerXs" }}>
-        <Split hasGutter>
-          <SplitItem><CubeIcon className="icon-class" /></SplitItem>
-          <SplitItem>
-            <Title headingLevel="h6" size="md">
-              Dependency Details
-            </Title>
-          </SplitItem>
-          {unknown > 0 && (
+      <Flex
+        key="1"
+        direction={{ default: "column" }}
+        display={{ default: "inlineFlex" }}
+      >
+        <FlexItem spacer={{ default: "spacerXs" }}>
+          <Split hasGutter>
             <SplitItem>
-              <ExclamationCircleIcon className="icon-class-exclamation" />
+              <CubeIcon className="icon-class" />
             </SplitItem>
+            <SplitItem>
+              <Title headingLevel="h6" size="md">
+                Dependency Details
+              </Title>
+            </SplitItem>
+            {unknown > 0 && (
+              <SplitItem>
+                <ExclamationCircleIcon className="icon-class-exclamation" />
+              </SplitItem>
             )}
-        </Split>
+          </Split>
         </FlexItem>
       </Flex>
       <Flex key="2" direction={{ default: "column" }}>

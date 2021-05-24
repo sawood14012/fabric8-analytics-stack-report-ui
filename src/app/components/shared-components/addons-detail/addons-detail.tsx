@@ -15,31 +15,35 @@ type AddonsProps = {
 const Addons = ({ companion }: AddonsProps) => {
   return (
     <div>
-      <Flex key="1" direction={{ default: "column" }} display={{ default: 'inlineFlex' }}>
-      <FlexItem spacer={{ default: "spacerXs" }}>
-        <Split hasGutter>
-          <SplitItem><ZoneIcon className="icon-class" /></SplitItem>
-          <SplitItem>
-            <Title headingLevel="h6" size="md">
-            Add-ons
-            </Title>
-          </SplitItem>
-        </Split>
+      <Flex
+        key="1"
+        direction={{ default: "column" }}
+        display={{ default: "inlineFlex" }}
+      >
+        <FlexItem spacer={{ default: "spacerXs" }}>
+          <Split hasGutter>
+            <SplitItem>
+              <ZoneIcon className="icon-class" />
+            </SplitItem>
+            <SplitItem>
+              <Title headingLevel="h6" size="md">
+                Add-ons
+              </Title>
+            </SplitItem>
+          </Split>
         </FlexItem>
       </Flex>
       <Flex key="2" direction={{ default: "column" }}>
-        {companion > 0 && (
-          <FlexItem spacer={{ default: "spacerXs" }}>
-            <Split hasGutter>
-              <SplitItem>Companion Dependencies:</SplitItem>
-              <SplitItem>
-                <Title headingLevel="h6" size="md">
-                  {companion}
-                </Title>
-              </SplitItem>
-            </Split>
-          </FlexItem>
-        )}
+        <FlexItem spacer={{ default: "spacerXs" }}>
+          <Split hasGutter>
+            <SplitItem>Companion Dependencies:</SplitItem>
+            <SplitItem>
+              <Title headingLevel="h6" size="md">
+                {companion}
+              </Title>
+            </SplitItem>
+          </Split>
+        </FlexItem>
       </Flex>
     </div>
   );
