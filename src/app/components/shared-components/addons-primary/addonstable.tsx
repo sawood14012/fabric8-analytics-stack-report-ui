@@ -57,7 +57,7 @@ const GenerateRows = (data: any) => {
   console.log(data);
   const rowsData: (
     | { title: JSX.Element; drawer: any }
-    | { title: JSX.Element; drawer?: undefined }
+    | { title: JSX.Element; drawer?: any }
   )[][] = [];
   data.forEach((element: { name: string; drawer: any; progress: number }) => {
     const result = [
