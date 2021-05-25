@@ -9,6 +9,7 @@ const initialState = {
   UUID: null,
   Error: false,
   ErrorData: {},
+  Companion: [],
 };
 
 const reducer = (state: any, action: { type: any; data: any }) => {
@@ -19,6 +20,7 @@ const reducer = (state: any, action: { type: any; data: any }) => {
         APIData: action.data,
         IsRegUser: action.data?.registration_status === "REGISTERED",
         UUID: action.data?.uuid,
+        Companion: action.data.recommendation.companion,
       };
     case "Loading":
       return {
