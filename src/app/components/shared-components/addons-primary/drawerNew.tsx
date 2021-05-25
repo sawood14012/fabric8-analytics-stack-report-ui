@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import React, { useContext, useEffect, useState } from "react";
 import {
   Drawer,
   DrawerActions,
@@ -16,11 +17,11 @@ import {
   SplitItem,
   Title,
 } from "@patternfly/react-core";
-import React, { useContext, useEffect, useState } from "react";
 import Utils from "src/app/utils/utility";
 import GithubStats from "./github_stats";
 import ComposableTableMisc from "./addonstable";
 import Context from "../../../store/context";
+
 
 const DrawerFC = () => {
   // @ts-ignore
@@ -74,16 +75,6 @@ const DrawerFC = () => {
   };
   const [drawerSta, setDrawerState] = useState(false);
   const [drawerData, setDrawerData] = useState(drawD);
-/*   const rowData = [
-    { name: "org.apache.commons:commons-lang3", progress: 75, drawer: drawD1 },
-    { name: "joda-time:joda-time", progress: 35, drawer: drawD2 },
-    {
-      name: "org.springframework.boot:spring-boot-starter-web",
-      progress: 35,
-      drawer: drawD,
-    },
-    { name: "joda-time:joda-time", progress: 35, drawer: drawD },
-  ]; */
   const panelc = (
     <DrawerPanelContent>
       <DrawerHead>
