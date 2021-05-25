@@ -60,4 +60,17 @@ export default class Utils {
     }
     return 0;
   };
+
+  GetCompanionData = (data: any): any => {
+    const rows: { name: any; progress: any; drawer: any }[] = [];
+    data?.forEach((dep: any) => {
+      const dependency = {
+        name: dep.name,
+        progress: dep.cooccurrence_probability,
+        drawer: dep,
+      };
+      rows.push(dependency);
+    });
+    return rows;
+  };
 }

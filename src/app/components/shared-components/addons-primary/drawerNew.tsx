@@ -16,11 +16,23 @@ import {
   SplitItem,
   Title,
 } from "@patternfly/react-core";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import Utils from "src/app/utils/utility";
 import GithubStats from "./github_stats";
 import ComposableTableMisc from "./addonstable";
+import Context from "../../../store/context";
 
 const DrawerFC = () => {
+  // @ts-ignore
+  const { globalState, globalDispatch } = useContext(Context);
+  const utils = new Utils();
+  const [Companion, setCompanion] = useState([]);
+  useEffect(() => {
+    const compaionDeps = utils.GetCompanionData(globalState.Companion);
+    console.log(compaionDeps);
+    setCompanion(compaionDeps);
+    // setCompanion(compaionDeps);
+  }, [globalState]);
   const drawD = {
     name: "Hello",
     licenses: "Apache License,version2.0",
@@ -60,87 +72,9 @@ const DrawerFC = () => {
       watchers: "23",
     },
   };
-  const drawD2 = {
-    name: "joda-time:joda-time",
-    licenses: "Apache License,version2.0",
-    latest_version: "2.0.0",
-    github: {
-      contributors: "32",
-      dependent_projects: "22",
-      dependent_repos: "5",
-      first_release_date: null,
-      forks_count: "105",
-      issues: {
-        month: {
-          closed: 2,
-          opened: 1,
-        },
-        year: {
-          closed: 9,
-          opened: 8,
-        },
-      },
-      latest_release_duration: "2017-03-07 15:32:13",
-      open_issues_count: "0",
-      pull_requests: {
-        month: {
-          closed: 12,
-          opened: 12,
-        },
-        year: {
-          closed: 84,
-          opened: 84,
-        },
-      },
-      size: "N/A",
-      stargazers_count: "387",
-      total_releases: "18",
-      used_by: [],
-      watchers: "23",
-    },
-  };
-  const drawD1 = {
-    name: "org.apache.commons:commons-lang3",
-    licenses: "Apache License,version2.0",
-    latest_version: "2.0.0",
-    github: {
-      contributors: "32",
-      dependent_projects: "22",
-      dependent_repos: "5",
-      first_release_date: null,
-      forks_count: "101",
-      issues: {
-        month: {
-          closed: 2,
-          opened: 1,
-        },
-        year: {
-          closed: 9,
-          opened: 8,
-        },
-      },
-      latest_release_duration: "2017-03-07 15:32:13",
-      open_issues_count: "0",
-      pull_requests: {
-        month: {
-          closed: 12,
-          opened: 12,
-        },
-        year: {
-          closed: 84,
-          opened: 84,
-        },
-      },
-      size: "N/A",
-      stargazers_count: "387",
-      total_releases: "18",
-      used_by: [],
-      watchers: "23",
-    },
-  };
   const [drawerSta, setDrawerState] = useState(false);
   const [drawerData, setDrawerData] = useState(drawD);
-  const rowData = [
+/*   const rowData = [
     { name: "org.apache.commons:commons-lang3", progress: 75, drawer: drawD1 },
     { name: "joda-time:joda-time", progress: 35, drawer: drawD2 },
     {
@@ -149,7 +83,7 @@ const DrawerFC = () => {
       drawer: drawD,
     },
     { name: "joda-time:joda-time", progress: 35, drawer: drawD },
-  ];
+  ]; */
   const panelc = (
     <DrawerPanelContent>
       <DrawerHead>
@@ -174,7 +108,7 @@ const DrawerFC = () => {
                 <Split>
                   <Title headingLevel="h6" size="md">
                     Licence(s) used
-                    <div>{drawerData.licenses}</div>
+                    <div>{drawerData.licenses.toString()}</div>
                   </Title>
                 </Split>
               </FlexItem>
@@ -200,7 +134,7 @@ const DrawerFC = () => {
           <ComposableTableMisc
             drawerSta={drawerSta}
             setDrawerState={setDrawerState}
-            rowData={rowData}
+            rowData={Companion}
             setDrawerData={setDrawerData}
           />
         </DrawerContentBody>
