@@ -22,7 +22,6 @@ import GithubStats from "./github_stats";
 import ComposableTableMisc from "./addonstable";
 import Context from "../../../store/context";
 
-
 const DrawerFC = () => {
   // @ts-ignore
   const { globalState, globalDispatch } = useContext(Context);
@@ -30,7 +29,6 @@ const DrawerFC = () => {
   const [Companion, setCompanion] = useState([]);
   useEffect(() => {
     const compaionDeps = utils.GetCompanionData(globalState.Companion);
-    console.log(compaionDeps);
     setCompanion(compaionDeps);
     // setCompanion(compaionDeps);
   }, [globalState]);
