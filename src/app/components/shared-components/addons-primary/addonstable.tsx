@@ -20,6 +20,7 @@ import {
 } from "@patternfly/react-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import submitFeedback from "../../../utils/feedback"
 
 const TextTable = (data: string) => {
   return <TableText wrapModifier="wrap">{data}</TableText>;
@@ -40,7 +41,7 @@ const ProgressBar = (data: number) => {
 const FeedbackButtons = () => {
   return (
     <div>
-      <Button variant="link" icon={<FontAwesomeIcon icon={faThumbsUp} />} />
+      <Button onClick={()=>submitFeedback}  variant="link" icon={<FontAwesomeIcon icon={faThumbsUp} />} />
       <Button variant="link" icon={<FontAwesomeIcon icon={faThumbsDown} />} />
     </div>
   );

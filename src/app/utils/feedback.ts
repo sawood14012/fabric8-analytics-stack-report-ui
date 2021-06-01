@@ -16,3 +16,5 @@ function submitFeedback(data: any) {
         console.log(response);
     });;
 }
+
+export default { submitFeedback };
