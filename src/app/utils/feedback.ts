@@ -12,5 +12,7 @@ function submitFeedback(data: any) {
         data: {
           foo: 'bar', // This is the body part
         }
-      });
+      }).then(response => {
+        console.log(response);
+    });;
 }
