@@ -38,16 +38,16 @@ const ProgressBar = (data: number) => {
   );
 };
 
-const FeedbackButtons = (data: any) => {
+const FeedbackButtons = (data: any,name: string) => {
   return (
     <div>
       <Button
-        onClick={(event) => submitFeedback(data, "positive")}
+        onClick={(event) => submitFeedback(data, true, name)}
         variant="link"
         icon={<FontAwesomeIcon icon={faThumbsUp} />}
       />
       <Button
-        onClick={(event) => submitFeedback(data, "negative")}
+        onClick={(event) => submitFeedback(data, false, name)}
         variant="link"
         icon={<FontAwesomeIcon icon={faThumbsDown} />}
       />
@@ -71,7 +71,7 @@ const GenerateRows = (data: any) => {
     const result = [
       { title: TextTable(element.name), drawer: element.drawer },
       { title: ProgressBar(element.progress) },
-      { title: FeedbackButtons(element.drawer) },
+      { title: FeedbackButtons(element.drawer, element.name) },
     ];
     rowsData.push(result);
   });

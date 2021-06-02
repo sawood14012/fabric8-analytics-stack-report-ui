@@ -94,19 +94,18 @@ async function RegisterUser(
   return result;
 }
 
-async function submitFeedback(data: any, feedback: string) {
-  const urlf = `${stageApiUrl}/api/v2/submit-feedback?user_key=${stageApiKey}`;
-  console.log("Hey baby");
+async function submitFeedback(data: any, feedback: boolean, name: string) {
+  const urlf = `${stageApiUrl}/api/v1/submit-feedback?user_key=${stageApiKey}`;
   axios({
     method: "post",
     url: urlf,
-    headers: {'Content-Type': 'application/json'},
+    headers: { "Content-Type": "application/json" },
     data: {
-      stack_id: "9ce9b51068fb4e27813f136fa5fd5b7b",
+      stack_id: localStorage.getItem("requestId"),
       recommendation_type: "companion",
-      package_name: "pygments",
-      feedback_type: true,
-      ecosystem: "pypi",
+      package_name: name,
+      feedback_type: feedback,
+      ecosystem: data.ecosystem,
     },
   }).then((response) => {
     console.log(response);
