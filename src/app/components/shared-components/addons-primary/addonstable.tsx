@@ -20,6 +20,7 @@ import {
 } from "@patternfly/react-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { submitFeedback } from "../../../utils/apiCalls";
 
 const TextTable = (data: string) => {
   return <TableText wrapModifier="wrap">{data}</TableText>;
@@ -37,11 +38,19 @@ const ProgressBar = (data: number) => {
   );
 };
 
-const FeedbackButtons = () => {
+const FeedbackButtons = (data: any,name: string) => {
   return (
     <div>
-      <Button variant="link" icon={<FontAwesomeIcon icon={faThumbsUp} />} />
-      <Button variant="link" icon={<FontAwesomeIcon icon={faThumbsDown} />} />
+      <Button
+        onClick={(event) => submitFeedback(data, true, name)}
+        variant="link"
+        icon={<FontAwesomeIcon icon={faThumbsUp} />}
+      />
+      <Button
+        onClick={(event) => submitFeedback(data, false, name)}
+        variant="link"
+        icon={<FontAwesomeIcon icon={faThumbsDown} />}
+      />
     </div>
   );
 };
@@ -54,20 +63,18 @@ type tableProps = {
 };
 
 const GenerateRows = (data: any) => {
-  console.log(data);
   const rowsData: (
     | { title: JSX.Element; drawer: any }
-    | { title: JSX.Element; drawer?: undefined }
+    | { title: JSX.Element; drawer?: any }
   )[][] = [];
   data.forEach((element: { name: string; drawer: any; progress: number }) => {
     const result = [
       { title: TextTable(element.name), drawer: element.drawer },
       { title: ProgressBar(element.progress) },
-      { title: FeedbackButtons() },
+      { title: FeedbackButtons(element.drawer, element.name) },
     ];
     rowsData.push(result);
   });
-  console.log(rowsData);
   return rowsData;
 };
 
@@ -84,7 +91,6 @@ const ComposableTableMisc = ({
     borderLeft: "3px solid var(--pf-global--primary-color--100)",
   };
   const onRowClick = (rowIndex: number, data: any, cellIndex: boolean) => {
-    console.log(cellIndex);
     if (cellIndex) {
       setDrawerData(data);
       setDrawerState(!drawerSta);

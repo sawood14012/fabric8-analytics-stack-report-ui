@@ -1,39 +1,22 @@
-/* eslint-disable camelcase */
-import React, { useContext, useEffect, useState } from "react";
+import { ChartDonut } from "@patternfly/react-charts";
 import {
-  Drawer,
-  DrawerActions,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerContentBody,
-  DrawerHead,
-  DrawerPanelBody,
-  DrawerPanelContent,
   Flex,
   FlexItem,
   Grid,
   GridItem,
   Split,
   SplitItem,
+  Text,
+  TextContent,
   Title,
 } from "@patternfly/react-core";
-import Utils from "src/app/utils/utility";
-import GithubStats from "./github_stats";
-import ComposableTableMisc from "./addonstable";
-import Context from "../../../store/context";
+import { SecurityIcon } from "@patternfly/react-icons";
+import React, { useState } from "react";
+import GithubStats from "../../shared-components/addons-primary/github_stats";
 
-const DrawerFC = () => {
-  // @ts-ignore
-  const { globalState, globalDispatch } = useContext(Context);
-  const utils = new Utils();
-  const [Companion, setCompanion] = useState([]);
-  useEffect(() => {
-    const compaionDeps = utils.GetCompanionData(globalState.Companion);
-    setCompanion(compaionDeps);
-    // setCompanion(compaionDeps);
-  }, [globalState]);
+function VersionDetails() {
   const drawD = {
-    name: "Hello",
+    name: "org.apache.commons:commons-lang3",
     licenses: "Apache License,version2.0",
     latest_version: "2.0.0",
     github: {
@@ -71,25 +54,52 @@ const DrawerFC = () => {
       watchers: "23",
     },
   };
-  const [drawerSta, setDrawerState] = useState(false);
   const [drawerData, setDrawerData] = useState(drawD);
-  const panelc = (
-    <DrawerPanelContent>
-      <DrawerHead>
-        <h3 className="pf-c-title pf-m-2xl">{drawerData.name}</h3>
-        <DrawerActions>
-          <DrawerCloseButton onClick={() => setDrawerState(false)} />
-        </DrawerActions>
-      </DrawerHead>
-      <DrawerPanelBody>
+  const SummaryDonut = () => (
+    <ChartDonut
+      ariaDesc="Average number of pets"
+      ariaTitle="Donut chart example"
+      constrainToVisibleArea
+      data={[
+        { x: "a", y: 35 },
+        { x: "b", y: 55 },
+        { x: "c", y: 10 },
+      ]}
+      height={140}
+      labels={({ datum }) => `${datum.x}: ${datum.y}%`}
+      subTitle="Vul"
+      title="100"
+      width={140}
+    />
+  );
+  const VulnerabilityCount = () => (
+    <GridItem span={8}>
+      <TextContent className="vulnerability-count-overview">
+        <Text>
+          <SecurityIcon />
+          <strong>11</strong> Critical vulnerabilities
+        </Text>
+      </TextContent>
+    </GridItem>
+  );
+
+  return (
+    // @ts-ignore
+    <Flex
+      className="example-border"
+      justifyContent={{ default: "justifyContentSpaceBetween" }}
+    >
+      <FlexItem>
         <Grid hasGutter>
-          <GridItem span={6}>
+          <GridItem>
             <Flex key="2" direction={{ default: "column" }}>
               <FlexItem spacer={{ default: "spacerNone" }}>
                 <Split>
                   <SplitItem>
-                    Latest Version
-                    <div>{drawerData.latest_version}</div>
+                    <Title headingLevel="h6" size="md">
+                      Latest Version
+                      <div>{drawerData.latest_version}</div>
+                    </Title>
                   </SplitItem>
                 </Split>
               </FlexItem>
@@ -97,13 +107,17 @@ const DrawerFC = () => {
                 <Split>
                   <Title headingLevel="h6" size="md">
                     Licence(s) used
-                    <div>{drawerData.licenses.toString()}</div>
+                    <div>{drawerData.licenses}</div>
                   </Title>
                 </Split>
               </FlexItem>
             </Flex>
           </GridItem>
-          <GridItem span={6}>
+        </Grid>
+      </FlexItem>
+      <FlexItem>
+        <Grid>
+          <GridItem>
             <GithubStats
               contributors={Number(drawerData.github.contributors)}
               dependentRepos={Number(drawerData.github.dependent_repos)}
@@ -113,23 +127,21 @@ const DrawerFC = () => {
             />
           </GridItem>
         </Grid>
-      </DrawerPanelBody>
-    </DrawerPanelContent>
+      </FlexItem>
+      <FlexItem>
+        <Grid>
+          <GridItem span={6}>
+            <SummaryDonut />
+          </GridItem>
+          <VulnerabilityCount />
+          <VulnerabilityCount />
+          <VulnerabilityCount />
+          <VulnerabilityCount />
+          <VulnerabilityCount />
+        </Grid>
+      </FlexItem>
+    </Flex>
   );
-  return (
-    <Drawer className="DrawerSize" isExpanded={drawerSta}>
-      <DrawerContent panelContent={panelc}>
-        <DrawerContentBody>
-          <ComposableTableMisc
-            drawerSta={drawerSta}
-            setDrawerState={setDrawerState}
-            rowData={Companion}
-            setDrawerData={setDrawerData}
-          />
-        </DrawerContentBody>
-      </DrawerContent>
-    </Drawer>
-  );
-};
+}
 
-export default DrawerFC;
+export default VersionDetails;

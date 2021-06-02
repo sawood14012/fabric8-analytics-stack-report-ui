@@ -94,4 +94,22 @@ async function RegisterUser(
   return result;
 }
 
-export { GetStackDetails, RegisterUser };
+async function submitFeedback(data: any, feedback: boolean, name: string) {
+  const urlf = `${stageApiUrl}/api/v1/submit-feedback?user_key=${stageApiKey}`;
+  axios({
+    method: "post",
+    url: urlf,
+    headers: { "Content-Type": "application/json" },
+    data: {
+      stack_id: localStorage.getItem("requestId"),
+      recommendation_type: "companion",
+      package_name: name,
+      feedback_type: feedback,
+      ecosystem: data.ecosystem,
+    },
+  }).then((response) => {
+    console.log(response);
+  });
+}
+
+export { GetStackDetails, RegisterUser, submitFeedback };
