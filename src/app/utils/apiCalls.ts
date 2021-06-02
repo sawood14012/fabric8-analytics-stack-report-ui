@@ -94,14 +94,19 @@ async function RegisterUser(
   return result;
 }
 
-async function submitFeedback(data: any, feedback: string)  {
-  const urlf = "https://recommender.api.openshift.io/api/v1/user-feedback";
+async function submitFeedback(data: any, feedback: string) {
+  const urlf = `${stageApiUrl}/api/v2/submit-feedback?user_key=${stageApiKey}`;
+  console.log("Hey baby");
   axios({
     method: "post",
     url: urlf,
-    headers: {},
+    headers: {'Content-Type': 'application/json'},
     data: {
-      foo: "bar", // This is the body part
+      stack_id: "9ce9b51068fb4e27813f136fa5fd5b7b",
+      recommendation_type: "companion",
+      package_name: "pygments",
+      feedback_type: true,
+      ecosystem: "pypi",
     },
   }).then((response) => {
     console.log(response);
